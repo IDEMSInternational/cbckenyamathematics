@@ -154,7 +154,7 @@ function renderResourceCard(resource) {
             <div class="carousel-icon">${resource.icon || '📘'}</div>
             <h3>${resource.title || '[Resource]'}</h3>
             <p>${resource.shortDescription || ''}</p>
-            <a href="${link}" class="btn btn-primary">[Button]</a>
+            <a href="${link}" class="btn btn-primary">Access resource</a>
         </div>
     `;
 }
@@ -169,7 +169,7 @@ function renderResourceListCard(resource) {
                 <p>${resource.longDescription || ''}</p>
             </div>
             <div class="resource-cta">
-                <a href="${link}" class="btn">[Link]</a>
+                <a href="${link}" class="btn">Access resource</a>
             </div>
         </div>
     `;
