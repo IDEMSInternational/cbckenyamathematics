@@ -121,6 +121,44 @@ section.hero p {
     opacity: 0.95;
 }
 
+section.hero ul {
+    margin: 12px 0 18px 20px;
+}
+
+.key-contacts {
+    margin-top: 16px;
+    padding: 0;
+}
+
+.key-contacts-title {
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.key-contacts-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1.4fr 1fr;
+    gap: 12px;
+    line-height: 1.35;
+    color: #fff;
+}
+
+.key-contacts-row + .key-contacts-row {
+    margin-top: 6px;
+}
+
+.key-contacts a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .key-contacts-row {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===========================
    Logo Strip
    =========================== */
@@ -155,6 +193,23 @@ section.hero p {
     font-size: 14px;
     line-height: 1.4;
     margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.about-logos {
+    justify-content: center;
+    margin: 12px 0 8px 0;
+}
+
+.about-note {
+    margin-top: 14px;
+    color: var(--text-color);
+    text-align: left;
+}
+
+.about-cta {
+    margin-top: 12px;
 }
 
 /* ===========================
@@ -183,6 +238,80 @@ section.hero p {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin: 2rem 0;
+}
+
+/* ===========================
+   Quick Access Carousel
+   =========================== */
+.quick-links-note {
+    margin: 0 0 1rem 0;
+}
+
+.carousel {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 18px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.carousel-card {
+    flex: 0 0 calc((100% - 36px) / 3);
+    min-width: 220px;
+}
+
+.carousel-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.carousel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--secondary-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.carousel-btn.is-hidden {
+    visibility: hidden;
+}
+
+@media (max-width: 900px) {
+    .carousel-card {
+        flex: 0 0 calc((100% - 18px) / 2);
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel {
+        grid-template-columns: 1fr;
+    }
+    .carousel-btn {
+        justify-self: center;
+    }
+    .carousel-track {
+        order: 2;
+    }
+    .carousel-card {
+        flex: 0 0 100%;
+    }
 }
 
 .btn {
