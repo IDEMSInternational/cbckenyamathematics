@@ -233,11 +233,49 @@ section.hero ul {
     margin-bottom: 0.75rem;
 }
 
+.card h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin: 2rem 0;
+}
+
+.resource-list {
+    display: grid;
+    gap: 1.5rem;
+    margin: 1.5rem 0 0 0;
+}
+
+.resource-card {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 16px;
+    align-items: center;
+}
+
+.resource-icon {
+    font-size: 28px;
+    text-align: center;
+}
+
+.resource-body p {
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .resource-card {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+    .resource-cta {
+        margin-top: 8px;
+    }
 }
 
 /* ===========================
