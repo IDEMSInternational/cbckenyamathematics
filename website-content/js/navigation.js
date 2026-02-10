@@ -76,7 +76,7 @@ function loadPageContent() {
 
     const pagePath = `website-content/pages/${page}.html`;
 
-    fetch(pagePath)
+    fetch(pagePath, { cache: 'no-store' })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load ${pagePath}`);
