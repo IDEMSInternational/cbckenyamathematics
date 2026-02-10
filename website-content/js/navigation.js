@@ -48,13 +48,22 @@ function initMobileMenu() {
  * Highlight the active page in navigation
  */
 function highlightActivePage() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const params = new URLSearchParams(window.location.search);
+    const currentPage = params.get('page') || 'home';
     const navLinks = document.querySelectorAll('nav a');
     
     navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage || 
-            (currentPage === '' && linkPage === 'index.html')) {
+        const linkHref = link.getAttribute('href');
+        if (!linkHref) {
+            return;
+        }
+
+        if (currentPage === 'home' && linkHref === 'index.html') {
+            link.classList.add('active');
+            return;
+        }
+
+        if (linkHref.includes(`page=${currentPage}`)) {
             link.classList.add('active');
         }
     });
@@ -69,7 +78,8 @@ function loadPageContent() {
         return;
     }
 
-    const page = container.getAttribute('data-page');
+    const params = new URLSearchParams(window.location.search);
+    const page = params.get('page') || container.getAttribute('data-page');
     if (!page) {
         return;
     }
@@ -134,11 +144,7 @@ function loadResources() {
 }
 
 function getResourcesDataPath() {
-    const path = window.location.pathname;
-    if (path.endsWith('/index.html') || path.endsWith('/')) {
-        return 'website-content/data/resources.json';
-    }
-    return '../data/resources.json';
+    return 'website-content/data/resources.json';
 }
 
 function renderResourceCard(resource) {
@@ -147,7 +153,7 @@ function renderResourceCard(resource) {
         <div class="card carousel-card">
             <div class="carousel-icon">${resource.icon || '📘'}</div>
             <h3>${resource.title || '[Resource]'}</h3>
-            <p>${resource.description || ''}</p>
+            <p>${resource.shortDescription || ''}</p>
             <a href="${link}" class="btn btn-primary">[Button]</a>
         </div>
     `;
@@ -156,10 +162,15 @@ function renderResourceCard(resource) {
 function renderResourceListCard(resource) {
     const link = resource.link || '#';
     return `
-        <div class="card">
-            <h4>${resource.title || '[Resource]'}</h4>
-            <p>${resource.description || ''}</p>
-            <a href="${link}" class="btn">[Link]</a>
+        <div class="card resource-card">
+            <div class="resource-icon">${resource.icon || '📘'}</div>
+            <div class="resource-body">
+                <h4>${resource.title || '[Resource]'}</h4>
+                <p>${resource.longDescription || ''}</p>
+            </div>
+            <div class="resource-cta">
+                <a href="${link}" class="btn">[Link]</a>
+            </div>
         </div>
     `;
 }
