@@ -122,6 +122,42 @@ section.hero p {
 }
 
 /* ===========================
+   Logo Strip
+   =========================== */
+.logo-strip {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 22px 16px 18px 16px;
+    text-align: center;
+}
+
+.logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.logo-row img {
+    height: 40px;
+    max-width: 100%;
+}
+
+.logo-row img[alt*="Kenya Mathematical Society"] {
+    height: 112px;
+}
+
+.logo-caption {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ===========================
    Cards & Components
    =========================== */
 .card {
