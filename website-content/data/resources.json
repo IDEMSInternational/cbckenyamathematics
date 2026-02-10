@@ -1,31 +1,31 @@
 [
   {
     "id": "resource-1",
-    "title": "[Primary resource]",
-    "shortDescription": "[One-line description]",
-    "longDescription": "[Longer description for the resources page.]",
+    "title": "Interactive electronic (or printable) textbook",
+    "shortDescription": "An online book for Grade 10 Mathematics CBC",
+    "longDescription": "This is an interactive online textbook that spans the entire Grade 10 Mathematics Curriculum. It includes carefully designed questions that provide students with instantaneous feedback. It is also available in offline or printable formats.",
     "icon": "📘",
-    "link": "#"
+    "link": "https://innodems.github.io/CBC-Grade-10-Maths/frontmatter.html"
   },
   {
     "id": "resource-2",
-    "title": "[Secondary resource]",
-    "shortDescription": "[One-line description]",
-    "longDescription": "[Longer description for the resources page.]",
-    "icon": "🧭",
-    "link": "#"
+    "title": "CBE Math Delivery I Course",
+    "shortDescription": "A course on how to contribute to improvements in the Grade 10 Textbook",
+    "longDescription": "This course is designed for teachers and educators interested in learning more about competency based education and how to contribute to the co-development of open learning resources",
+    "icon": "🎓",
+    "link": "https://ecampus.idems.international/course/view.php?id=564"
   },
   {
     "id": "resource-3",
-    "title": "[Lesson plans]",
+    "title": "Resource 3",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
     "icon": "🧑‍🏫",
-    "link": "website-content/pages/resources.html"
+    "link": "#"
   },
   {
     "id": "resource-4",
-    "title": "[Resource 4]",
+    "title": "Resource 4",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
     "icon": "📝",
@@ -33,7 +33,7 @@
   },
   {
     "id": "resource-5",
-    "title": "[Resource 5]",
+    "title": "Resource 5",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
     "icon": "🧮",
@@ -41,7 +41,7 @@
   },
   {
     "id": "resource-6",
-    "title": "[Resource 6]",
+    "title": "Resource 6",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
     "icon": "📊",
