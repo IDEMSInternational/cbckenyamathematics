@@ -1,0 +1,44 @@
+[
+  {
+    "id": "resource-1",
+    "title": "[Primary resource]",
+    "description": "[One-line description]",
+    "icon": "📘",
+    "link": "#"
+  },
+  {
+    "id": "resource-2",
+    "title": "[Secondary resource]",
+    "description": "[One-line description]",
+    "icon": "🧭",
+    "link": "#"
+  },
+  {
+    "id": "resource-3",
+    "title": "[Lesson plans]",
+    "description": "[One-line description]",
+    "icon": "🧑‍🏫",
+    "link": "website-content/pages/resources.html"
+  },
+  {
+    "id": "resource-4",
+    "title": "[Resource 4]",
+    "description": "[One-line description]",
+    "icon": "📝",
+    "link": "#"
+  },
+  {
+    "id": "resource-5",
+    "title": "[Resource 5]",
+    "description": "[One-line description]",
+    "icon": "🧮",
+    "link": "#"
+  },
+  {
+    "id": "resource-6",
+    "title": "[Resource 6]",
+    "description": "[One-line description]",
+    "icon": "📊",
+    "link": "#"
+  }
+]
