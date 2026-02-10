@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     highlightActivePage();
+    loadPageContent();
 });
 
 /**
@@ -56,6 +57,37 @@ function highlightActivePage() {
             link.classList.add('active');
         }
     });
+}
+
+/**
+ * Load page content into the main container on index.html
+ */
+function loadPageContent() {
+    const container = document.getElementById('page-content');
+    if (!container) {
+        return;
+    }
+
+    const page = container.getAttribute('data-page');
+    if (!page) {
+        return;
+    }
+
+    const pagePath = `website-content/pages/${page}.html`;
+
+    fetch(pagePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load ${pagePath}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            container.innerHTML = html;
+        })
+        .catch(() => {
+            container.innerHTML = '<section class="hero"><h2>[Content unavailable]</h2><p>Please refresh the page.</p></section>';
+        });
 }
 
 /**

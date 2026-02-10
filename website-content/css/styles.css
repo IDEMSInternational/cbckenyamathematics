@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
 /* ===========================
    CSS Variables
    =========================== */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --text-color: #333;
-    --light-bg: #f4f4f4;
+    --primary-color: #67A3B3;
+    --secondary-color: #0b5565;
+    --accent-color: #7a4b00;
+    --text-color: #2f3a3d;
+    --light-bg: #f7fbfc;
     --white: #ffffff;
+    --border-color: #d9e7ec;
+    --card-border: #e3eef2;
+    --discussion-bg: #fff6e8;
+    --discussion-border: #ffe1b5;
     --shadow: 0 2px 5px rgba(0,0,0,0.1);
     --transition: all 0.3s ease;
 }
@@ -22,7 +28,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-bg);
@@ -63,23 +69,25 @@ main {
    Typography
    =========================== */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     margin-bottom: 1rem;
     line-height: 1.2;
+    font-weight: 800;
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: clamp(32px, 6vw, 48px);
 }
 
 h2 {
-    font-size: 2rem;
-    border-bottom: 3px solid var(--secondary-color);
+    font-size: clamp(24px, 4vw, 32px);
+    border-bottom: 3px solid var(--primary-color);
     padding-bottom: 0.5rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: clamp(18px, 3vw, 24px);
+    color: var(--primary-color);
 }
 
 p {
@@ -93,8 +101,60 @@ section {
     background: var(--white);
     padding: 2rem;
     margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+section.hero {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+section.hero h2 {
+    color: white;
+    border-bottom: none;
+}
+
+section.hero p {
+    font-size: clamp(15px, 2.6vw, 18px);
+    opacity: 0.95;
+}
+
+/* ===========================
+   Logo Strip
+   =========================== */
+.logo-strip {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 22px 16px 18px 16px;
+    text-align: center;
+}
+
+.logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.logo-row img {
+    height: 40px;
+    max-width: 100%;
+}
+
+.logo-row img[alt*="Kenya Mathematical Society"] {
+    height: 112px;
+}
+
+.logo-caption {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
 }
 
 /* ===========================
@@ -103,14 +163,19 @@ section {
 .card {
     background: var(--white);
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
     transition: var(--transition);
 }
 
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    font-size: clamp(18px, 3vw, 22px);
+    margin-bottom: 0.75rem;
 }
 
 .card-grid {
@@ -121,30 +186,51 @@ section {
 }
 
 .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: var(--light-bg);
+    color: var(--secondary-color);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
     transition: var(--transition);
-    border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .btn:hover {
-    background-color: var(--primary-color);
+    background: var(--primary-color);
     color: var(--white);
+    border-color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
 .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
     background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
 }
 
 .btn-secondary {
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
 }
 
 /* ===========================
@@ -164,7 +250,38 @@ footer a {
 }
 
 footer a:hover {
-    color: var(--secondary-color);
+    color: var(--light-bg);
+}
+
+/* ===========================
+   Utility Classes
+   =========================== */
+.info-box {
+    background: var(--light-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.discussion-box {
+    background: var(--discussion-bg);
+    border: 1px solid var(--discussion-border);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.discussion-box .btn {
+    background: var(--white);
+    border-color: var(--discussion-border);
+    color: var(--accent-color);
+}
+
+.discussion-box .btn:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white);
 }
 
 /* ===========================
