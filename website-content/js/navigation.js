@@ -104,7 +104,6 @@ function loadPageContent() {
         })
         .then(html => {
             container.innerHTML = html;
-            initCarousels();
             loadResources();
         })
         .catch(() => {
@@ -116,10 +115,9 @@ function loadPageContent() {
  * Load resources from JSON and render into the page
  */
 function loadResources() {
-    const carouselTrack = document.querySelector('[data-resource-carousel]');
     const resourceLists = document.querySelectorAll('[data-resource-list]');
 
-    if (!carouselTrack && resourceLists.length === 0) {
+    if (resourceLists.length === 0) {
         return;
     }
 
@@ -133,11 +131,6 @@ function loadResources() {
             return response.json();
         })
         .then(resources => {
-            if (carouselTrack) {
-                carouselTrack.innerHTML = resources.map(renderResourceCard).join('');
-                initCarousels();
-            }
-
             resourceLists.forEach(resourceList => {
                 const typeFilter = resourceList.getAttribute('data-resource-type');
                 const filteredResources = filterResourcesByType(resources, typeFilter);
@@ -145,9 +138,6 @@ function loadResources() {
             });
         })
         .catch(() => {
-            if (carouselTrack) {
-                carouselTrack.innerHTML = '';
-            }
             resourceLists.forEach(resourceList => {
                 resourceList.innerHTML = '';
             });
@@ -170,18 +160,6 @@ function filterResourcesByType(resources, typeFilter) {
     });
 }
 
-function renderResourceCard(resource) {
-    const link = resource.link || '#';
-    return `
-        <div class="card carousel-card">
-            <div class="carousel-icon">${resource.icon || '📘'}</div>
-            <h3>${resource.title || '[Resource]'}</h3>
-            <p>${resource.shortDescription || ''}</p>
-            <a href="${link}" class="btn btn-primary">Access resource</a>
-        </div>
-    `;
-}
-
 function renderResourceListCard(resource) {
     const link = resource.link || '#';
     return `
@@ -196,46 +174,6 @@ function renderResourceListCard(resource) {
             </div>
         </div>
     `;
-}
-
-/**
- * Initialize simple horizontal carousels
- */
-function initCarousels() {
-    const carousels = document.querySelectorAll('[data-carousel]');
-
-    carousels.forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
-        const prevBtn = carousel.querySelector('.carousel-btn.prev');
-        const nextBtn = carousel.querySelector('.carousel-btn.next');
-
-        if (!track || !prevBtn || !nextBtn) {
-            return;
-        }
-
-        const updateButtons = () => {
-            const maxScroll = track.scrollWidth - track.clientWidth;
-            prevBtn.classList.toggle('is-hidden', track.scrollLeft <= 1);
-            nextBtn.classList.toggle('is-hidden', track.scrollLeft >= maxScroll - 1);
-        };
-
-        const scrollByCard = (direction) => {
-            const firstCard = track.querySelector('.carousel-card');
-            const gap = 18;
-            const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-            track.scrollBy({ left: direction * (cardWidth + gap), behavior: 'smooth' });
-        };
-
-        prevBtn.addEventListener('click', () => scrollByCard(-1));
-        nextBtn.addEventListener('click', () => scrollByCard(1));
-
-        track.addEventListener('scroll', () => {
-            window.requestAnimationFrame(updateButtons);
-        });
-
-        window.addEventListener('resize', updateButtons);
-        updateButtons();
-    });
 }
 
 /**
