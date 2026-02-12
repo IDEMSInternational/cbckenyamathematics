@@ -17,19 +17,19 @@
   },
   {
     "id": "resource-3",
-    "title": "Resource 3",
-    "shortDescription": "[One-line description]",
+    "title": "CBE Topic Delivery courses",
+    "shortDescription": "Courses with teaching resources and discussion forums for each of the topics of the CBE Grade 10 Maths syllabus",
     "longDescription": "[Longer description for the resources page.]",
     "icon": "🧑‍🏫",
-    "link": "#"
+    "link": "https://ecampus.idems.international/course/index.php?categoryid=122"
   },
   {
     "id": "resource-4",
-    "title": "Resource 4",
-    "shortDescription": "[One-line description]",
+    "title": "Teacher support WhatsApp group",
+    "shortDescription": "A WhatsApp group for teachers to ask for help and share their experiences",
     "longDescription": "[Longer description for the resources page.]",
     "icon": "📝",
-    "link": "#"
+    "link": "https://chat.whatsapp.com/FdB1qTghGy78AKic01avWK"
   },
   {
     "id": "resource-5",
