@@ -1,17 +1,19 @@
 [
   {
     "id": "resource-1",
-    "title": "Interactive electronic (or printable) textbook",
-    "shortDescription": "An online book for Grade 10 Mathematics CBC",
-    "longDescription": "This is an interactive online textbook that spans the entire Grade 10 Mathematics Curriculum. It includes carefully designed questions that provide students with instantaneous feedback. It is also available in offline or printable formats.",
+    "title": "Interactive electronic textbook, teacher version",
+    "shortDescription": "An online book for Grade 10 Mathematics CBC. The teacher version allows for seamless feedback to be given.",
+    "longDescription": "This is an interactive online textbook that spans the entire Grade 10 Mathematics Curriculum. It includes carefully designed questions that provide students with instantaneous feedback. The teacher version allows for seamless feedback to be given.",
+    "type": "Textbook",
     "icon": "📘",
     "link": "https://innodems.github.io/CBC-Grade-10-Maths/frontmatter.html"
   },
   {
     "id": "resource-2",
     "title": "CBE Math Delivery I Course",
-    "shortDescription": "A course on how to contribute to improvements in the Grade 10 Textbook",
-    "longDescription": "This course is designed for teachers and educators interested in learning more about competency based education and how to contribute to the co-development of open learning resources",
+    "shortDescription": "A course on how to contribute to improvements in the Grade 10 Textboo.",
+    "longDescription": "This course is designed for teachers and educators interested in learning more about competency based education and how to contribute to the co-development of open learning resources.",
+    "type": "Training Course",
     "icon": "🎓",
     "link": "https://ecampus.idems.international/course/view.php?id=564"
   },
@@ -20,6 +22,7 @@
     "title": "Resource 3",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
+    "type": "Lesson plan course",
     "icon": "🧑‍🏫",
     "link": "#"
   },
@@ -28,6 +31,7 @@
     "title": "Resource 4",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
+    "type": "Lesson plan course",
     "icon": "📝",
     "link": "#"
   },
@@ -36,6 +40,7 @@
     "title": "Resource 5",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
+    "type": "Lesson plan course",
     "icon": "🧮",
     "link": "#"
   },
@@ -44,6 +49,7 @@
     "title": "Resource 6",
     "shortDescription": "[One-line description]",
     "longDescription": "[Longer description for the resources page.]",
+    "type": "Lesson plan course",
     "icon": "📊",
     "link": "#"
   }

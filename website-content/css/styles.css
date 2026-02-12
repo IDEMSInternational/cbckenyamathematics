@@ -246,6 +246,20 @@ section.hero ul {
     margin: 2rem 0;
 }
 
+.resource-type-grid {
+    margin-top: 1.5rem;
+}
+
+.resource-type-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.resource-type-card .btn {
+    align-self: flex-start;
+}
+
 .resource-list {
     display: grid;
     gap: 1.5rem;

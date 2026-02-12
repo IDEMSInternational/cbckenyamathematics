@@ -26,7 +26,21 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html?page=resources">Resources</a></li>
+                    <li class="has-submenu">
+                        <a href="#" data-nav="resources" data-menu-toggle>Resources</a>
+                        <ul class="submenu">
+                            <li><a href="index.html?page=resources-textbooks">Textbooks</a></li>
+                            <li><a href="index.html?page=resources-training">Training Courses</a></li>
+                            <li class="has-submenu">
+                                <a href="#" data-menu-toggle>Lesson Plan Courses</a>
+                                <ul class="submenu">
+                                    <li><a href="index.html?page=resources-lesson-plans-numbers">Numbers and Algebra</a></li>
+                                    <li><a href="index.html?page=resources-lesson-plans-measurements">Measurements and Geometry</a></li>
+                                    <li><a href="index.html?page=resources-lesson-plans-statistics">Statistics and Probability</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="index.html?page=about">About</a></li>
                 </ul>
             </nav>
