@@ -1,0 +1,14 @@
+<section class="hero">
+    <h2>Resources</h2>
+    <p>This page has moved to the resource type pages.</p>
+    <p><a href="index.html?page=resources-textbooks" class="btn btn-primary">Go to Textbooks</a></p>
+</section>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('page') === 'resources') {
+        params.set('page', 'resources-textbooks');
+        window.location.search = params.toString();
+    }
+</script>
+
