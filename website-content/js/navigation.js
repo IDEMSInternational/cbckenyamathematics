@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightActivePage();
     loadPageContent();
     loadResources();
+    initDropdownPositioning();
+    initMenuToggles();
 });
 
 /**
@@ -67,6 +69,13 @@ function highlightActivePage() {
             link.classList.add('active');
         }
     });
+
+    if (currentPage.startsWith('resources')) {
+        const resourcesLink = document.querySelector('nav a[data-nav="resources"]');
+        if (resourcesLink) {
+            resourcesLink.classList.add('active');
+        }
+    }
 }
 
 /**
@@ -95,7 +104,6 @@ function loadPageContent() {
         })
         .then(html => {
             container.innerHTML = html;
-            initCarousels();
             loadResources();
         })
         .catch(() => {
@@ -107,10 +115,9 @@ function loadPageContent() {
  * Load resources from JSON and render into the page
  */
 function loadResources() {
-    const carouselTrack = document.querySelector('[data-resource-carousel]');
-    const resourceList = document.querySelector('[data-resource-list]');
+    const resourceLists = document.querySelectorAll('[data-resource-list]');
 
-    if (!carouselTrack && !resourceList) {
+    if (resourceLists.length === 0) {
         return;
     }
 
@@ -124,22 +131,16 @@ function loadResources() {
             return response.json();
         })
         .then(resources => {
-            if (carouselTrack) {
-                carouselTrack.innerHTML = resources.map(renderResourceCard).join('');
-                initCarousels();
-            }
-
-            if (resourceList) {
-                resourceList.innerHTML = resources.map(renderResourceListCard).join('');
-            }
+            resourceLists.forEach(resourceList => {
+                const typeFilter = resourceList.getAttribute('data-resource-type');
+                const filteredResources = filterResourcesByType(resources, typeFilter);
+                resourceList.innerHTML = filteredResources.map(renderResourceListCard).join('');
+            });
         })
         .catch(() => {
-            if (carouselTrack) {
-                carouselTrack.innerHTML = '';
-            }
-            if (resourceList) {
+            resourceLists.forEach(resourceList => {
                 resourceList.innerHTML = '';
-            }
+            });
         });
 }
 
@@ -147,16 +148,16 @@ function getResourcesDataPath() {
     return 'website-content/data/resources.json';
 }
 
-function renderResourceCard(resource) {
-    const link = resource.link || '#';
-    return `
-        <div class="card carousel-card">
-            <div class="carousel-icon">${resource.icon || '📘'}</div>
-            <h3>${resource.title || '[Resource]'}</h3>
-            <p>${resource.shortDescription || ''}</p>
-            <a href="${link}" class="btn btn-primary">Access resource</a>
-        </div>
-    `;
+function filterResourcesByType(resources, typeFilter) {
+    if (!typeFilter) {
+        return resources;
+    }
+
+    const normalizedFilter = typeFilter.trim().toLowerCase();
+    return resources.filter(resource => {
+        const resourceType = (resource.type || '').trim().toLowerCase();
+        return resourceType === normalizedFilter;
+    });
 }
 
 function renderResourceListCard(resource) {
@@ -176,46 +177,6 @@ function renderResourceListCard(resource) {
 }
 
 /**
- * Initialize simple horizontal carousels
- */
-function initCarousels() {
-    const carousels = document.querySelectorAll('[data-carousel]');
-
-    carousels.forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
-        const prevBtn = carousel.querySelector('.carousel-btn.prev');
-        const nextBtn = carousel.querySelector('.carousel-btn.next');
-
-        if (!track || !prevBtn || !nextBtn) {
-            return;
-        }
-
-        const updateButtons = () => {
-            const maxScroll = track.scrollWidth - track.clientWidth;
-            prevBtn.classList.toggle('is-hidden', track.scrollLeft <= 1);
-            nextBtn.classList.toggle('is-hidden', track.scrollLeft >= maxScroll - 1);
-        };
-
-        const scrollByCard = (direction) => {
-            const firstCard = track.querySelector('.carousel-card');
-            const gap = 18;
-            const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-            track.scrollBy({ left: direction * (cardWidth + gap), behavior: 'smooth' });
-        };
-
-        prevBtn.addEventListener('click', () => scrollByCard(-1));
-        nextBtn.addEventListener('click', () => scrollByCard(1));
-
-        track.addEventListener('scroll', () => {
-            window.requestAnimationFrame(updateButtons);
-        });
-
-        window.addEventListener('resize', updateButtons);
-        updateButtons();
-    });
-}
-
-/**
  * Smooth scroll to anchor links (if needed)
  */
 function initSmoothScroll() {
@@ -228,6 +189,61 @@ function initSmoothScroll() {
                     behavior: 'smooth',
                     block: 'start'
                 });
+            }
+        });
+    });
+}
+
+function initDropdownPositioning() {
+    const submenuParents = document.querySelectorAll('nav li.has-submenu');
+
+    submenuParents.forEach(parent => {
+        const submenu = parent.querySelector(':scope > ul');
+        if (!submenu) {
+            return;
+        }
+
+        const updatePosition = () => adjustSubmenuPosition(submenu);
+
+        parent.addEventListener('mouseenter', () => {
+            window.requestAnimationFrame(updatePosition);
+        });
+
+        parent.addEventListener('focusin', updatePosition);
+        window.addEventListener('resize', updatePosition);
+    });
+}
+
+function adjustSubmenuPosition(submenu) {
+    submenu.classList.remove('submenu-left');
+
+    const rect = submenu.getBoundingClientRect();
+    if (rect.right > window.innerWidth) {
+        submenu.classList.add('submenu-left');
+    }
+}
+
+function initMenuToggles() {
+    const toggleLinks = document.querySelectorAll('nav a[data-menu-toggle]');
+
+    toggleLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+
+            const parent = link.closest('li');
+            if (!parent) {
+                return;
+            }
+
+            const submenu = parent.querySelector(':scope > ul');
+            if (!submenu) {
+                return;
+            }
+
+            const isOpen = submenu.style.display === 'flex';
+            submenu.style.display = isOpen ? 'none' : 'flex';
+            if (!isOpen) {
+                adjustSubmenuPosition(submenu);
             }
         });
     });

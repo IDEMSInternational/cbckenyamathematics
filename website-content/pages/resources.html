@@ -1,17 +1,14 @@
 <section class="hero">
     <h2>Resources</h2>
-    <p>This page brings together three types of resources:</p>
-    <ul>
-        <li>Textbooks</li>
-        <li>A single course on improving the textbooks</li>
-        <li>Individual courses with lesson plans and step-by-step guides for each topic in the curriculum</li>
-    </ul>
-    <p>Completion of the courses requires active participation and will be certified by The Kenya Mathematical Society, INNODEMS, and IDEMS International.</p>
+    <p>This page has moved to the resource type pages.</p>
+    <p><a href="index.html?page=resources-textbooks" class="btn btn-primary">Go to Textbooks</a></p>
 </section>
 
-<section>
-    <h2>Resource list</h2>
-
-    <div class="resource-list" data-resource-list></div>
-</section>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('page') === 'resources') {
+        params.set('page', 'resources-textbooks');
+        window.location.search = params.toString();
+    }
+</script>
 

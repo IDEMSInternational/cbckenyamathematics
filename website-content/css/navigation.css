@@ -69,6 +69,70 @@ nav a.active {
 }
 
 /* ===========================
+   Dropdown Menus
+   =========================== */
+nav ul ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #d9e7ec);
+    border-radius: 10px;
+    padding: 0.2rem 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    z-index: 1000;
+}
+
+nav ul ul li {
+    width: 100%;
+}
+
+nav ul ul a {
+    color: var(--secondary-color, #0b5565);
+    padding: 0.3rem 0.85rem;
+    border-radius: 0;
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+nav ul ul a:hover,
+nav ul ul a.active {
+    background-color: var(--light-bg, #f7fbfc);
+    color: var(--secondary-color, #0b5565);
+}
+
+nav li:hover > ul,
+nav li:focus-within > ul {
+    display: flex;
+}
+
+nav ul ul ul {
+    top: 0;
+    left: 100%;
+}
+
+nav ul ul.submenu-left {
+    left: auto;
+    right: 100%;
+}
+
+nav li.has-submenu > a::after {
+    content: "▾";
+    font-size: 0.7rem;
+    margin-left: 6px;
+}
+
+nav ul ul li.has-submenu > a::after {
+    content: "▸";
+    float: right;
+    margin-left: 0;
+}
+
+/* ===========================
    Mobile Menu Toggle
    =========================== */
 .menu-toggle {
@@ -120,6 +184,31 @@ nav a.active {
     
     nav a {
         padding: 1rem;
+    }
+
+    nav ul ul {
+        position: static;
+        min-width: auto;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        display: block;
+    }
+
+    nav ul ul a {
+        color: white;
+        padding-left: 2.25rem;
+    }
+
+    nav ul ul ul a {
+        padding-left: 3.25rem;
+    }
+
+    nav li.has-submenu > a::after,
+    nav ul ul li.has-submenu > a::after {
+        content: "▾";
+        float: none;
     }
     
     /* Hamburger Animation */

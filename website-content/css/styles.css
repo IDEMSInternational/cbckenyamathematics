@@ -8,6 +8,7 @@
     --secondary-color: #0b5565;
     --accent-color: #7a4b00;
     --text-color: #2f3a3d;
+    padding: 0 2rem;
     --light-bg: #f7fbfc;
     --white: #ffffff;
     --border-color: #d9e7ec;
@@ -62,25 +63,19 @@ a:hover {
 main {
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
 /* ===========================
    Typography
    =========================== */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    font-weight: 800;
-}
-
 h1 {
     font-size: clamp(32px, 6vw, 48px);
 }
 
 h2 {
-    font-size: clamp(24px, 4vw, 32px);
+    font-size: clamp(22px, 3.6vw, 30px);
+    color: var(--primary-color);
     border-bottom: 3px solid var(--primary-color);
     padding-bottom: 0.5rem;
 }
@@ -212,6 +207,11 @@ section.hero ul {
     margin-top: 12px;
 }
 
+.about-preview h2,
+.about-preview h3 {
+    color: var(--primary-color);
+}
+
 /* ===========================
    Cards & Components
    =========================== */
@@ -246,6 +246,26 @@ section.hero ul {
     margin: 2rem 0;
 }
 
+.resource-type-grid {
+    margin-top: 1.5rem;
+}
+
+.resource-type-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    height: 100%;
+}
+
+.resource-type-card .btn {
+    align-self: center;
+    margin-top: auto;
+}
+
+.resource-type-card h3 {
+    color: var(--text-color);
+}
+
 .resource-list {
     display: grid;
     gap: 1.5rem;
@@ -275,80 +295,6 @@ section.hero ul {
     }
     .resource-cta {
         margin-top: 8px;
-    }
-}
-
-/* ===========================
-   Quick Access Carousel
-   =========================== */
-.quick-links-note {
-    margin: 0 0 1rem 0;
-}
-
-.carousel {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 16px;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 18px;
-    overflow: hidden;
-    scroll-behavior: smooth;
-}
-
-.carousel-card {
-    flex: 0 0 calc((100% - 36px) / 3);
-    min-width: 220px;
-}
-
-.carousel-icon {
-    font-size: 28px;
-    margin-bottom: 8px;
-}
-
-.carousel-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    background: var(--white);
-    color: var(--secondary-color);
-    font-weight: 800;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.carousel-btn:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    border-color: var(--primary-color);
-}
-
-.carousel-btn.is-hidden {
-    visibility: hidden;
-}
-
-@media (max-width: 900px) {
-    .carousel-card {
-        flex: 0 0 calc((100% - 18px) / 2);
-    }
-}
-
-@media (max-width: 600px) {
-    .carousel {
-        grid-template-columns: 1fr;
-    }
-    .carousel-btn {
-        justify-self: center;
-    }
-    .carousel-track {
-        order: 2;
-    }
-    .carousel-card {
-        flex: 0 0 100%;
     }
 }
 
