@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightActivePage();
     loadPageContent();
     loadResources();
+    loadLessonPlanCatalog();
     initDropdownPositioning();
     initMenuToggles();
 });
@@ -105,6 +106,7 @@ function loadPageContent() {
         .then(html => {
             container.innerHTML = html;
             loadResources();
+            loadLessonPlanCatalog();
         })
         .catch(() => {
             container.innerHTML = '<section class="hero"><h2>[Content unavailable]</h2><p>Please refresh the page.</p></section>';
@@ -145,7 +147,11 @@ function loadResources() {
 }
 
 function getResourcesDataPath() {
-    return 'website-content/data/resources.json';
+    return 'website-content/data/resources-catalog.json';
+}
+
+function getLessonPlansDataPath() {
+    return 'website-content/data/lesson-plans-catalog.json';
 }
 
 function filterResourcesByType(resources, typeFilter) {
@@ -174,6 +180,153 @@ function renderResourceListCard(resource) {
             </div>
         </div>
     `;
+}
+
+function loadLessonPlanCatalog() {
+    const chapterContainers = document.querySelectorAll('[data-lesson-plan-chapter]');
+
+    if (chapterContainers.length === 0) {
+        return;
+    }
+
+    const dataPath = getLessonPlansDataPath();
+
+    fetch(dataPath, { cache: 'no-store' })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load lesson plan catalog');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const chapters = Array.isArray(data.chapters) ? data.chapters : [];
+            chapterContainers.forEach(container => {
+                const chapterId = container.getAttribute('data-lesson-plan-chapter');
+                const chapter = chapters.find(item => item.id === chapterId);
+
+                if (!chapter) {
+                    container.innerHTML = '<p>[Lesson plan content coming soon]</p>';
+                    return;
+                }
+
+                container.innerHTML = renderLessonPlanChapter(chapter);
+            });
+            
+            // Initialize accordion behavior for lessons
+            initLessonAccordion();
+        })
+        .catch(() => {
+            chapterContainers.forEach(container => {
+                container.innerHTML = '';
+            });
+        });
+}
+
+function initLessonAccordion() {
+    const lessonDetails = document.querySelectorAll('.lesson-plan-lesson');
+    
+    lessonDetails.forEach(detail => {
+        detail.addEventListener('toggle', function() {
+            if (this.open) {
+                // Close all other lessons in the same section
+                const section = this.closest('.lesson-plan-section');
+                if (section) {
+                    section.querySelectorAll('.lesson-plan-lesson').forEach(otherDetail => {
+                        if (otherDetail !== this && otherDetail.open) {
+                            otherDetail.open = false;
+                        }
+                    });
+                }
+            }
+        });
+    });
+}
+
+function renderLessonPlanChapter(chapter) {
+    const sections = Array.isArray(chapter.sections) ? chapter.sections : [];
+
+    return `
+        <div class="lesson-plan-sections">
+            ${sections.map(renderLessonPlanSection).join('')}
+        </div>
+    `;
+}
+
+function renderLessonPlanSection(section) {
+    const course = section.course || {};
+    const lessons = Array.isArray(course.lessons) ? course.lessons : [];
+    const courseTitle = course.title || '';
+    const courseLink = course.link || '';
+    const courseTitleMarkup = courseTitle
+        ? `<div class="lesson-plan-course">
+                <h4><strong>Topic Course:</strong> ${courseTitle}</h4>
+                ${courseLink && courseLink !== '#' ? `<a href="${courseLink}" class="btn btn-primary btn-access-course" target="_blank" rel="noopener">🎓 Access course</a>` : ''}
+           </div>`
+        : '';
+
+    return `
+        <div class="lesson-plan-section">
+            <div class="lesson-plan-section-header">
+                <h3>${section.title || '[Section]'}</h3>
+                ${courseTitleMarkup}
+            </div>
+            <div class="lesson-plan-lessons">
+                ${lessons.map((lesson, index) => renderLessonPlanLesson(lesson, index === 0)).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function renderLessonPlanLesson(lesson, isOpen) {
+    const resources = Array.isArray(lesson.resources) ? lesson.resources : [];
+    
+    if (!resources.length) {
+        return `
+            <details class="lesson-plan-lesson" ${isOpen ? 'open' : ''}>
+                <summary>${lesson.title || '[Lesson]'}</summary>
+                <p class="lesson-plan-empty">[Resources coming soon]</p>
+            </details>
+        `;
+    }
+
+    // Group resources by device access
+    const withDevices = resources.filter(r => r.deviceAccess === true);
+    const withoutDevices = resources.filter(r => r.deviceAccess === false);
+
+    // Build device sections
+    const withDevicesSection = withDevices.length ? `
+        <div class="lesson-plan-device-section">
+            <div class="lesson-plan-device-header">💻 My students have access to devices during class</div>
+            <div class="lesson-plan-resources">
+                ${withDevices.map(renderLessonPlanResource).join('')}
+            </div>
+        </div>
+    ` : '';
+
+    const withoutDevicesSection = withoutDevices.length ? `
+        <div class="lesson-plan-device-section">
+            <div class="lesson-plan-device-header">📝 My students will NOT have access to devices during class</div>
+            <div class="lesson-plan-resources">
+                ${withoutDevices.map(renderLessonPlanResource).join('')}
+            </div>
+        </div>
+    ` : '';
+
+    return `
+        <details class="lesson-plan-lesson" ${isOpen ? 'open' : ''}>
+            <summary>${lesson.title || '[Lesson]'}</summary>
+            <p class="lesson-plan-quick-access">If you're looking for this content on eCampus use the Quick Access link from the course above or navigate to the section for this topic.</p>
+            ${withDevicesSection}
+            ${withoutDevicesSection}
+        </details>
+    `;
+}
+
+function renderLessonPlanResource(resource) {
+    const link = resource.link || '#';
+    const label = resource.label || 'Resource';
+    const icon = resource.type === 'guide' ? '🧑‍🏫' : '📄';
+    return `<a href="${link}" class="btn btn-primary" target="_blank" rel="noopener">${icon} ${label}</a>`;
 }
 
 /**

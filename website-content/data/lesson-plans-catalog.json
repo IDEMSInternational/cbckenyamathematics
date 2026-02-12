@@ -1,0 +1,307 @@
+{
+  "chapters": [
+    {
+      "id": "numbers-algebra",
+      "title": "Numbers and Algebra",
+      "sections": [
+        {
+          "id": "real-numbers",
+          "title": "Real Numbers",
+          "course": {
+            "id": "course-real-numbers",
+            "title": "CBE topic delivery: Real Numbers",
+            "link": "https://ecampus.idems.international/course/view.php?id=571",
+            "lessons": [
+              {
+                "id": "classifying-real-numbers",
+                "title": "Classifying real numbers as rational and irrational in different situations",
+                "resources": [
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (print-friendly)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (offline)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  }
+                ]
+              },
+              {
+                "id": "classifying-odd-even",
+                "title": "Classifying whole numbers as odd, even in different situations",
+                "resources": [
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (print-friendly)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (offline)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  }
+                ]
+              },
+              {
+                "id": "classifying-prime-composite",
+                "title": "Classifying whole numbers as prime and composite in different situations",
+                "resources": [
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (print-friendly)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (offline)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  }
+                ]
+              },
+              {
+                "id": "reciprocals-division",
+                "title": "Finding reciprocals of real numbers using division",
+                "resources": [
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (print-friendly)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (offline)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  }
+                ]
+              },
+              {
+                "id": "reciprocals-calculators",
+                "title": "Finding reciprocals of real numbers using mathematical calculators",
+                "resources": [
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (print-friendly)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (offline)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  }
+                ]
+              },
+              {
+                "id": "reciprocals-tables-calculators",
+                "title": "Finding reciprocals of real numbers using mathematical tables and calculators",
+                "resources": [
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (print-friendly)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (offline)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  }
+                ]
+              },
+              {
+                "id": "reciprocals-computations",
+                "title": "Using reciprocals of real numbers in mathematical computations",
+                "resources": [
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (digital)",
+                    "deviceAccess": true,
+                    "link": "#"
+                  },
+                  {
+                    "type": "lesson-plan",
+                    "label": "Lesson plan (print-friendly)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  },
+                  {
+                    "type": "guide",
+                    "label": "Step-by-step guide (offline)",
+                    "deviceAccess": false,
+                    "link": "#"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "indices-logarithms",
+          "title": "Indices and Logarithms",
+          "course": {
+            "id": "placeholder-course-indices",
+            "title": "[Course title placeholder]",
+            "link": "#",
+            "lessons": [
+              {
+                "id": "placeholder-lesson-indices",
+                "title": "[Lesson title placeholder]",
+                "resources": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "quadratic-expressions-equations-1",
+          "title": "Quadratic Expressions and Equations 1",
+          "course": {
+            "id": "placeholder-course-quadratic",
+            "title": "[Course title placeholder]",
+            "link": "#",
+            "lessons": [
+              {
+                "id": "placeholder-lesson-quadratic",
+                "title": "[Lesson title placeholder]",
+                "resources": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "measurements-geometry",
+      "title": "Measurements and Geometry",
+      "sections": [
+        {
+          "id": "placeholder-section",
+          "title": "[Section title placeholder]",
+          "course": {
+            "id": "placeholder-course",
+            "title": "[Course title placeholder]",
+            "link": "#",
+            "lessons": [
+              {
+                "id": "placeholder-lesson",
+                "title": "[Lesson title placeholder]",
+                "resources": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "statistics-probability",
+      "title": "Statistics and Probability",
+      "sections": [
+        {
+          "id": "placeholder-section-stats",
+          "title": "[Section title placeholder]",
+          "course": {
+            "id": "placeholder-course-stats",
+            "title": "[Course title placeholder]",
+            "link": "#",
+            "lessons": [
+              {
+                "id": "placeholder-lesson-stats",
+                "title": "[Lesson title placeholder]",
+                "resources": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
