@@ -1,4 +1,26 @@
 {
+  "resourceTypes": {
+    "lesson-plan-digital": {
+      "type": "lesson-plan",
+      "label": "Lesson plan (digital)",
+      "deviceAccess": true
+    },
+    "guide-digital": {
+      "type": "guide",
+      "label": "Step-by-step guide (digital)",
+      "deviceAccess": true
+    },
+    "lesson-plan-print": {
+      "type": "lesson-plan",
+      "label": "Lesson plan (print-friendly)",
+      "deviceAccess": false
+    },
+    "guide-offline": {
+      "type": "guide",
+      "label": "Step-by-step guide (offline)",
+      "deviceAccess": false
+    }
+  },
   "chapters": [
     {
       "id": "numbers-algebra",
@@ -16,210 +38,70 @@
                 "id": "classifying-real-numbers",
                 "title": "Classifying real numbers as rational and irrational in different situations",
                 "resources": [
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (print-friendly)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (offline)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  }
+                  { "typeRef": "lesson-plan-digital", "link": "#" },
+                  { "typeRef": "guide-digital", "link": "#" },
+                  { "typeRef": "lesson-plan-print", "link": "#" },
+                  { "typeRef": "guide-offline", "link": "#" }
                 ]
               },
               {
                 "id": "classifying-odd-even",
                 "title": "Classifying whole numbers as odd, even in different situations",
                 "resources": [
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (print-friendly)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (offline)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  }
+                  { "typeRef": "lesson-plan-digital", "link": "#" },
+                  { "typeRef": "guide-digital", "link": "#" },
+                  { "typeRef": "lesson-plan-print", "link": "#" },
+                  { "typeRef": "guide-offline", "link": "#" }
                 ]
               },
               {
                 "id": "classifying-prime-composite",
                 "title": "Classifying whole numbers as prime and composite in different situations",
                 "resources": [
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (print-friendly)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (offline)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  }
+                  { "typeRef": "lesson-plan-digital", "link": "#" },
+                  { "typeRef": "guide-digital", "link": "#" },
+                  { "typeRef": "lesson-plan-print", "link": "#" },
+                  { "typeRef": "guide-offline", "link": "#" }
                 ]
               },
               {
                 "id": "reciprocals-division",
                 "title": "Finding reciprocals of real numbers using division",
                 "resources": [
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (print-friendly)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (offline)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  }
+                  { "typeRef": "lesson-plan-digital", "link": "#" },
+                  { "typeRef": "guide-digital", "link": "#" },
+                  { "typeRef": "lesson-plan-print", "link": "#" },
+                  { "typeRef": "guide-offline", "link": "#" }
                 ]
               },
               {
                 "id": "reciprocals-calculators",
                 "title": "Finding reciprocals of real numbers using mathematical calculators",
                 "resources": [
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (print-friendly)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (offline)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  }
+                  { "typeRef": "lesson-plan-digital", "link": "#" },
+                  { "typeRef": "guide-digital", "link": "#" },
+                  { "typeRef": "lesson-plan-print", "link": "#" },
+                  { "typeRef": "guide-offline", "link": "#" }
                 ]
               },
               {
                 "id": "reciprocals-tables-calculators",
                 "title": "Finding reciprocals of real numbers using mathematical tables and calculators",
                 "resources": [
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (print-friendly)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (offline)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  }
+                  { "typeRef": "lesson-plan-digital", "link": "#" },
+                  { "typeRef": "guide-digital", "link": "#" },
+                  { "typeRef": "lesson-plan-print", "link": "#" },
+                  { "typeRef": "guide-offline", "link": "#" }
                 ]
               },
               {
                 "id": "reciprocals-computations",
                 "title": "Using reciprocals of real numbers in mathematical computations",
                 "resources": [
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (digital)",
-                    "deviceAccess": true,
-                    "link": "#"
-                  },
-                  {
-                    "type": "lesson-plan",
-                    "label": "Lesson plan (print-friendly)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  },
-                  {
-                    "type": "guide",
-                    "label": "Step-by-step guide (offline)",
-                    "deviceAccess": false,
-                    "link": "#"
-                  }
+                  { "typeRef": "lesson-plan-digital", "link": "#" },
+                  { "typeRef": "guide-digital", "link": "#" },
+                  { "typeRef": "lesson-plan-print", "link": "#" },
+                  { "typeRef": "guide-offline", "link": "#" }
                 ]
               }
             ]
