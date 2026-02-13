@@ -257,13 +257,38 @@ section.hero ul {
     height: 100%;
 }
 
-.resource-type-card .btn {
-    align-self: center;
+.resource-type-card-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: auto;
+    min-height: 150px;
+}
+
+.resource-type-card .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
 }
 
 .resource-type-card h3 {
     color: var(--text-color);
+}
+
+.lesson-plan-chapter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+    align-items: center;
+    min-height: 150px;
+}
+
+.lesson-plan-chapter-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
 }
 
 .resource-list {
@@ -417,6 +442,7 @@ section.hero ul {
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 10px 12px;
     background: var(--light-bg);
@@ -428,6 +454,7 @@ section.hero ul {
     font-size: 15px;
     font-weight: 700;
     text-decoration: none;
+    text-align: center;
 }
 
 .btn:hover {

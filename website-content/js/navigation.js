@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadPageContent();
     loadResources();
     loadLessonPlanCatalog();
+    loadLessonPlanChapterButtons();
     initDropdownPositioning();
     initMenuToggles();
 });
@@ -107,6 +108,7 @@ function loadPageContent() {
             container.innerHTML = html;
             loadResources();
             loadLessonPlanCatalog();
+            loadLessonPlanChapterButtons();
         })
         .catch(() => {
             container.innerHTML = '<section class="hero"><h2>[Content unavailable]</h2><p>Please refresh the page.</p></section>';
@@ -180,6 +182,48 @@ function renderResourceListCard(resource) {
             </div>
         </div>
     `;
+}
+
+/**
+ * Load lesson plan chapter buttons on home page
+ */
+function loadLessonPlanChapterButtons() {
+    const buttonContainer = document.querySelector('[data-lesson-plan-chapters]');
+    
+    if (!buttonContainer) {
+        return;
+    }
+
+    const dataPath = getLessonPlansDataPath();
+
+    fetch(dataPath, { cache: 'no-store' })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load lesson plan catalog');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const chapters = Array.isArray(data.chapters) ? data.chapters : [];
+            
+            if (chapters.length === 0) {
+                buttonContainer.innerHTML = '<p>No chapters available</p>';
+                return;
+            }
+
+            // Create buttons for each chapter
+            const buttonsHTML = chapters.map(chapter => {
+                // Map chapter IDs to page names:
+                // numbers-algebra → numbers, measurements-geometry → measurements, etc.
+                const pageSlug = chapter.id.split('-')[0];
+                return `<a href="index.html?page=resources-lesson-plans-${pageSlug}" class="btn btn-primary">${chapter.title}</a>`;
+            }).join('');
+
+            buttonContainer.innerHTML = buttonsHTML;
+        })
+        .catch(() => {
+            buttonContainer.innerHTML = '<p>Unable to load chapters</p>';
+        });
 }
 
 function loadLessonPlanCatalog() {
