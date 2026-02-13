@@ -306,6 +306,13 @@ section.hero ul {
     margin-bottom: 1rem;
 }
 
+.lesson-plan-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
 .lesson-plan-section {
     background: var(--light-bg);
     border: 1px solid var(--border-color);
@@ -313,8 +320,38 @@ section.hero ul {
     padding: 1.5rem;
 }
 
+.lesson-plan-section-header {
+    cursor: pointer;
+    list-style: none;
+}
+
+.lesson-plan-section-header::-webkit-details-marker {
+    display: none;
+}
+
+.lesson-plan-section-header::marker {
+    display: none;
+}
+
 .lesson-plan-section-header h3 {
+    display: block;
     margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.lesson-plan-section-header h3::before {
+    content: '▶ ';
+    display: inline-block;
+    transition: transform 0.2s;
+    margin-right: 0.5rem;
+}
+
+.lesson-plan-section[open] .lesson-plan-section-header h3::before {
+    transform: rotate(90deg);
+}
+
+.lesson-plan-lessons {
+    margin-top: 1rem;
 }
 
 .lesson-plan-course {
@@ -322,7 +359,7 @@ section.hero ul {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0;
     flex-wrap: wrap;
 }
 

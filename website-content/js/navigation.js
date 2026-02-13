@@ -256,7 +256,8 @@ function loadLessonPlanCatalog() {
                 container.innerHTML = renderLessonPlanChapter(chapter);
             });
             
-            // Initialize accordion behavior for lessons
+            // Initialize accordion behavior for sections and lessons
+            initSectionAccordion();
             initLessonAccordion();
         })
         .catch(() => {
@@ -264,6 +265,23 @@ function loadLessonPlanCatalog() {
                 container.innerHTML = '';
             });
         });
+}
+
+function initSectionAccordion() {
+    const sectionDetails = document.querySelectorAll('.lesson-plan-section');
+    
+    sectionDetails.forEach(detail => {
+        detail.addEventListener('toggle', function() {
+            if (this.open) {
+                // Close all other sections on the same page
+                sectionDetails.forEach(otherDetail => {
+                    if (otherDetail !== this && otherDetail.open) {
+                        otherDetail.open = false;
+                    }
+                });
+            }
+        });
+    });
 }
 
 function initLessonAccordion() {
@@ -309,15 +327,15 @@ function renderLessonPlanSection(section) {
         : '';
 
     return `
-        <div class="lesson-plan-section">
-            <div class="lesson-plan-section-header">
+        <details class="lesson-plan-section">
+            <summary class="lesson-plan-section-header">
                 <h3>${section.title || '[Section]'}</h3>
                 ${courseTitleMarkup}
-            </div>
+            </summary>
             <div class="lesson-plan-lessons">
-                ${lessons.map((lesson, index) => renderLessonPlanLesson(lesson, index === 0)).join('')}
+                ${lessons.map((lesson, index) => renderLessonPlanLesson(lesson, false)).join('')}
             </div>
-        </div>
+        </details>
     `;
 }
 
