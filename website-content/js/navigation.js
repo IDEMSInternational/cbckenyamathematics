@@ -244,6 +244,8 @@ function loadLessonPlanCatalog() {
         })
         .then(data => {
             const chapters = Array.isArray(data.chapters) ? data.chapters : [];
+            const resourceTypes = data.resourceTypes || {};
+            
             chapterContainers.forEach(container => {
                 const chapterId = container.getAttribute('data-lesson-plan-chapter');
                 const chapter = chapters.find(item => item.id === chapterId);
@@ -253,10 +255,11 @@ function loadLessonPlanCatalog() {
                     return;
                 }
 
-                container.innerHTML = renderLessonPlanChapter(chapter);
+                container.innerHTML = renderLessonPlanChapter(chapter, resourceTypes);
             });
             
-            // Initialize accordion behavior for lessons
+            // Initialize accordion behavior for sections and lessons
+            initSectionAccordion();
             initLessonAccordion();
         })
         .catch(() => {
@@ -264,6 +267,23 @@ function loadLessonPlanCatalog() {
                 container.innerHTML = '';
             });
         });
+}
+
+function initSectionAccordion() {
+    const sectionDetails = document.querySelectorAll('.lesson-plan-section');
+    
+    sectionDetails.forEach(detail => {
+        detail.addEventListener('toggle', function() {
+            if (this.open) {
+                // Close all other sections on the same page
+                sectionDetails.forEach(otherDetail => {
+                    if (otherDetail !== this && otherDetail.open) {
+                        otherDetail.open = false;
+                    }
+                });
+            }
+        });
+    });
 }
 
 function initLessonAccordion() {
@@ -286,17 +306,17 @@ function initLessonAccordion() {
     });
 }
 
-function renderLessonPlanChapter(chapter) {
+function renderLessonPlanChapter(chapter, resourceTypes) {
     const sections = Array.isArray(chapter.sections) ? chapter.sections : [];
 
     return `
         <div class="lesson-plan-sections">
-            ${sections.map(renderLessonPlanSection).join('')}
+            ${sections.map(section => renderLessonPlanSection(section, resourceTypes)).join('')}
         </div>
     `;
 }
 
-function renderLessonPlanSection(section) {
+function renderLessonPlanSection(section, resourceTypes) {
     const course = section.course || {};
     const lessons = Array.isArray(course.lessons) ? course.lessons : [];
     const courseTitle = course.title || '';
@@ -309,19 +329,19 @@ function renderLessonPlanSection(section) {
         : '';
 
     return `
-        <div class="lesson-plan-section">
-            <div class="lesson-plan-section-header">
+        <details class="lesson-plan-section">
+            <summary class="lesson-plan-section-header">
                 <h3>${section.title || '[Section]'}</h3>
                 ${courseTitleMarkup}
-            </div>
+            </summary>
             <div class="lesson-plan-lessons">
-                ${lessons.map((lesson, index) => renderLessonPlanLesson(lesson, index === 0)).join('')}
+                ${lessons.map((lesson, index) => renderLessonPlanLesson(lesson, false, resourceTypes)).join('')}
             </div>
-        </div>
+        </details>
     `;
 }
 
-function renderLessonPlanLesson(lesson, isOpen) {
+function renderLessonPlanLesson(lesson, isOpen, resourceTypes) {
     const resources = Array.isArray(lesson.resources) ? lesson.resources : [];
     
     if (!resources.length) {
@@ -333,9 +353,17 @@ function renderLessonPlanLesson(lesson, isOpen) {
         `;
     }
 
+    // Resolve resource type references
+    const resolvedResources = resources.map(resource => {
+        if (resource.typeRef && resourceTypes[resource.typeRef]) {
+            return { ...resourceTypes[resource.typeRef], ...resource };
+        }
+        return resource;
+    });
+
     // Group resources by device access
-    const withDevices = resources.filter(r => r.deviceAccess === true);
-    const withoutDevices = resources.filter(r => r.deviceAccess === false);
+    const withDevices = resolvedResources.filter(r => r.deviceAccess === true);
+    const withoutDevices = resolvedResources.filter(r => r.deviceAccess === false);
 
     // Build device sections
     const withDevicesSection = withDevices.length ? `
