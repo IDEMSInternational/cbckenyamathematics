@@ -1,187 +1,2485 @@
 {
-  "resourceTypes": {
-    "lesson-plan-digital": {
-      "type": "lesson-plan",
-      "label": "Lesson plan (digital)",
-      "deviceAccess": true
-    },
-    "guide-digital": {
-      "type": "guide",
-      "label": "Step-by-step guide (digital)",
-      "deviceAccess": true
-    },
-    "lesson-plan-print": {
-      "type": "lesson-plan",
-      "label": "Lesson plan (print-friendly)",
-      "deviceAccess": false
-    },
-    "guide-offline": {
-      "type": "guide",
-      "label": "Step-by-step guide (offline)",
-      "deviceAccess": false
-    }
-  },
+  "baseUrl": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/",
   "chapters": [
     {
-      "id": "numbers-algebra",
+      "id": "numbers-and-algebra",
       "title": "Numbers and Algebra",
       "sections": [
         {
           "id": "real-numbers",
           "title": "Real Numbers",
           "course": {
-            "id": "course-real-numbers",
-            "title": "CBE topic delivery: Real Numbers",
-            "link": "https://ecampus.idems.international/course/view.php?id=571",
-            "lessons": [
-              {
-                "id": "classifying-real-numbers",
-                "title": "Classifying real numbers as rational and irrational in different situations",
-                "resources": [
-                  { "typeRef": "lesson-plan-digital", "link": "#" },
-                  { "typeRef": "guide-digital", "link": "#" },
-                  { "typeRef": "lesson-plan-print", "link": "#" },
-                  { "typeRef": "guide-offline", "link": "#" }
-                ]
-              },
-              {
-                "id": "classifying-odd-even",
-                "title": "Classifying whole numbers as odd, even in different situations",
-                "resources": [
-                  { "typeRef": "lesson-plan-digital", "link": "#" },
-                  { "typeRef": "guide-digital", "link": "#" },
-                  { "typeRef": "lesson-plan-print", "link": "#" },
-                  { "typeRef": "guide-offline", "link": "#" }
-                ]
-              },
-              {
-                "id": "classifying-prime-composite",
-                "title": "Classifying whole numbers as prime and composite in different situations",
-                "resources": [
-                  { "typeRef": "lesson-plan-digital", "link": "#" },
-                  { "typeRef": "guide-digital", "link": "#" },
-                  { "typeRef": "lesson-plan-print", "link": "#" },
-                  { "typeRef": "guide-offline", "link": "#" }
-                ]
-              },
-              {
-                "id": "reciprocals-division",
-                "title": "Finding reciprocals of real numbers using division",
-                "resources": [
-                  { "typeRef": "lesson-plan-digital", "link": "#" },
-                  { "typeRef": "guide-digital", "link": "#" },
-                  { "typeRef": "lesson-plan-print", "link": "#" },
-                  { "typeRef": "guide-offline", "link": "#" }
-                ]
-              },
-              {
-                "id": "reciprocals-calculators",
-                "title": "Finding reciprocals of real numbers using mathematical calculators",
-                "resources": [
-                  { "typeRef": "lesson-plan-digital", "link": "#" },
-                  { "typeRef": "guide-digital", "link": "#" },
-                  { "typeRef": "lesson-plan-print", "link": "#" },
-                  { "typeRef": "guide-offline", "link": "#" }
-                ]
-              },
-              {
-                "id": "reciprocals-tables-calculators",
-                "title": "Finding reciprocals of real numbers using mathematical tables and calculators",
-                "resources": [
-                  { "typeRef": "lesson-plan-digital", "link": "#" },
-                  { "typeRef": "guide-digital", "link": "#" },
-                  { "typeRef": "lesson-plan-print", "link": "#" },
-                  { "typeRef": "guide-offline", "link": "#" }
-                ]
-              },
-              {
-                "id": "reciprocals-computations",
-                "title": "Using reciprocals of real numbers in mathematical computations",
-                "resources": [
-                  { "typeRef": "lesson-plan-digital", "link": "#" },
-                  { "typeRef": "guide-digital", "link": "#" },
-                  { "typeRef": "lesson-plan-print", "link": "#" },
-                  { "typeRef": "guide-offline", "link": "#" }
-                ]
-              }
-            ]
-          }
+            "title": "Real Numbers",
+            "url": "https://ecampus.idems.international/course/view.php?id=571"
+          },
+          "learningObjectives": [
+            "Classify whole numbers as odd, even, prime and composite in different situations",
+            "Classify real numbers as rational and irrational in different situations",
+            "Determine the reciprocal of real numbers by division",
+            "Determine the reciprocal of real numbers by use of mathematical tables and calculators",
+            "Apply reciprocal of real numbers in mathematical computations",
+            "Promote the use of real numbers in day-to-day activities"
+          ],
+          "subsections": [
+            {
+              "id": "classification-of-numbers",
+              "title": "Classification of Numbers",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "even-and-odd-numbers",
+                  "title": "Even and Odd Numbers",
+                  "learningObjectiveRefs": [
+                    0
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/even-and-odd-numbers.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/step-by-step-guide_even-and-odd-numbers.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "prime-and-composite-numbers",
+                  "title": "Prime and Composite Numbers",
+                  "learningObjectiveRefs": [
+                    0
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/prime-and-composite-numbers.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/step-by-step-guide_prime-and-composite-numbers.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "rational-and-irrational-numbers",
+                  "title": "Rational and Irrational Numbers",
+                  "learningObjectiveRefs": [
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/rational-and-irrational-numbers.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/step-by-step-guide_rational-and-irrational-numbers.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "reciprocals-of-numbers",
+              "title": "Reciprocals of Numbers",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "reciprocals-using-division",
+                  "title": "Reciprocals using Division",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/reciprocals-using-division.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/step-by-step-guide_reciprocals-using-division.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "reciprocals-using-tables-and-calculators",
+                  "title": "Reciprocals Using Tables and Calculators",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/reciprocals-using-tables-and-calculators.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/step-by-step-guide_reciprocals-using-tables-and-calculators.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "using-reciprocals",
+                  "title": "Using Reciprocals",
+                  "learningObjectiveRefs": [
+                    4,
+                    5
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/using-reciprocals.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/real-numbers/step-by-step-guide_using-reciprocals.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
-          "id": "indices-logarithms",
+          "id": "indices-and-logarithms",
           "title": "Indices and Logarithms",
           "course": {
-            "id": "placeholder-course-indices",
-            "title": "[Course title placeholder]",
-            "link": "#",
-            "lessons": [
-              {
-                "id": "placeholder-lesson-indices",
-                "title": "[Lesson title placeholder]",
-                "resources": []
-              }
-            ]
-          }
+            "title": "Indices and Logarithms",
+            "url": "https://ecampus.idems.international/course/view.php?id=573"
+          },
+          "learningObjectives": [
+            "Express numbers in index form",
+            "Derive the laws of indices using factors",
+            "Apply the laws of indices in different situations",
+            "Relate index notation to logarithm notation to base 10",
+            "Determine common logarithms of numbers from mathematical tables and calculators",
+            "Apply common logarithms in multiplication, division, powers and roots of numbers",
+            "Appreciate the use of indices and common logarithms in mathematical computations"
+          ],
+          "subsections": [
+            {
+              "id": "indices",
+              "title": "Indices",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "introduction-to-indices",
+                  "title": "Introduction to Indices",
+                  "learningObjectiveRefs": [
+                    0
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/introduction-to-indices.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_introduction-to-indices.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "laws-of-indices",
+                  "title": "Laws of Indices",
+                  "learningObjectiveRefs": [
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/laws-of-indices.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_laws-of-indices.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "zero-and-negative-indices",
+                  "title": "Zero and Negative Indices",
+                  "learningObjectiveRefs": [
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/zero-and-negative-indices.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_zero-and-negative-indices.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "indices-in-real-life",
+                  "title": "Indices in Real-Life",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/indices-in-real-life.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_indices-in-real-life.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "logarithms",
+              "title": "Logarithms",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "introduction-to-logarithms",
+                  "title": "Introduction to Logarithms",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/introduction-to-logarithms.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_introduction-to-logarithms.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "finding-logarithms-using-tables-and-calculators",
+                  "title": "Finding Logarithms Using Tables and Calculators",
+                  "learningObjectiveRefs": [
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/finding-logarithms-using-tables-and-calculators.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_finding-logarithms-using-tables-and-calculators.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "antilogarithms",
+                  "title": "Antilogarithms",
+                  "learningObjectiveRefs": [
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/antilogarithms.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_antilogarithms.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "logarithms-of-products-and-ratios",
+                  "title": "Logarithms of Products and Ratios",
+                  "learningObjectiveRefs": [
+                    5
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/logarithms-of-products-and-ratios.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_logarithms-of-products-and-ratios.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "using-logarithms-to-compute-products-and-ratios",
+                  "title": "Using logarithms to compute Products and Ratios",
+                  "learningObjectiveRefs": [
+                    5
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/using-logarithms-to-compute-products-and-ratios.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_using-logarithms-to-compute-products-and-ratios.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "logarithms-of-powers-and-roots",
+                  "title": "Logarithms of Powers and Roots",
+                  "learningObjectiveRefs": [
+                    5
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/logarithms-of-powers-and-roots.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_logarithms-of-powers-and-roots.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "logarithms-in-real-life",
+                  "title": "Logarithms in Real-Life",
+                  "learningObjectiveRefs": [
+                    6
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/logarithms-in-real-life.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/indices-and-logarithms/step-by-step-guide_logarithms-in-real-life.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
-          "id": "quadratic-expressions-equations-1",
-          "title": "Quadratic Expressions and Equations 1",
+          "id": "quadratic-expressions-and-equations",
+          "title": "Quadratic Expressions and Equations",
           "course": {
-            "id": "placeholder-course-quadratic",
-            "title": "[Course title placeholder]",
-            "link": "#",
-            "lessons": [
-              {
-                "id": "placeholder-lesson-quadratic",
-                "title": "[Lesson title placeholder]",
-                "resources": []
-              }
-            ]
-          }
+            "title": "Quadratic Expressions and Equations",
+            "url": "https://ecampus.idems.international/course/view.php?id=574"
+          },
+          "learningObjectives": [
+            "Form quadratic expressions from different situations",
+            "Derive the quadratic identities from the concept of area",
+            "Apply quadratic identities in numerical cases",
+            "Factorise quadratic expressions from different situations",
+            "Form quadratic equations in different situations",
+            "Solve quadratic equations by factorisation",
+            "Apply quadratic equations to real life situations",
+            "Explore the use of quadratic equations in real life situations"
+          ],
+          "subsections": [
+            {
+              "id": "quadratic-expressions",
+              "title": "Quadratic Expressions",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "forming-quadratic-expressions-by-multiplying",
+                  "title": "Forming Quadratic Expressions by Multiplying",
+                  "learningObjectiveRefs": [
+                    0
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/forming-quadratic-expressions-by-multiplying.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_forming-quadratic-expressions-by-multiplying.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "forming-quadratic-expressions-in-real-life",
+                  "title": "Forming Quadratic Expressions in Real-Life",
+                  "learningObjectiveRefs": [
+                    0
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/forming-quadratic-expressions-in-real-life.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_forming-quadratic-expressions-in-real-life.pdf",
+                    "exists": false
+                  }
+                }
+              ]
+            },
+            {
+              "id": "quadratic-identities",
+              "title": "Quadratic Identities",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "perfect-squares",
+                  "title": "Perfect Squares",
+                  "learningObjectiveRefs": [
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/perfect-squares.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_perfect-squares.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "difference-of-squares",
+                  "title": "Difference of Squares",
+                  "learningObjectiveRefs": [
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/difference-of-squares.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_difference-of-squares.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "quadratic-identities-in-numerical-cases",
+                  "title": "Quadratic Identities in Numerical Cases",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/quadratic-identities-in-numerical-cases.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_quadratic-identities-in-numerical-cases.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "factorising-quadratics",
+              "title": "Factorising Quadratics",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "factorising-monic-quadratics",
+                  "title": "Factorising Monic Quadratics",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/factorising-monic-quadratics.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_factorising-monic-quadratics.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "factorising-non-monic-quadratics",
+                  "title": "Factorising Non-Monic Quadratics",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/factorising-non-monic-quadratics.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_factorising-non-monic-quadratics.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "quadratic-equations",
+              "title": "Quadratic Equations",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "formation-of-quadratic-equations",
+                  "title": "Formation of Quadratic Equations",
+                  "learningObjectiveRefs": [
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/formation-of-quadratic-equations.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_formation-of-quadratic-equations.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "solving-quadratic-equations",
+                  "title": "Solving Quadratic Equations",
+                  "learningObjectiveRefs": [
+                    5
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/solving-quadratic-equations.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_solving-quadratic-equations.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "quadratic-equations-in-real-life",
+                  "title": "Quadratic Equations in Real-Life",
+                  "learningObjectiveRefs": [
+                    6,
+                    7
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/quadratic-equations-in-real-life.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_quadratic-equations-in-real-life.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
-      "id": "measurements-geometry",
+      "id": "measurements-and-geometry",
       "title": "Measurements and Geometry",
       "sections": [
         {
-          "id": "placeholder-section",
-          "title": "[Section title placeholder]",
-          "course": {
-            "id": "placeholder-course",
-            "title": "[Course title placeholder]",
-            "link": "#",
-            "lessons": [
-              {
-                "id": "placeholder-lesson",
-                "title": "[Lesson title placeholder]",
-                "resources": []
+          "id": "similarity-and-enlargement",
+          "title": "Similarity and Enlargement",
+          "learningObjectives": [
+            "Determine the centre of enlargement and the linear scale factor for similar figures",
+            "Apply similarity and enlargement to real-life situations",
+            "Appreciate the use of similarity and enlargement in real-life situations",
+            "Construct the image of an object under an enlargement given the centre and the linear scale factor",
+            "Determine the area and volume scale factor of different figures and solids",
+            "Relate linear scale factor, area scale factor, and volume scale factor in enlargements"
+          ],
+          "subsections": [
+            {
+              "id": "introduction-to-similarity",
+              "title": "Introduction to Similarity",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/introduction-to-similarity.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/step-by-step-guide_introduction-to-similarity.pdf",
+                "exists": true
               }
-            ]
-          }
+            },
+            {
+              "id": "enlargements-of-objects",
+              "title": "Enlargements of Objects",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "positive-enlargements",
+                  "title": "Positive Enlargements",
+                  "learningObjectiveRefs": [
+                    3,
+                    1,
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/positive-enlargements.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/step-by-step-guide_positive-enlargements.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "negative-enlargements",
+                  "title": "Negative Enlargements",
+                  "learningObjectiveRefs": [
+                    3,
+                    1,
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/negative-enlargements.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/step-by-step-guide_negative-enlargements.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "scale-factors",
+              "title": "Scale Factors",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "area-scale-factors",
+                  "title": "Area Scale Factors",
+                  "learningObjectiveRefs": [
+                    4,
+                    5,
+                    1,
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/area-scale-factors.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/step-by-step-guide_area-scale-factors.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "volume-scale-factors",
+                  "title": "Volume Scale Factors",
+                  "learningObjectiveRefs": [
+                    4,
+                    5,
+                    1,
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/volume-scale-factors.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/step-by-step-guide_volume-scale-factors.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "similarity-and-enlargement-in-real-life",
+              "title": "Similarity and Enlargement in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/similarity-and-enlargement-in-real-life.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/step-by-step-guide_similarity-and-enlargement-in-real-life.pdf",
+                "exists": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "reflection-and-congruence",
+          "title": "Reflection and Congruence",
+          "learningObjectives": [
+            "Identify lines of symmetry in plane figures",
+            "Determine the properties of reflection in different situations",
+            "Draw an image given an object and a mirror line on plane surface and Cartesian plane",
+            "Determine the equation of the mirror line given an object and its image",
+            "Carry out congruence tests for triangles",
+            "Promote use of reflection and congruence in real-life situations"
+          ],
+          "subsections": [
+            {
+              "id": "properties-of-symmetry-and-reflection",
+              "title": "Properties of Symmetry and Reflection",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/properties-of-symmetry-and-reflection.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/step-by-step-guide_properties-of-symmetry-and-reflection.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "reflecting-objects",
+              "title": "Reflecting Objects",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/reflecting-objects.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/step-by-step-guide_reflecting-objects.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "equations-of-mirror-lines",
+              "title": "Equations of Mirror Lines",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                3
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/equations-of-mirror-lines.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/step-by-step-guide_equations-of-mirror-lines.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "congruence-in-triangles",
+              "title": "Congruence in Triangles",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                4
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/congruence-in-triangles.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/step-by-step-guide_congruence-in-triangles.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "reflection-and-congruence-in-real-life",
+              "title": "Reflection and Congruence in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                5
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/reflection-and-congruence-in-real-life.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/reflection-and-congruence/step-by-step-guide_reflection-and-congruence-in-real-life.pdf",
+                "exists": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "rotation",
+          "title": "Rotation",
+          "learningObjectives": [
+            "Determine the properties of rotation in different situations",
+            "Appreciate the application of rotation in real-life situations",
+            "Rotate an object given the centre and angle of rotation on a plane surface and the Cartesian plane",
+            "Determine the centre and angle of rotation given an object and its image",
+            "Determine the order of rotational symmetry of plane figures",
+            "Determine the axis and order of rotational symmetry in solids",
+            "Deduce congruence from rotation"
+          ],
+          "subsections": [
+            {
+              "id": "properties-of-rotation",
+              "title": "Properties of Rotation",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/properties-of-rotation.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/step-by-step-guide_properties-of-rotation.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "rotating-objects",
+              "title": "Rotating Objects",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                2,
+                3
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/rotating-objects.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/step-by-step-guide_rotating-objects.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "rotational-symmetry",
+              "title": "Rotational Symmetry",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "rotational-symmetry-of-plane-figures",
+                  "title": "Rotational Symmetry of Plane Figures",
+                  "learningObjectiveRefs": [
+                    4,
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/rotational-symmetry-of-plane-figures.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/step-by-step-guide_rotational-symmetry-of-plane-figures.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "rotational-symmetry-of-solids",
+                  "title": "Rotational Symmetry of Solids",
+                  "learningObjectiveRefs": [
+                    5,
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/rotational-symmetry-of-solids.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/step-by-step-guide_rotational-symmetry-of-solids.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "rotation-and-congruence",
+              "title": "Rotation and Congruence",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                6,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/rotation-and-congruence.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/step-by-step-guide_rotation-and-congruence.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "rotation-in-real-life",
+              "title": "Rotation in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/rotation-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/step-by-step-guide_rotation-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "trigonometry-1",
+          "title": "Trigonometry 1",
+          "learningObjectives": [
+            "Relate the sine, cosine and tangent of acute angles",
+            "Relate sines and cosines of complementary angles",
+            "Determine trigonometric ratios of special angles: 30, 45, 60, and 90 degrees using triangles",
+            "Determine the trigonometric ratios of acute angles from mathematical tables and calculators",
+            "Apply trigonometric ratios to angles of elevation and depression",
+            "Reflect on the use of trigonometry in real-life situations"
+          ],
+          "subsections": [
+            {
+              "id": "tangents-of-acute-angles",
+              "title": "Tangents of Acute Angles",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/tangents-of-acute-angles.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_tangents-of-acute-angles.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "sines-and-cosines-of-acute-angles",
+              "title": "Sines and Cosines of Acute Angles",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/sines-and-cosines-of-acute-angles.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_sines-and-cosines-of-acute-angles.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "sines-and-cosines-of-complementary-angles",
+              "title": "Sines and Cosines of Complementary Angles",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/sines-and-cosines-of-complementary-angles.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_sines-and-cosines-of-complementary-angles.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "trigonometric-ratios-of-special-angles",
+              "title": "Trigonometric Ratios of Special Angles",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "special-angles-0-45-and-90-degrees",
+                  "title": "Special Angles: 0, 45, and 90 Degrees",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/special-angles-0-45-and-90-degrees.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_special-angles-0-45-and-90-degrees.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "special-angles-30-and-60-degrees",
+                  "title": "Special Angles: 30 and 60 Degrees",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/special-angles-30-and-60-degrees.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_special-angles-30-and-60-degrees.pdf",
+                    "exists": false
+                  }
+                }
+              ]
+            },
+            {
+              "id": "trigonometry-using-tables-and-calculators",
+              "title": "Trigonometry Using Tables and Calculators",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                3
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/trigonometry-using-tables-and-calculators.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_trigonometry-using-tables-and-calculators.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "angles-of-elevation-and-depression",
+              "title": "Angles of Elevation and Depression",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "angles-of-elevation",
+                  "title": "Angles of Elevation",
+                  "learningObjectiveRefs": [
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/angles-of-elevation.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_angles-of-elevation.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "angles-of-depression",
+                  "title": "Angles of Depression",
+                  "learningObjectiveRefs": [
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/angles-of-depression.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_angles-of-depression.pdf",
+                    "exists": false
+                  }
+                }
+              ]
+            },
+            {
+              "id": "trigonometry-in-real-life",
+              "title": "Trigonometry in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                5
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/trigonometry-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_trigonometry-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "area-of-polygons",
+          "title": "Area of Polygons",
+          "learningObjectives": [
+            "Derive the formula for the area of a triangle given two sides and an included angle",
+            "Work out the area of a triangle given two sides and an included angle",
+            "Determine the area of a triangle using Heron's formula",
+            "Determine the area of quadrilaterals in different situations",
+            "Explore the area of polygons as used in real-life situations",
+            "Work out the area of regular heptagon and octagon",
+            "Determine the area of irregular polygons in different situations"
+          ],
+          "subsections": [
+            {
+              "id": "area-of-triangles",
+              "title": "Area of Triangles",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "using-two-sides-and-an-angle",
+                  "title": "Using Two Sides and an Angle",
+                  "learningObjectiveRefs": [
+                    0,
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/using-two-sides-and-an-angle.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_using-two-sides-and-an-angle.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "herons-formula",
+                  "title": "Heron's Formula",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/herons-formula.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_herons-formula.pdf",
+                    "exists": false
+                  }
+                }
+              ]
+            },
+            {
+              "id": "area-of-quadrilaterals",
+              "title": "Area of Quadrilaterals",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "area-of-squares-and-rectangles",
+                  "title": "Area of Squares and Rectangles",
+                  "learningObjectiveRefs": [
+                    3,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-squares-and-rectangles.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-squares-and-rectangles.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "area-of-parallelograms",
+                  "title": "Area of Parallelograms",
+                  "learningObjectiveRefs": [
+                    3,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-parallelograms.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-parallelograms.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "area-of-rhombuses",
+                  "title": "Area of Rhombuses",
+                  "learningObjectiveRefs": [
+                    3,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-rhombuses.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-rhombuses.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "area-of-trapeziums",
+                  "title": "Area of Trapeziums",
+                  "learningObjectiveRefs": [
+                    3,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-trapeziums.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-trapeziums.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "area-of-kites",
+                  "title": "Area of Kites",
+                  "learningObjectiveRefs": [
+                    3,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-kites.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-kites.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "area-of-regular-polygons",
+              "title": "Area of Regular Polygons",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "area-of-heptagons",
+                  "title": "Area of Heptagons",
+                  "learningObjectiveRefs": [
+                    5,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-heptagons.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-heptagons.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "area-of-octogons",
+                  "title": "Area of Octogons",
+                  "learningObjectiveRefs": [
+                    5,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-octogons.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-octogons.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "area-of-nonagons",
+                  "title": "Area of Nonagons",
+                  "learningObjectiveRefs": [],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-nonagons.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-nonagons.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "area-of-decagons",
+                  "title": "Area of Decagons",
+                  "learningObjectiveRefs": [],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-decagons.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-decagons.pdf",
+                    "exists": false
+                  }
+                }
+              ]
+            },
+            {
+              "id": "area-of-irregular-polygons",
+              "title": "Area of Irregular Polygons",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                6,
+                4
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-irregular-polygons.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-irregular-polygons.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "area-of-polygons-in-real-life",
+              "title": "Area of Polygons in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                4
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/area-of-polygons-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-polygons/step-by-step-guide_area-of-polygons-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "area-of-a-part-of-a-circle",
+          "title": "Area of a Part of a Circle",
+          "learningObjectives": [
+            "Determine the area of an annulus in different situations",
+            "Apply the area of a part of a circle in real-life situations",
+            "Explore the use of the area of a part of a circle in real-life situations",
+            "Work out the area of a sector of a circle in real-life situations",
+            "Determine the area of an annular sector in different situations",
+            "Work out the area of a segment of a circle",
+            "Determine the area of common region between two intersecting circles"
+          ],
+          "subsections": [
+            {
+              "id": "area-of-an-annulus",
+              "title": "Area of an Annulus",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/area-of-an-annulus.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/step-by-step-guide_area-of-an-annulus.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "area-of-sectors",
+              "title": "Area of Sectors",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                3,
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/area-of-sectors.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/step-by-step-guide_area-of-sectors.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "area-of-annular-sectors",
+              "title": "Area of Annular Sectors",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                4,
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/area-of-annular-sectors.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/step-by-step-guide_area-of-annular-sectors.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "area-of-segments",
+              "title": "Area of Segments",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                5,
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/area-of-segments.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/step-by-step-guide_area-of-segments.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "area-of-common-regions-between-circles",
+              "title": "Area of Common Regions Between Circles",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                6,
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/area-of-common-regions-between-circles.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/step-by-step-guide_area-of-common-regions-between-circles.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "area-of-a-part-of-a-circle-in-real-life",
+              "title": "Area of a Part of a Circle in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/area-of-a-part-of-a-circle-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/area-of-a-part-of-a-circle/step-by-step-guide_area-of-a-part-of-a-circle-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "surface-area",
+          "title": "Surface Area",
+          "learningObjectives": [
+            "Determine the surface area of prisms, pyramids, cones, frustums and spheres",
+            "Explore the use of the surface area and volume of solids in real-life situations",
+            "Calculate the surface area of composite solids"
+          ],
+          "subsections": [
+            {
+              "id": "surface-area-of-prisms",
+              "title": "Surface Area of Prisms",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-prisms.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-prisms.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "surface-area-of-cubes-and-cuboids",
+              "title": "Surface Area of Cubes and Cuboids",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-cubes-and-cuboids.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-cubes-and-cuboids.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "surface-area-of-cylinders",
+              "title": "Surface Area of Cylinders",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-cylinders.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-cylinders.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "surface-area-of-pyramids",
+              "title": "Surface Area of Pyramids",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-pyramids.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-pyramids.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "surface-area-of-cones",
+              "title": "Surface Area of Cones",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-cones.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-cones.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "surface-area-of-frustums",
+              "title": "Surface Area of Frustums",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-frustums.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-frustums.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "surface-area-of-spheres",
+              "title": "Surface Area of Spheres",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-spheres.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-spheres.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "surface-area-of-composite-solids",
+              "title": "Surface Area of Composite Solids",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                2,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-composite-solids.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-composite-solids.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "surface-area-in-real-life",
+              "title": "Surface Area in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "volume",
+          "title": "Volume",
+          "learningObjectives": [
+            "Calculate the volume of prisms, pyramids, cones, frustums and spheres",
+            "Explore the use of the surface area and volume of solids in real-life situations",
+            "Determine the volume of composite solids"
+          ],
+          "subsections": [
+            {
+              "id": "volume-of-prisms",
+              "title": "Volume of Prisms",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-prisms.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-prisms.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "volume-of-cubes-and-cuboids",
+              "title": "Volume of Cubes and Cuboids",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-cubes-and-cuboids.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-cubes-and-cuboids.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "volume-of-cylinders",
+              "title": "Volume of Cylinders",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-cylinders.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-cylinders.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "volume-of-pyramids",
+              "title": "Volume of Pyramids",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-pyramids.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-pyramids.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "volume-of-cones",
+              "title": "Volume of Cones",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-cones.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-cones.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "volume-of-frustums",
+              "title": "Volume of Frustums",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-frustums.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-frustums.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "volume-of-spheres",
+              "title": "Volume of Spheres",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-spheres.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-spheres.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "volume-of-composite-solids",
+              "title": "Volume of Composite Solids",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                2,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-of-composite-solids.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-of-composite-solids.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "volume-in-real-life",
+              "title": "Volume in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/volume-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/volume/step-by-step-guide_volume-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "vectors-1",
+          "title": "Vectors 1",
+          "learningObjectives": [
+            "Explain vector and scalar quantities with illustrations",
+            "Use vector notations in different ways",
+            "Represent vectors geometrically in different situations",
+            "Determine column vectors in different situations",
+            "Determine position vectors in different situations",
+            "Work out magnitude of a vector in different situations",
+            "Determine the midpoint of a vector in different situations",
+            "Add vectors in different situations",
+            "Multiply vectors by scalars",
+            "Determine translation vector as a transformation",
+            "Identify equivalent vectors in different situations",
+            "Appreciate the use of vectors in real-life situations"
+          ],
+          "subsections": [
+            {
+              "id": "vector-and-scalar-quantities",
+              "title": "Vector and Scalar Quantities",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/vector-and-scalar-quantities.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_vector-and-scalar-quantities.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "representing-vectors",
+              "title": "Representing Vectors",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "representing-vectors-geometrically",
+                  "title": "Representing Vectors Geometrically",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/representing-vectors-geometrically.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_representing-vectors-geometrically.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "column-vectors",
+                  "title": "Column Vectors",
+                  "learningObjectiveRefs": [
+                    3,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/column-vectors.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_column-vectors.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "position-vectors",
+                  "title": "Position Vectors",
+                  "learningObjectiveRefs": [
+                    3,
+                    4
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/position-vectors.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_position-vectors.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "magnitudes-of-vectors",
+              "title": "Magnitudes of Vectors",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                5
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/magnitudes-of-vectors.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_magnitudes-of-vectors.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "midpoints-of-vectors",
+              "title": "Midpoints of Vectors",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                6
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/midpoints-of-vectors.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_midpoints-of-vectors.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "manipulating-vectors",
+              "title": "Manipulating Vectors",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "adding-vectors",
+                  "title": "Adding Vectors",
+                  "learningObjectiveRefs": [
+                    7
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/adding-vectors.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_adding-vectors.pdf",
+                    "exists": false
+                  }
+                },
+                {
+                  "id": "multiplying-vectors-by-scalars",
+                  "title": "Multiplying Vectors by Scalars",
+                  "learningObjectiveRefs": [
+                    8
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/multiplying-vectors-by-scalars.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_multiplying-vectors-by-scalars.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "translating-vectors",
+                  "title": "Translating Vectors",
+                  "learningObjectiveRefs": [
+                    9
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/translating-vectors.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_translating-vectors.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "equivalent-vectors",
+                  "title": "Equivalent Vectors",
+                  "learningObjectiveRefs": [
+                    10
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/equivalent-vectors.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_equivalent-vectors.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "vectors-in-real-life",
+              "title": "Vectors in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                11
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/vectors-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/vectors-1/step-by-step-guide_vectors-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "linear-motion",
+          "title": "Linear Motion",
+          "learningObjectives": [
+            "Explain the terms distance, displacement, speed, velocity and acceleration in real-life situations",
+            "Determine velocity and acceleration in different situations",
+            "Determine relative speed of two moving bodies in different situations",
+            "Draw a displacement-time graph of different situations",
+            "Interpret displacement-time graph in different situations",
+            "Draw a velocity-time graph from given tables in different situations",
+            "Interpret velocity-time graph in different situations",
+            "Appreciate use of linear motion in real-life situations"
+          ],
+          "subsections": [
+            {
+              "id": "distance-and-displacement",
+              "title": "Distance and Displacement",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/distance-and-displacement.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_distance-and-displacement.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "speed-and-velocity",
+              "title": "Speed and Velocity",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/speed-and-velocity.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_speed-and-velocity.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "relative-speeds",
+              "title": "Relative Speeds",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "relative-speeds-of-objects-moving-in-the-same-direction",
+                  "title": "Relative Speeds of Objects Moving in the Same Direction",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/relative-speeds-of-objects-moving-in-the-same-direction.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_relative-speeds-of-objects-moving-in-the-same-direction.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "relative-speeds-of-objects-moving-in-different-directions",
+                  "title": "Relative Speeds of Objects Moving in Different Directions",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/relative-speeds-of-objects-moving-in-different-directions.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_relative-speeds-of-objects-moving-in-different-directions.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "acceleration",
+              "title": "Acceleration",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/acceleration.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_acceleration.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "displacement-time-graphs",
+              "title": "Displacement-Time Graphs",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                3,
+                4
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/displacement-time-graphs.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_displacement-time-graphs.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "velocity-time-graphs",
+              "title": "Velocity-Time Graphs",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                5,
+                6
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/velocity-time-graphs.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_velocity-time-graphs.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "linear-motion-in-real-life",
+              "title": "Linear Motion in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                7
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/linear-motion-in-real-life.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/linear-motion/step-by-step-guide_linear-motion-in-real-life.pdf",
+                "exists": false
+              }
+            }
+          ]
         }
       ]
     },
     {
-      "id": "statistics-probability",
+      "id": "statistics-and-probability",
       "title": "Statistics and Probability",
       "sections": [
         {
-          "id": "placeholder-section-stats",
-          "title": "[Section title placeholder]",
-          "course": {
-            "id": "placeholder-course-stats",
-            "title": "[Course title placeholder]",
-            "link": "#",
-            "lessons": [
-              {
-                "id": "placeholder-lesson-stats",
-                "title": "[Lesson title placeholder]",
-                "resources": []
+          "id": "statistics-1",
+          "title": "Statistics 1",
+          "learningObjectives": [
+            "Collect data from real-life sources",
+            "Promote data collection, organisation and representation for informed decision making",
+            "Draw a frequency distribution table for grouped and ungrouped data",
+            "Determine mean, mode and median of grouped and ungrouped data",
+            "Represent data using histograms and frequency polygons",
+            "Interpret data from histograms and frequency polygons"
+          ],
+          "subsections": [
+            {
+              "id": "introduction-to-statistics",
+              "title": "Introduction to Statistics",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "sources-of-data",
+                  "title": "Sources of Data",
+                  "learningObjectiveRefs": [
+                    0,
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/sources-of-data.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_sources-of-data.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "methods-of-data-collection",
+                  "title": "Methods of Data Collection",
+                  "learningObjectiveRefs": [
+                    0,
+                    1
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/methods-of-data-collection.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_methods-of-data-collection.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ungrouped-data",
+              "title": "Ungrouped Data",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "frequency-distribution-tables",
+                  "title": "Frequency Distribution Tables",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/frequency-distribution-tables.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_frequency-distribution-tables.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "mean",
+                  "title": "Mean",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/mean.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_mean.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "median",
+                  "title": "Median",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/median.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_median.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "mode",
+                  "title": "Mode",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/mode.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_mode.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "grouped-data",
+              "title": "Grouped Data",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "frequency-distribution-tables-grouped",
+                  "title": "Frequency Distribution Tables Grouped",
+                  "learningObjectiveRefs": [
+                    2
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/frequency-distribution-tables-grouped.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_frequency-distribution-tables-grouped.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "mean-grouped",
+                  "title": "Mean Grouped",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/mean-grouped.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_mean-grouped.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "median-grouped",
+                  "title": "Median Grouped",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/median-grouped.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_median-grouped.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "mode-grouped",
+                  "title": "Mode Grouped",
+                  "learningObjectiveRefs": [
+                    3
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/mode-grouped.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_mode-grouped.pdf",
+                    "exists": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "histograms-and-frequency-polygons",
+              "title": "Histograms and Frequency Polygons",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                4,
+                5
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/histograms-and-frequency-polygons.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_histograms-and-frequency-polygons.pdf",
+                "exists": true
               }
-            ]
-          }
+            },
+            {
+              "id": "interpretation-of-data",
+              "title": "Interpretation of Data",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                4,
+                5,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/interpretation-of-data.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_interpretation-of-data.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "statistics-in-real-life",
+              "title": "Statistics in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/statistics-in-real-life.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/statistics-1/step-by-step-guide_statistics-in-real-life.pdf",
+                "exists": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "probability-1",
+          "title": "Probability 1",
+          "learningObjectives": [
+            "Perform experiments involving probabilities in different situations",
+            "Identify the range of probability in different situations",
+            "Appreciate the application of probability in real-life situations",
+            "Generate probability space of different events",
+            "Determine the probability of mutually exclusive and independent events",
+            "Determine the probability of independent events using tree diagrams",
+            "Apply the laws of probability in different situations"
+          ],
+          "subsections": [
+            {
+              "id": "introduction-to-probability",
+              "title": "Introduction to Probability",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                0,
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/introduction-to-probability.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_introduction-to-probability.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "probability-spaces",
+              "title": "Probability Spaces",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                3
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/probability-spaces.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_probability-spaces.pdf",
+                "exists": false
+              }
+            },
+            {
+              "id": "mutually-exclusive-events",
+              "title": "Mutually Exclusive Events",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                4
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/mutually-exclusive-events.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_mutually-exclusive-events.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "independent-events",
+              "title": "Independent Events",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                4,
+                5
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/independent-events.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_independent-events.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "laws-of-probability",
+              "title": "Laws of Probability",
+              "hasSubtopics": true,
+              "topics": [
+                {
+                  "id": "addition-rule",
+                  "title": "Addition Rule",
+                  "learningObjectiveRefs": [
+                    6
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/addition-rule.pdf",
+                    "exists": true
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_addition-rule.pdf",
+                    "exists": true
+                  }
+                },
+                {
+                  "id": "multiplication-rule",
+                  "title": "Multiplication Rule",
+                  "learningObjectiveRefs": [
+                    6
+                  ],
+                  "lessonPlan": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/multiplication-rule.pdf",
+                    "exists": false
+                  },
+                  "guide": {
+                    "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_multiplication-rule.pdf",
+                    "exists": false
+                  }
+                }
+              ]
+            },
+            {
+              "id": "probability-using-tree-diagrams",
+              "title": "Probability Using Tree Diagrams",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                5
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/probability-using-tree-diagrams.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_probability-using-tree-diagrams.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "probability-in-real-life",
+              "title": "Probability in Real-Life",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                1,
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/probability-in-real-life.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_probability-in-real-life.pdf",
+                "exists": true
+              }
+            }
+          ]
         }
       ]
     }
