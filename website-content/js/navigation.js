@@ -243,8 +243,8 @@ function loadLessonPlanCatalog() {
             return response.json();
         })
         .then(data => {
+            const baseUrl = data.baseUrl || '';
             const chapters = Array.isArray(data.chapters) ? data.chapters : [];
-            const resourceTypes = data.resourceTypes || {};
             
             chapterContainers.forEach(container => {
                 const chapterId = container.getAttribute('data-lesson-plan-chapter');
@@ -255,12 +255,13 @@ function loadLessonPlanCatalog() {
                     return;
                 }
 
-                container.innerHTML = renderLessonPlanChapter(chapter, resourceTypes);
+                container.innerHTML = renderLessonPlanChapter(chapter, baseUrl);
             });
             
-            // Initialize accordion behavior for sections and lessons
+            // Initialize accordion behavior for sections, subsections, and topics
             initSectionAccordion();
-            initLessonAccordion();
+            initSubsectionAccordion();
+            initTopicAccordion();
         })
         .catch(() => {
             chapterContainers.forEach(container => {
@@ -286,16 +287,16 @@ function initSectionAccordion() {
     });
 }
 
-function initLessonAccordion() {
-    const lessonDetails = document.querySelectorAll('.lesson-plan-lesson');
+function initSubsectionAccordion() {
+    const subsectionDetails = document.querySelectorAll('.lesson-plan-subsection');
     
-    lessonDetails.forEach(detail => {
+    subsectionDetails.forEach(detail => {
         detail.addEventListener('toggle', function() {
             if (this.open) {
-                // Close all other lessons in the same section
+                // Close all other subsections in the same section
                 const section = this.closest('.lesson-plan-section');
                 if (section) {
-                    section.querySelectorAll('.lesson-plan-lesson').forEach(otherDetail => {
+                    section.querySelectorAll('.lesson-plan-subsection').forEach(otherDetail => {
                         if (otherDetail !== this && otherDetail.open) {
                             otherDetail.open = false;
                         }
@@ -306,25 +307,54 @@ function initLessonAccordion() {
     });
 }
 
-function renderLessonPlanChapter(chapter, resourceTypes) {
+function initTopicAccordion() {
+    const topicDetails = document.querySelectorAll('.lesson-plan-topic');
+    
+    topicDetails.forEach(detail => {
+        detail.addEventListener('toggle', function() {
+            if (this.open) {
+                // Close all other topics in the same subsection
+                const subsection = this.closest('.lesson-plan-subsection');
+                if (subsection) {
+                    subsection.querySelectorAll('.lesson-plan-topic').forEach(otherDetail => {
+                        if (otherDetail !== this && otherDetail.open) {
+                            otherDetail.open = false;
+                        }
+                    });
+                }
+            }
+        });
+    });
+}
+
+function renderLessonPlanChapter(chapter, baseUrl) {
     const sections = Array.isArray(chapter.sections) ? chapter.sections : [];
 
     return `
         <div class="lesson-plan-sections">
-            ${sections.map(section => renderLessonPlanSection(section, resourceTypes)).join('')}
+            ${sections.map(section => renderLessonPlanSection(section, baseUrl)).join('')}
         </div>
     `;
 }
 
-function renderLessonPlanSection(section, resourceTypes) {
+function renderLessonPlanSection(section, baseUrl) {
+    const subsections = Array.isArray(section.subsections) ? section.subsections : [];
+    const learningObjectives = Array.isArray(section.learningObjectives) ? section.learningObjectives : [];
     const course = section.course || {};
-    const lessons = Array.isArray(course.lessons) ? course.lessons : [];
-    const courseTitle = course.title || '';
-    const courseLink = course.link || '';
-    const courseTitleMarkup = courseTitle
+    
+    const objectivesMarkup = learningObjectives.length > 0
+        ? `<div class="lesson-plan-learning-objectives">
+                <h4>Learning Objectives:</h4>
+                <ul>
+                    ${learningObjectives.map(obj => `<li>${obj}</li>`).join('')}
+                </ul>
+           </div>`
+        : '';
+    
+    const courseMarkup = course.url && course.url !== '#'
         ? `<div class="lesson-plan-course">
-                <h4><strong>Topic Course:</strong> ${courseTitle}</h4>
-                ${courseLink && courseLink !== '#' ? `<a href="${courseLink}" class="btn btn-primary btn-access-course" target="_blank" rel="noopener">🎓 Access course</a>` : ''}
+                <h4><strong>Topic Course:</strong> ${course.title || section.title}</h4>
+                <a href="${course.url}" class="btn btn-primary btn-access-course" target="_blank" rel="noopener">🎓 Access course</a>
            </div>`
         : '';
 
@@ -332,73 +362,111 @@ function renderLessonPlanSection(section, resourceTypes) {
         <details class="lesson-plan-section">
             <summary class="lesson-plan-section-header">
                 <h3>${section.title || '[Section]'}</h3>
-                ${courseTitleMarkup}
+                ${courseMarkup}
             </summary>
-            <div class="lesson-plan-lessons">
-                ${lessons.map((lesson, index) => renderLessonPlanLesson(lesson, false, resourceTypes)).join('')}
+            ${objectivesMarkup}
+            <div class="lesson-plan-subsections">
+                ${subsections.map(subsection => renderLessonPlanSubsection(subsection, section, baseUrl)).join('')}
             </div>
         </details>
     `;
 }
 
-function renderLessonPlanLesson(lesson, isOpen, resourceTypes) {
-    const resources = Array.isArray(lesson.resources) ? lesson.resources : [];
-    
-    if (!resources.length) {
+function renderLessonPlanSubsection(subsection, section, baseUrl) {
+    if (subsection.hasSubtopics) {
+        // Subsection has multiple topics
+        const topics = Array.isArray(subsection.topics) ? subsection.topics : [];
+        
         return `
-            <details class="lesson-plan-lesson" ${isOpen ? 'open' : ''}>
-                <summary>${lesson.title || '[Lesson]'}</summary>
-                <p class="lesson-plan-empty">[Resources coming soon]</p>
+            <details class="lesson-plan-subsection">
+                <summary class="lesson-plan-subsection-header">
+                    <h4>${subsection.title || '[Subsection]'}</h4>
+                </summary>
+                <div class="lesson-plan-topics">
+                    ${topics.map(topic => renderLessonPlanTopic(topic, section, baseUrl)).join('')}
+                </div>
             </details>
         `;
+    } else {
+        // Subsection contains direct lesson plan and guide
+        return renderLessonPlanTopicDirect(subsection, section, baseUrl);
     }
+}
 
-    // Resolve resource type references
-    const resolvedResources = resources.map(resource => {
-        if (resource.typeRef && resourceTypes[resource.typeRef]) {
-            return { ...resourceTypes[resource.typeRef], ...resource };
-        }
-        return resource;
-    });
-
-    // Group resources by device access
-    const withDevices = resolvedResources.filter(r => r.deviceAccess === true);
-    const withoutDevices = resolvedResources.filter(r => r.deviceAccess === false);
-
-    // Build device sections
-    const withDevicesSection = withDevices.length ? `
-        <div class="lesson-plan-device-section">
-            <div class="lesson-plan-device-header">💻 My students have access to devices during class</div>
-            <div class="lesson-plan-resources">
-                ${withDevices.map(renderLessonPlanResource).join('')}
-            </div>
-        </div>
-    ` : '';
-
-    const withoutDevicesSection = withoutDevices.length ? `
-        <div class="lesson-plan-device-section">
-            <div class="lesson-plan-device-header">📝 My students will NOT have access to devices during class</div>
-            <div class="lesson-plan-resources">
-                ${withoutDevices.map(renderLessonPlanResource).join('')}
-            </div>
-        </div>
-    ` : '';
-
+function renderLessonPlanTopic(topic, section, baseUrl) {
+    const learningObjectives = section.learningObjectives || [];
+    const topicObjectives = Array.isArray(topic.learningObjectiveRefs)
+        ? topic.learningObjectiveRefs.map(idx => learningObjectives[idx]).filter(obj => obj)
+        : [];
+    
+    const objectivesMarkup = topicObjectives.length > 0
+        ? `<div class="lesson-plan-topic-objectives">
+                <p><strong>Learning Objectives:</strong></p>
+                <ul>
+                    ${topicObjectives.map(obj => `<li>${obj}</li>`).join('')}
+                </ul>
+           </div>`
+        : '';
+    
+    const lessonPlan = topic.lessonPlan || {};
+    const guide = topic.guide || {};
+    
+    const lessonPlanLink = lessonPlan.exists && lessonPlan.url
+        ? `<a href="${lessonPlan.url}" class="btn btn-primary" target="_blank" rel="noopener">📄 Lesson Plan</a>`
+        : `<span class="btn btn-secondary btn-disabled">📄 Lesson Plan (Coming Soon)</span>`;
+    
+    const guideLink = guide.exists && guide.url
+        ? `<a href="${guide.url}" class="btn btn-primary" target="_blank" rel="noopener">🧑‍🏫 Step by Step Guide</a>`
+        : `<span class="btn btn-secondary btn-disabled">🧑‍🏫 Step by Step Guide (Coming Soon)</span>`;
+    
     return `
-        <details class="lesson-plan-lesson" ${isOpen ? 'open' : ''}>
-            <summary>${lesson.title || '[Lesson]'}</summary>
-            <p class="lesson-plan-quick-access">If you're looking for this content on eCampus use the Quick Access link from the course above or navigate to the section for this topic.</p>
-            ${withDevicesSection}
-            ${withoutDevicesSection}
+        <details class="lesson-plan-topic">
+            <summary>${topic.title || '[Topic]'}</summary>
+            ${objectivesMarkup}
+            <div class="lesson-plan-resources">
+                ${lessonPlanLink}
+                ${guideLink}
+            </div>
         </details>
     `;
 }
 
-function renderLessonPlanResource(resource) {
-    const link = resource.link || '#';
-    const label = resource.label || 'Resource';
-    const icon = resource.type === 'guide' ? '🧑‍🏫' : '📄';
-    return `<a href="${link}" class="btn btn-primary" target="_blank" rel="noopener">${icon} ${label}</a>`;
+function renderLessonPlanTopicDirect(subsection, section, baseUrl) {
+    const learningObjectives = section.learningObjectives || [];
+    const subsectionObjectives = Array.isArray(subsection.learningObjectiveRefs)
+        ? subsection.learningObjectiveRefs.map(idx => learningObjectives[idx]).filter(obj => obj)
+        : [];
+    
+    const objectivesMarkup = subsectionObjectives.length > 0
+        ? `<div class="lesson-plan-topic-objectives">
+                <p><strong>Learning Objectives:</strong></p>
+                <ul>
+                    ${subsectionObjectives.map(obj => `<li>${obj}</li>`).join('')}
+                </ul>
+           </div>`
+        : '';
+    
+    const lessonPlan = subsection.lessonPlan || {};
+    const guide = subsection.guide || {};
+    
+    const lessonPlanLink = lessonPlan.exists && lessonPlan.url
+        ? `<a href="${lessonPlan.url}" class="btn btn-primary" target="_blank" rel="noopener">📄 Lesson Plan</a>`
+        : `<span class="btn btn-secondary btn-disabled">📄 Lesson Plan (Coming Soon)</span>`;
+    
+    const guideLink = guide.exists && guide.url
+        ? `<a href="${guide.url}" class="btn btn-primary" target="_blank" rel="noopener">🧑‍🏫 Step by Step Guide</a>`
+        : `<span class="btn btn-secondary btn-disabled">🧑‍🏫 Step by Step Guide (Coming Soon)</span>`;
+    
+    return `
+        <div class="lesson-plan-topic-direct">
+            <h4>${subsection.title || '[Topic]'}</h4>
+            ${objectivesMarkup}
+            <div class="lesson-plan-resources">
+                ${lessonPlanLink}
+                ${guideLink}
+            </div>
+        </div>
+    `;
 }
 
 /**

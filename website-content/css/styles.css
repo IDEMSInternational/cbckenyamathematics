@@ -450,6 +450,165 @@ section.hero ul {
     margin-top: 0.5rem;
 }
 
+/* Learning Objectives */
+.lesson-plan-learning-objectives {
+    background: #f8fbfc;
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+}
+
+.lesson-plan-learning-objectives h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.lesson-plan-learning-objectives ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.lesson-plan-learning-objectives li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Subsections */
+.lesson-plan-subsections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.lesson-plan-subsection {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+}
+
+.lesson-plan-subsection-header {
+    cursor: pointer;
+    list-style: none;
+}
+
+.lesson-plan-subsection-header::-webkit-details-marker {
+    display: none;
+}
+
+.lesson-plan-subsection-header::marker {
+    display: none;
+}
+
+.lesson-plan-subsection-header h4 {
+    display: inline;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.lesson-plan-subsection-header h4::before {
+    content: "▸ ";
+    display: inline-block;
+    margin-right: 0.25rem;
+}
+
+.lesson-plan-subsection[open] .lesson-plan-subsection-header h4::before {
+    content: "▾ ";
+}
+
+/* Topics */
+.lesson-plan-topics {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.lesson-plan-topic {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+.lesson-plan-topic summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-color);
+    list-style: none;
+}
+
+.lesson-plan-topic summary::-webkit-details-marker {
+    display: none;
+}
+
+.lesson-plan-topic summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transform: translateY(-1px);
+}
+
+.lesson-plan-topic[open] summary::before {
+    content: "▾";
+}
+
+.lesson-plan-topic-objectives {
+    margin: 0.75rem 0;
+    font-size: 0.9rem;
+}
+
+.lesson-plan-topic-objectives p {
+    margin: 0 0 0.5rem 0;
+    color: var(--secondary-color);
+}
+
+.lesson-plan-topic-objectives ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.lesson-plan-topic-objectives li {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Direct Topics (without nesting) */
+.lesson-plan-topic-direct {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 0.75rem;
+}
+
+.lesson-plan-topic-direct h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+/* Button Disabled State */
+.btn-disabled {
+    background-color: #e0e0e0;
+    color: #999;
+    border-color: #e0e0e0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.btn-disabled:hover {
+    background-color: #e0e0e0;
+    color: #999;
+    border-color: #e0e0e0;
+    transform: none;
+    box-shadow: none;
+}
+
 .resource-card {
     display: grid;
     grid-template-columns: 48px 1fr auto;
