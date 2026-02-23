@@ -43,9 +43,54 @@ function initMobileMenu() {
             if (window.innerWidth > 768 && nav.classList.contains('active')) {
                 nav.classList.remove('active');
                 menuToggle.classList.remove('active');
+                // Remove mobile-open classes when switching to desktop
+                document.querySelectorAll('.mobile-open').forEach(el => {
+                    el.classList.remove('mobile-open');
+                });
             }
         });
+        
+        // Handle mobile submenu toggles
+        initMobileSubmenus();
     }
+}
+
+/**
+ * Initialize mobile submenu toggle functionality
+ */
+function initMobileSubmenus() {
+    const submenuLinks = document.querySelectorAll('nav li.has-submenu > a');
+    
+    submenuLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            // Only toggle on mobile
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                
+                const parentLi = link.parentElement;
+                const submenu = parentLi.querySelector(':scope > ul');
+                
+                if (submenu) {
+                    const isOpen = parentLi.classList.contains('mobile-open');
+                    
+                    // Close other submenus at the same level
+                    const siblings = Array.from(parentLi.parentElement.children);
+                    siblings.forEach(sibling => {
+                        if (sibling !== parentLi && sibling.classList.contains('has-submenu')) {
+                            sibling.classList.remove('mobile-open');
+                        }
+                    });
+                    
+                    // Toggle current submenu
+                    if (isOpen) {
+                        parentLi.classList.remove('mobile-open');
+                    } else {
+                        parentLi.classList.add('mobile-open');
+                    }
+                }
+            }
+        });
+    });
 }
 
 /**

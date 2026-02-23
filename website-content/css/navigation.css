@@ -198,6 +198,10 @@ nav ul ul li.has-submenu > a::after {
         border: none;
         box-shadow: none;
         padding: 0;
+        display: none; /* Hidden by default on mobile */
+    }
+    
+    nav ul ul.mobile-open {
         display: block;
     }
 
@@ -212,11 +216,17 @@ nav ul ul li.has-submenu > a::after {
 
     nav li.has-submenu > a::after,
     nav ul ul li.has-submenu > a::after {
-        content: "▾";
-        float: none;
+        content: "▸";
+        float: right;
         font-size: 0.95rem;
         font-weight: 700;
         opacity: 0.9;
+        transition: transform 0.3s ease;
+    }
+    
+    nav li.has-submenu.mobile-open > a::after,
+    nav ul ul li.has-submenu.mobile-open > a::after {
+        content: "▾";
     }
     
     /* Hamburger Animation */
