@@ -398,6 +398,10 @@ function initAccordionLevel(itemSelector, parentSelector) {
     items.forEach(item => {
         item.addEventListener('toggle', function() {
             if (this.open) {
+                // Store the position of the clicked element before closing others
+                const clickedElementTop = this.getBoundingClientRect().top;
+                const scrollBefore = window.pageYOffset || document.documentElement.scrollTop;
+                
                 // Find siblings to close
                 let siblings;
                 if (parentSelector) {
@@ -411,6 +415,23 @@ function initAccordionLevel(itemSelector, parentSelector) {
                 siblings.forEach(sibling => {
                     if (sibling !== this && sibling.open) {
                         sibling.open = false;
+                    }
+                });
+                
+                // Allow the DOM to update, then adjust scroll position
+                requestAnimationFrame(() => {
+                    const clickedElementTopAfter = this.getBoundingClientRect().top;
+                    const scrollAfter = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Calculate how much content above shifted
+                    const shift = clickedElementTopAfter - clickedElementTop;
+                    
+                    // Adjust scroll to keep the clicked element in the same visual position
+                    if (shift !== 0) {
+                        window.scrollTo({
+                            top: scrollAfter - shift,
+                            behavior: 'instant'
+                        });
                     }
                 });
             }
