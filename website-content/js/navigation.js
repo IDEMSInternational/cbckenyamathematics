@@ -54,6 +54,7 @@ function initMobileMenu() {
 function highlightActivePage() {
     const params = new URLSearchParams(window.location.search);
     const currentPage = params.get('page') || 'home';
+    const currentChapter = params.get('chapter');
     const navLinks = document.querySelectorAll('nav a');
     
     navLinks.forEach(link => {
@@ -67,7 +68,12 @@ function highlightActivePage() {
             return;
         }
 
-        if (linkHref.includes(`page=${currentPage}`)) {
+        // For lesson plans pages, also check chapter parameter
+        if (currentPage === 'resources-lesson-plans' && currentChapter) {
+            if (linkHref.includes(`page=${currentPage}`) && linkHref.includes(`chapter=${currentChapter}`)) {
+                link.classList.add('active');
+            }
+        } else if (linkHref.includes(`page=${currentPage}`)) {
             link.classList.add('active');
         }
     });
@@ -97,7 +103,7 @@ function loadPageContent() {
 
     const pagePath = `website-content/pages/${page}.html`;
 
-    fetch(pagePath, { cache: 'no-store' })
+    fetch(pagePath)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load ${pagePath}`);
@@ -106,12 +112,66 @@ function loadPageContent() {
         })
         .then(html => {
             container.innerHTML = html;
+            populateChapterTemplate();
             loadResources();
             loadLessonPlanCatalog();
             loadLessonPlanChapterButtons();
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Error loading page content:', error);
             container.innerHTML = '<section class="hero"><h2>[Content unavailable]</h2><p>Please refresh the page.</p></section>';
+        });
+}
+
+/**
+ * Populate chapter-specific content in template
+ * Reads chapter parameter from URL and updates page title and catalog container
+ */
+function populateChapterTemplate() {
+    const params = new URLSearchParams(window.location.search);
+    const chapterId = params.get('chapter');
+    
+    if (!chapterId) {
+        return;
+    }
+
+    const dataPath = getLessonPlansDataPath();
+    
+    fetch(dataPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load lesson plan catalog');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const chapter = data.chapters.find(ch => ch.id === chapterId);
+            
+            if (!chapter) {
+                console.warn(`Chapter not found: ${chapterId}`);
+                return;
+            }
+
+            // Update page title
+            const titleElement = document.querySelector('[data-chapter-title]');
+            if (titleElement) {
+                titleElement.textContent = `Lesson Plans, Guides, and Courses: ${chapter.title}`;
+            }
+
+            // Update section heading
+            const nameElement = document.querySelector('[data-chapter-name]');
+            if (nameElement) {
+                nameElement.textContent = chapter.title;
+            }
+
+            // Set chapter ID on catalog container
+            const catalogElement = document.querySelector('.lesson-plan-catalog');
+            if (catalogElement) {
+                catalogElement.setAttribute('data-lesson-plan-chapter', chapterId);
+            }
+        })
+        .catch((error) => {
+            console.error('Error populating chapter template:', error);
         });
 }
 
@@ -127,7 +187,7 @@ function loadResources() {
 
     const dataPath = getResourcesDataPath();
 
-    fetch(dataPath, { cache: 'no-store' })
+    fetch(dataPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to load resources');
@@ -141,9 +201,10 @@ function loadResources() {
                 resourceList.innerHTML = filteredResources.map(renderResourceListCard).join('');
             });
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Error loading resources:', error);
             resourceLists.forEach(resourceList => {
-                resourceList.innerHTML = '';
+                resourceList.innerHTML = '<p>Unable to load resources. Please try refreshing the page.</p>';
             });
         });
 }
@@ -196,7 +257,7 @@ function loadLessonPlanChapterButtons() {
 
     const dataPath = getLessonPlansDataPath();
 
-    fetch(dataPath, { cache: 'no-store' })
+    fetch(dataPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to load lesson plan catalog');
@@ -213,16 +274,14 @@ function loadLessonPlanChapterButtons() {
 
             // Create buttons for each chapter
             const buttonsHTML = chapters.map(chapter => {
-                // Map chapter IDs to page names:
-                // numbers-algebra → numbers, measurements-geometry → measurements, etc.
-                const pageSlug = chapter.id.split('-')[0];
-                return `<a href="index.html?page=resources-lesson-plans-${pageSlug}" class="btn btn-primary">${chapter.title}</a>`;
+                return `<a href="index.html?page=resources-lesson-plans&chapter=${chapter.id}" class="btn btn-primary">${chapter.title}</a>`;
             }).join('');
 
             buttonContainer.innerHTML = buttonsHTML;
         })
-        .catch(() => {
-            buttonContainer.innerHTML = '<p>Unable to load chapters</p>';
+        .catch((error) => {
+            console.error('Error loading lesson plan chapter buttons:', error);
+            buttonContainer.innerHTML = '<p>Unable to load chapters. Please try refreshing the page.</p>';
         });
 }
 
@@ -235,7 +294,7 @@ function loadLessonPlanCatalog() {
 
     const dataPath = getLessonPlansDataPath();
 
-    fetch(dataPath, { cache: 'no-store' })
+    fetch(dataPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to load lesson plan catalog');
@@ -259,69 +318,56 @@ function loadLessonPlanCatalog() {
             });
             
             // Initialize accordion behavior for sections, subsections, and topics
-            initSectionAccordion();
-            initSubsectionAccordion();
-            initTopicAccordion();
+            initAccordions();
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Error loading lesson plan catalog:', error);
             chapterContainers.forEach(container => {
-                container.innerHTML = '';
+                container.innerHTML = '<p>Unable to load lesson plans. Please try refreshing the page.</p>';
             });
         });
 }
 
-function initSectionAccordion() {
-    const sectionDetails = document.querySelectorAll('.lesson-plan-section');
+/**
+ * Initialize accordion behavior for all accordion types
+ */
+function initAccordions() {
+    // Section level accordions - only one section can be open at a time
+    initAccordionLevel('.lesson-plan-section', null);
     
-    sectionDetails.forEach(detail => {
-        detail.addEventListener('toggle', function() {
+    // Subsection level accordions - only one subsection open per section
+    initAccordionLevel('.lesson-plan-subsection', '.lesson-plan-section');
+    
+    // Topic level accordions - only one topic open per subsection
+    initAccordionLevel('.lesson-plan-topic', '.lesson-plan-subsection');
+}
+
+/**
+ * Initialize accordion behavior for a specific level
+ * @param {string} itemSelector - CSS selector for the accordion items
+ * @param {string|null} parentSelector - CSS selector for the parent container, or null for page-level
+ */
+function initAccordionLevel(itemSelector, parentSelector) {
+    const items = document.querySelectorAll(itemSelector);
+    
+    items.forEach(item => {
+        item.addEventListener('toggle', function() {
             if (this.open) {
-                // Close all other sections on the same page
-                sectionDetails.forEach(otherDetail => {
-                    if (otherDetail !== this && otherDetail.open) {
-                        otherDetail.open = false;
+                // Find siblings to close
+                let siblings;
+                if (parentSelector) {
+                    const parent = this.closest(parentSelector);
+                    siblings = parent ? parent.querySelectorAll(itemSelector) : [];
+                } else {
+                    siblings = document.querySelectorAll(itemSelector);
+                }
+                
+                // Close all other items at this level
+                siblings.forEach(sibling => {
+                    if (sibling !== this && sibling.open) {
+                        sibling.open = false;
                     }
                 });
-            }
-        });
-    });
-}
-
-function initSubsectionAccordion() {
-    const subsectionDetails = document.querySelectorAll('.lesson-plan-subsection');
-    
-    subsectionDetails.forEach(detail => {
-        detail.addEventListener('toggle', function() {
-            if (this.open) {
-                // Close all other subsections in the same section
-                const section = this.closest('.lesson-plan-section');
-                if (section) {
-                    section.querySelectorAll('.lesson-plan-subsection').forEach(otherDetail => {
-                        if (otherDetail !== this && otherDetail.open) {
-                            otherDetail.open = false;
-                        }
-                    });
-                }
-            }
-        });
-    });
-}
-
-function initTopicAccordion() {
-    const topicDetails = document.querySelectorAll('.lesson-plan-topic');
-    
-    topicDetails.forEach(detail => {
-        detail.addEventListener('toggle', function() {
-            if (this.open) {
-                // Close all other topics in the same subsection
-                const subsection = this.closest('.lesson-plan-subsection');
-                if (subsection) {
-                    subsection.querySelectorAll('.lesson-plan-topic').forEach(otherDetail => {
-                        if (otherDetail !== this && otherDetail.open) {
-                            otherDetail.open = false;
-                        }
-                    });
-                }
             }
         });
     });

@@ -80,6 +80,100 @@ function generateId(text) {
 }
 
 /**
+ * Validate the parsed data
+ */
+function validateData(bookStructure, fileMatching) {
+    const errors = [];
+    const warnings = [];
+
+    console.log('\n🔍 Validating data...');
+
+    // Check for required columns in book structure
+    const requiredBookColumns = ['Chapter', 'Section', 'Subsection', 'Lesson Name', 'LO 1'];
+    if (bookStructure.length > 0) {
+        const bookColumns = Object.keys(bookStructure[0]);
+        requiredBookColumns.forEach(col => {
+            if (!bookColumns.includes(col)) {
+                errors.push(`Missing required column in book-structure.csv: ${col}`);
+            }
+        });
+    }
+
+    // Check for required columns in file matching
+    const requiredFileColumns = ['Chapter', 'Section', 'Subsection', 'Lesson Plan Path', 'Lesson Plan Exists'];
+    if (fileMatching.length > 0) {
+        const fileColumns = Object.keys(fileMatching[0]);
+        requiredFileColumns.forEach(col => {
+            if (!fileColumns.includes(col)) {
+                errors.push(`Missing required column in file-matching.csv: ${col}`);
+            }
+        });
+    }
+
+    // Check for LO consistency between files
+    const bookLOs = new Map();
+    bookStructure.forEach((row, idx) => {
+        const key = `${row.Chapter}|${row.Section}|${row.Subsection}|${row.Subsubsection}`.toLowerCase();
+        const los = [row['LO 1'], row['LO 2'], row['LO 3'], row['LO 4']].filter(lo => lo && lo.trim());
+        if (los.length > 0) {
+            bookLOs.set(key, { los, row: idx + 2, lessonName: row['Lesson Name'] });
+        }
+    });
+
+    fileMatching.forEach((row, idx) => {
+        const key = `${row.Chapter}|${row.Section}|${row.Subsection}|${row.Subsubsection}`.toLowerCase();
+        const fileLOs = [row['LO 1'], row['LO 2'], row['LO 3'], row['LO 4']].filter(lo => lo && lo.trim());
+        
+        if (bookLOs.has(key)) {
+            const bookData = bookLOs.get(key);
+            const bookLOsStr = bookData.los.join('|');
+            const fileLOsStr = fileLOs.join('|');
+            
+            if (bookLOsStr !== fileLOsStr) {
+                warnings.push(
+                    `LO mismatch for "${bookData.lessonName}" (book row ${bookData.row}, file row ${idx + 2}):\n` +
+                    `  Book: ${bookLOsStr.substring(0, 80)}${bookLOsStr.length > 80 ? '...' : ''}\n` +
+                    `  File: ${fileLOsStr.substring(0, 80)}${fileLOsStr.length > 80 ? '...' : ''}`
+                );
+            }
+        }
+    });
+
+    // Check for common typos
+    const typoPatterns = [
+        { pattern: /accel[ae]ration/i, correct: 'acceleration' },
+        { pattern: /occurance/i, correct: 'occurrence' },
+        { pattern: /seperate/i, correct: 'separate' }
+    ];
+
+    bookStructure.forEach((row, idx) => {
+        const lessonName = row['Lesson Name'] || '';
+        typoPatterns.forEach(({ pattern, correct }) => {
+            if (pattern.test(lessonName) && !lessonName.match(new RegExp(correct, 'i'))) {
+                warnings.push(`Possible typo in "${lessonName}" (row ${idx + 2}), did you mean "${correct}"?`);
+            }
+        });
+    });
+
+    // Report results
+    if (errors.length > 0) {
+        console.error('\n❌ Validation Errors:');
+        errors.forEach(err => console.error(`   - ${err}`));
+    }
+
+    if (warnings.length > 0) {
+        console.warn('\n⚠️  Validation Warnings:');
+        warnings.forEach(warn => console.warn(`   - ${warn}`));
+    }
+
+    if (errors.length === 0 && warnings.length === 0) {
+        console.log('   ✓ All validation checks passed');
+    }
+
+    return { errors, warnings };
+}
+
+/**
  * Build the lesson plans catalog structure
  */
 function buildCatalog(bookStructure, fileMatching) {
@@ -273,6 +367,13 @@ function main() {
         
         console.log(`   Book structure: ${bookStructure.length} rows`);
         console.log(`   File matching: ${fileMatching.length} rows`);
+
+        // Validate data
+        const validation = validateData(bookStructure, fileMatching);
+        if (validation.errors.length > 0) {
+            console.error('\n❌ Validation failed. Please fix errors before continuing.');
+            process.exit(1);
+        }
 
         // Build catalog
         console.log('🔨 Building lesson plans catalog...');
