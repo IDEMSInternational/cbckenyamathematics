@@ -385,17 +385,7 @@ function renderLessonPlanChapter(chapter, baseUrl) {
 
 function renderLessonPlanSection(section, baseUrl) {
     const subsections = Array.isArray(section.subsections) ? section.subsections : [];
-    const learningObjectives = Array.isArray(section.learningObjectives) ? section.learningObjectives : [];
     const course = section.course || {};
-    
-    const objectivesMarkup = learningObjectives.length > 0
-        ? `<div class="lesson-plan-learning-objectives">
-                <h4>Learning Objectives:</h4>
-                <ul>
-                    ${learningObjectives.map(obj => `<li>${obj}</li>`).join('')}
-                </ul>
-           </div>`
-        : '';
     
     const courseMarkup = course.url && course.url !== '#'
         ? `<div class="lesson-plan-course">
@@ -410,7 +400,6 @@ function renderLessonPlanSection(section, baseUrl) {
                 <h3>${section.title || '[Section]'}</h3>
                 ${courseMarkup}
             </summary>
-            ${objectivesMarkup}
             <div class="lesson-plan-subsections">
                 ${subsections.map(subsection => renderLessonPlanSubsection(subsection, section, baseUrl)).join('')}
             </div>
