@@ -54,6 +54,7 @@ function initMobileMenu() {
 function highlightActivePage() {
     const params = new URLSearchParams(window.location.search);
     const currentPage = params.get('page') || 'home';
+    const currentChapter = params.get('chapter');
     const navLinks = document.querySelectorAll('nav a');
     
     navLinks.forEach(link => {
@@ -67,7 +68,12 @@ function highlightActivePage() {
             return;
         }
 
-        if (linkHref.includes(`page=${currentPage}`)) {
+        // For lesson plans pages, also check chapter parameter
+        if (currentPage === 'resources-lesson-plans' && currentChapter) {
+            if (linkHref.includes(`page=${currentPage}`) && linkHref.includes(`chapter=${currentChapter}`)) {
+                link.classList.add('active');
+            }
+        } else if (linkHref.includes(`page=${currentPage}`)) {
             link.classList.add('active');
         }
     });
@@ -106,6 +112,7 @@ function loadPageContent() {
         })
         .then(html => {
             container.innerHTML = html;
+            populateChapterTemplate();
             loadResources();
             loadLessonPlanCatalog();
             loadLessonPlanChapterButtons();
@@ -113,6 +120,58 @@ function loadPageContent() {
         .catch((error) => {
             console.error('Error loading page content:', error);
             container.innerHTML = '<section class="hero"><h2>[Content unavailable]</h2><p>Please refresh the page.</p></section>';
+        });
+}
+
+/**
+ * Populate chapter-specific content in template
+ * Reads chapter parameter from URL and updates page title and catalog container
+ */
+function populateChapterTemplate() {
+    const params = new URLSearchParams(window.location.search);
+    const chapterId = params.get('chapter');
+    
+    if (!chapterId) {
+        return;
+    }
+
+    const dataPath = getLessonPlansDataPath();
+    
+    fetch(dataPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load lesson plan catalog');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const chapter = data.chapters.find(ch => ch.id === chapterId);
+            
+            if (!chapter) {
+                console.warn(`Chapter not found: ${chapterId}`);
+                return;
+            }
+
+            // Update page title
+            const titleElement = document.querySelector('[data-chapter-title]');
+            if (titleElement) {
+                titleElement.textContent = `Lesson Plans, Guides, and Courses: ${chapter.title}`;
+            }
+
+            // Update section heading
+            const nameElement = document.querySelector('[data-chapter-name]');
+            if (nameElement) {
+                nameElement.textContent = chapter.title;
+            }
+
+            // Set chapter ID on catalog container
+            const catalogElement = document.querySelector('.lesson-plan-catalog');
+            if (catalogElement) {
+                catalogElement.setAttribute('data-lesson-plan-chapter', chapterId);
+            }
+        })
+        .catch((error) => {
+            console.error('Error populating chapter template:', error);
         });
 }
 
@@ -207,7 +266,6 @@ function loadLessonPlanChapterButtons() {
         })
         .then(data => {
             const chapters = Array.isArray(data.chapters) ? data.chapters : [];
-            const urlMap = data.chapterUrlMap || {};
             
             if (chapters.length === 0) {
                 buttonContainer.innerHTML = '<p>No chapters available</p>';
@@ -216,9 +274,7 @@ function loadLessonPlanChapterButtons() {
 
             // Create buttons for each chapter
             const buttonsHTML = chapters.map(chapter => {
-                // Use explicit URL mapping from catalog, with fallback to first word
-                const pageSlug = urlMap[chapter.id] || chapter.id.split('-')[0];
-                return `<a href="index.html?page=resources-lesson-plans-${pageSlug}" class="btn btn-primary">${chapter.title}</a>`;
+                return `<a href="index.html?page=resources-lesson-plans&chapter=${chapter.id}" class="btn btn-primary">${chapter.title}</a>`;
             }).join('');
 
             buttonContainer.innerHTML = buttonsHTML;
