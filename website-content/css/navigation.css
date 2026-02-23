@@ -31,6 +31,15 @@ header {
     width: auto;
 }
 
+.site-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-title-link:hover {
+    opacity: 0.9;
+}
+
 .site-title {
     font-size: 2.1rem;
     margin: 0;
