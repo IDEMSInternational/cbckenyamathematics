@@ -429,9 +429,16 @@ function initAccordionLevel(itemSelector, parentSelector) {
                     const clickedElementRectAfter = this.getBoundingClientRect();
                     const clickedElementTopAfter = clickedElementRectAfter.top;
                     
-                    // If element is now hidden behind header or needs repositioning
-                    if (clickedElementTopAfter < headerHeight) {
-                        // Scroll to position element below the header
+                    // Get the summary/header element height to account for wrapped text
+                    const summary = this.querySelector('summary, .lesson-plan-section-header, .lesson-plan-subsection-header');
+                    const summaryHeight = summary ? summary.offsetHeight : 60; // Default 60px if not found
+                    
+                    // Check if accordion header is obscured or too close to sticky header
+                    // We need enough space for the full header (which may wrap)
+                    const minimumVisibleSpace = offset + Math.max(summaryHeight, 80); // At least 80px for wrapped titles
+                    
+                    if (clickedElementTopAfter < minimumVisibleSpace) {
+                        // Scroll to position element comfortably below the header
                         const elementAbsoluteTop = this.offsetTop;
                         window.scrollTo({
                             top: elementAbsoluteTop - offset,
