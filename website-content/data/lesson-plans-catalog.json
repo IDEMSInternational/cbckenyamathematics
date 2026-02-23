@@ -8,6 +8,10 @@
         {
           "id": "real-numbers",
           "title": "Real Numbers",
+          "course": {
+            "title": "Real Numbers",
+            "url": "https://ecampus.idems.international/course/view.php?id=571"
+          },
           "learningObjectives": [
             "Classify whole numbers as odd, even, prime and composite in different situations",
             "Classify real numbers as rational and irrational in different situations",
@@ -127,6 +131,10 @@
         {
           "id": "indices-and-logarithms",
           "title": "Indices and Logarithms",
+          "course": {
+            "title": "Indices and Logarithms",
+            "url": "https://ecampus.idems.international/course/view.php?id=573"
+          },
           "learningObjectives": [
             "Express numbers in index form",
             "Derive the laws of indices using factors",
@@ -321,6 +329,10 @@
         {
           "id": "quadratic-expressions-and-equations",
           "title": "Quadratic Expressions and Equations",
+          "course": {
+            "title": "Quadratic Expressions and Equations",
+            "url": "https://ecampus.idems.international/course/view.php?id=574"
+          },
           "learningObjectives": [
             "Form quadratic expressions from different situations",
             "Derive the quadratic identities from the concept of area",
