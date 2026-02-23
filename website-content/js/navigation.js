@@ -398,8 +398,14 @@ function initAccordionLevel(itemSelector, parentSelector) {
     items.forEach(item => {
         item.addEventListener('toggle', function() {
             if (this.open) {
+                // Get sticky header height for offset calculation
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const offset = headerHeight + 20; // Add 20px padding below header
+                
                 // Store the position of the clicked element before closing others
-                const clickedElementTop = this.getBoundingClientRect().top;
+                const clickedElementRect = this.getBoundingClientRect();
+                const clickedElementTop = clickedElementRect.top;
                 const scrollBefore = window.pageYOffset || document.documentElement.scrollTop;
                 
                 // Find siblings to close
@@ -420,14 +426,22 @@ function initAccordionLevel(itemSelector, parentSelector) {
                 
                 // Allow the DOM to update, then adjust scroll position
                 requestAnimationFrame(() => {
-                    const clickedElementTopAfter = this.getBoundingClientRect().top;
-                    const scrollAfter = window.pageYOffset || document.documentElement.scrollTop;
+                    const clickedElementRectAfter = this.getBoundingClientRect();
+                    const clickedElementTopAfter = clickedElementRectAfter.top;
                     
-                    // Calculate how much content above shifted
-                    const shift = clickedElementTopAfter - clickedElementTop;
-                    
-                    // Adjust scroll to keep the clicked element in the same visual position
-                    if (shift !== 0) {
+                    // If element is now hidden behind header or needs repositioning
+                    if (clickedElementTopAfter < headerHeight) {
+                        // Scroll to position element below the header
+                        const elementAbsoluteTop = this.offsetTop;
+                        window.scrollTo({
+                            top: elementAbsoluteTop - offset,
+                            behavior: 'smooth'
+                        });
+                    } else if (clickedElementTopAfter !== clickedElementTop) {
+                        // Element moved but isn't behind header - keep it in place
+                        const scrollAfter = window.pageYOffset || document.documentElement.scrollTop;
+                        const shift = clickedElementTopAfter - clickedElementTop;
+                        
                         window.scrollTo({
                             top: scrollAfter - shift,
                             behavior: 'instant'
