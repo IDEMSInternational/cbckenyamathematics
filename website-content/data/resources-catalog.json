@@ -16,41 +16,5 @@
     "type": "Training Course",
     "icon": "🎓",
     "link": "https://ecampus.idems.international/course/view.php?id=564"
-  },
-  {
-    "id": "resource-3",
-    "title": "Resource 3",
-    "shortDescription": "[One-line description]",
-    "longDescription": "[Longer description for the resources page.]",
-    "type": "Lesson plan course",
-    "icon": "🧑‍🏫",
-    "link": "#"
-  },
-  {
-    "id": "resource-4",
-    "title": "Resource 4",
-    "shortDescription": "[One-line description]",
-    "longDescription": "[Longer description for the resources page.]",
-    "type": "Lesson plan course",
-    "icon": "📝",
-    "link": "#"
-  },
-  {
-    "id": "resource-5",
-    "title": "Resource 5",
-    "shortDescription": "[One-line description]",
-    "longDescription": "[Longer description for the resources page.]",
-    "type": "Lesson plan course",
-    "icon": "🧮",
-    "link": "#"
-  },
-  {
-    "id": "resource-6",
-    "title": "Resource 6",
-    "shortDescription": "[One-line description]",
-    "longDescription": "[Longer description for the resources page.]",
-    "type": "Lesson plan course",
-    "icon": "📊",
-    "link": "#"
   }
 ]

@@ -110,7 +110,8 @@ function loadPageContent() {
             loadLessonPlanCatalog();
             loadLessonPlanChapterButtons();
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Error loading page content:', error);
             container.innerHTML = '<section class="hero"><h2>[Content unavailable]</h2><p>Please refresh the page.</p></section>';
         });
 }
@@ -141,9 +142,10 @@ function loadResources() {
                 resourceList.innerHTML = filteredResources.map(renderResourceListCard).join('');
             });
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Error loading resources:', error);
             resourceLists.forEach(resourceList => {
-                resourceList.innerHTML = '';
+                resourceList.innerHTML = '<p>Unable to load resources. Please try refreshing the page.</p>';
             });
         });
 }
@@ -221,8 +223,9 @@ function loadLessonPlanChapterButtons() {
 
             buttonContainer.innerHTML = buttonsHTML;
         })
-        .catch(() => {
-            buttonContainer.innerHTML = '<p>Unable to load chapters</p>';
+        .catch((error) => {
+            console.error('Error loading lesson plan chapter buttons:', error);
+            buttonContainer.innerHTML = '<p>Unable to load chapters. Please try refreshing the page.</p>';
         });
 }
 
@@ -259,69 +262,56 @@ function loadLessonPlanCatalog() {
             });
             
             // Initialize accordion behavior for sections, subsections, and topics
-            initSectionAccordion();
-            initSubsectionAccordion();
-            initTopicAccordion();
+            initAccordions();
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Error loading lesson plan catalog:', error);
             chapterContainers.forEach(container => {
-                container.innerHTML = '';
+                container.innerHTML = '<p>Unable to load lesson plans. Please try refreshing the page.</p>';
             });
         });
 }
 
-function initSectionAccordion() {
-    const sectionDetails = document.querySelectorAll('.lesson-plan-section');
+/**
+ * Initialize accordion behavior for all accordion types
+ */
+function initAccordions() {
+    // Section level accordions - only one section can be open at a time
+    initAccordionLevel('.lesson-plan-section', null);
     
-    sectionDetails.forEach(detail => {
-        detail.addEventListener('toggle', function() {
+    // Subsection level accordions - only one subsection open per section
+    initAccordionLevel('.lesson-plan-subsection', '.lesson-plan-section');
+    
+    // Topic level accordions - only one topic open per subsection
+    initAccordionLevel('.lesson-plan-topic', '.lesson-plan-subsection');
+}
+
+/**
+ * Initialize accordion behavior for a specific level
+ * @param {string} itemSelector - CSS selector for the accordion items
+ * @param {string|null} parentSelector - CSS selector for the parent container, or null for page-level
+ */
+function initAccordionLevel(itemSelector, parentSelector) {
+    const items = document.querySelectorAll(itemSelector);
+    
+    items.forEach(item => {
+        item.addEventListener('toggle', function() {
             if (this.open) {
-                // Close all other sections on the same page
-                sectionDetails.forEach(otherDetail => {
-                    if (otherDetail !== this && otherDetail.open) {
-                        otherDetail.open = false;
+                // Find siblings to close
+                let siblings;
+                if (parentSelector) {
+                    const parent = this.closest(parentSelector);
+                    siblings = parent ? parent.querySelectorAll(itemSelector) : [];
+                } else {
+                    siblings = document.querySelectorAll(itemSelector);
+                }
+                
+                // Close all other items at this level
+                siblings.forEach(sibling => {
+                    if (sibling !== this && sibling.open) {
+                        sibling.open = false;
                     }
                 });
-            }
-        });
-    });
-}
-
-function initSubsectionAccordion() {
-    const subsectionDetails = document.querySelectorAll('.lesson-plan-subsection');
-    
-    subsectionDetails.forEach(detail => {
-        detail.addEventListener('toggle', function() {
-            if (this.open) {
-                // Close all other subsections in the same section
-                const section = this.closest('.lesson-plan-section');
-                if (section) {
-                    section.querySelectorAll('.lesson-plan-subsection').forEach(otherDetail => {
-                        if (otherDetail !== this && otherDetail.open) {
-                            otherDetail.open = false;
-                        }
-                    });
-                }
-            }
-        });
-    });
-}
-
-function initTopicAccordion() {
-    const topicDetails = document.querySelectorAll('.lesson-plan-topic');
-    
-    topicDetails.forEach(detail => {
-        detail.addEventListener('toggle', function() {
-            if (this.open) {
-                // Close all other topics in the same subsection
-                const subsection = this.closest('.lesson-plan-subsection');
-                if (subsection) {
-                    subsection.querySelectorAll('.lesson-plan-topic').forEach(otherDetail => {
-                        if (otherDetail !== this && otherDetail.open) {
-                            otherDetail.open = false;
-                        }
-                    });
-                }
             }
         });
     });
