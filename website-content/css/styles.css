@@ -774,4 +774,64 @@ footer a:hover {
     .container {
         padding: 0 0.5rem;
     }
+    
+    /* Reduce nested padding in lesson plans to prevent content squashing */
+    .lesson-plan-section {
+        padding: 0.75rem;
+        border-radius: 8px;
+    }
+    
+    .lesson-plan-subsection {
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        background: transparent;
+        border-left: 3px solid var(--primary-color);
+        border-top: none;
+        border-right: none;
+        border-bottom: none;
+    }
+    
+    .lesson-plan-topic {
+        padding: 0.5rem;
+        border-radius: 6px;
+        background: var(--white);
+        border: 1px solid #e0e0e0;
+    }
+    
+    .lesson-plan-topic-direct {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .lesson-plan-sections {
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .lesson-plan-subsections {
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+    
+    .lesson-plan-topics {
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    /* Reduce button padding on mobile */
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .lesson-plan-course {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .btn-access-course {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
 }
