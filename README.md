@@ -85,6 +85,3 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for gu
 
 For questions or support, please open an issue on GitHub or contact the project maintainers.
 
----
-
-**Kenya Institute of Curriculum Development** | **Competency-Based Curriculum**
