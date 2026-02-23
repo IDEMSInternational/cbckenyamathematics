@@ -97,7 +97,7 @@ function loadPageContent() {
 
     const pagePath = `website-content/pages/${page}.html`;
 
-    fetch(pagePath, { cache: 'no-store' })
+    fetch(pagePath)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load ${pagePath}`);
@@ -128,7 +128,7 @@ function loadResources() {
 
     const dataPath = getResourcesDataPath();
 
-    fetch(dataPath, { cache: 'no-store' })
+    fetch(dataPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to load resources');
@@ -198,7 +198,7 @@ function loadLessonPlanChapterButtons() {
 
     const dataPath = getLessonPlansDataPath();
 
-    fetch(dataPath, { cache: 'no-store' })
+    fetch(dataPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to load lesson plan catalog');
@@ -238,7 +238,7 @@ function loadLessonPlanCatalog() {
 
     const dataPath = getLessonPlansDataPath();
 
-    fetch(dataPath, { cache: 'no-store' })
+    fetch(dataPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to load lesson plan catalog');
