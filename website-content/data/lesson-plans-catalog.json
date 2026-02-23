@@ -2471,5 +2471,10 @@
         }
       ]
     }
-  ]
+  ],
+  "chapterUrlMap": {
+    "numbers-and-algebra": "numbers",
+    "measurements-and-geometry": "measurements",
+    "statistics-and-probability": "statistics"
+  }
 }

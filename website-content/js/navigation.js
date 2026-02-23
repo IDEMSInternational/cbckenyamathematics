@@ -207,6 +207,7 @@ function loadLessonPlanChapterButtons() {
         })
         .then(data => {
             const chapters = Array.isArray(data.chapters) ? data.chapters : [];
+            const urlMap = data.chapterUrlMap || {};
             
             if (chapters.length === 0) {
                 buttonContainer.innerHTML = '<p>No chapters available</p>';
@@ -215,9 +216,8 @@ function loadLessonPlanChapterButtons() {
 
             // Create buttons for each chapter
             const buttonsHTML = chapters.map(chapter => {
-                // Map chapter IDs to page names:
-                // numbers-algebra → numbers, measurements-geometry → measurements, etc.
-                const pageSlug = chapter.id.split('-')[0];
+                // Use explicit URL mapping from catalog, with fallback to first word
+                const pageSlug = urlMap[chapter.id] || chapter.id.split('-')[0];
                 return `<a href="index.html?page=resources-lesson-plans-${pageSlug}" class="btn btn-primary">${chapter.title}</a>`;
             }).join('');
 

@@ -339,6 +339,15 @@ function buildCatalog(bookStructure, fileMatching) {
         });
     });
 
+    // Generate URL mapping for chapters
+    // Maps full chapter IDs to short URL slugs
+    catalog.chapterUrlMap = {};
+    catalog.chapters.forEach(chapter => {
+        // Extract first word from chapter ID as the URL slug
+        const urlSlug = chapter.id.split('-')[0];
+        catalog.chapterUrlMap[chapter.id] = urlSlug;
+    });
+
     return catalog;
 }
 
