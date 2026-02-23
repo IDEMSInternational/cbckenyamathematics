@@ -1,6 +1,6 @@
 # CBC Kenya Mathematics
 
-A free, interactive textbook and resource hub for CBC Mathematics Grade 10, published by the Kenya Institute of Curriculum Development. This project provides interactive lessons, exercises, lesson plans, guides, and training courses supporting Kenya's Competency-Based Curriculum.
+A free, interactive textbook and resource hub for Grade 10 CBC Mathematics. This project provides interactive lessons, exercises, lesson plans, guides, and training courses supporting Kenya's Competency-Based Curriculum.
 
 ## 🚀 Quick Start
 
