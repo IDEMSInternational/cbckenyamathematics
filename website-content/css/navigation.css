@@ -14,7 +14,7 @@ header {
 .header-content {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem clamp(1.5rem, 3vw, 3rem);
+    padding: 1rem clamp(0.75rem, 3vw, 3rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,6 +29,15 @@ header {
 .logo-section img {
     height: 50px;
     width: auto;
+}
+
+.site-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-title-link:hover {
+    opacity: 0.9;
 }
 
 .site-title {
@@ -198,6 +207,10 @@ nav ul ul li.has-submenu > a::after {
         border: none;
         box-shadow: none;
         padding: 0;
+        display: none; /* Hidden by default on mobile */
+    }
+    
+    nav ul ul.mobile-open {
         display: block;
     }
 
@@ -212,11 +225,17 @@ nav ul ul li.has-submenu > a::after {
 
     nav li.has-submenu > a::after,
     nav ul ul li.has-submenu > a::after {
-        content: "▾";
-        float: none;
+        content: "▸";
+        float: right;
         font-size: 0.95rem;
         font-weight: 700;
         opacity: 0.9;
+        transition: transform 0.3s ease;
+    }
+    
+    nav li.has-submenu.mobile-open > a::after,
+    nav ul ul li.has-submenu.mobile-open > a::after {
+        content: "▾";
     }
     
     /* Hamburger Animation */
@@ -230,5 +249,24 @@ nav ul ul li.has-submenu > a::after {
     
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .site-title {
+        font-size: 1.5rem;
+    }
+    
+    .logo-section {
+        gap: 0.5rem;
+    }
+    
+    .logo-section img {
+        height: 40px;
     }
 }

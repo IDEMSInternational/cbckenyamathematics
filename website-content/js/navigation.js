@@ -43,9 +43,54 @@ function initMobileMenu() {
             if (window.innerWidth > 768 && nav.classList.contains('active')) {
                 nav.classList.remove('active');
                 menuToggle.classList.remove('active');
+                // Remove mobile-open classes when switching to desktop
+                document.querySelectorAll('.mobile-open').forEach(el => {
+                    el.classList.remove('mobile-open');
+                });
             }
         });
+        
+        // Handle mobile submenu toggles
+        initMobileSubmenus();
     }
+}
+
+/**
+ * Initialize mobile submenu toggle functionality
+ */
+function initMobileSubmenus() {
+    const submenuLinks = document.querySelectorAll('nav li.has-submenu > a');
+    
+    submenuLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            // Only toggle on mobile
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                
+                const parentLi = link.parentElement;
+                const submenu = parentLi.querySelector(':scope > ul');
+                
+                if (submenu) {
+                    const isOpen = parentLi.classList.contains('mobile-open');
+                    
+                    // Close other submenus at the same level
+                    const siblings = Array.from(parentLi.parentElement.children);
+                    siblings.forEach(sibling => {
+                        if (sibling !== parentLi && sibling.classList.contains('has-submenu')) {
+                            sibling.classList.remove('mobile-open');
+                        }
+                    });
+                    
+                    // Toggle current submenu
+                    if (isOpen) {
+                        parentLi.classList.remove('mobile-open');
+                    } else {
+                        parentLi.classList.add('mobile-open');
+                    }
+                }
+            }
+        });
+    });
 }
 
 /**
@@ -353,6 +398,16 @@ function initAccordionLevel(itemSelector, parentSelector) {
     items.forEach(item => {
         item.addEventListener('toggle', function() {
             if (this.open) {
+                // Get sticky header height for offset calculation
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const offset = headerHeight + 20; // Add 20px padding below header
+                
+                // Store the position of the clicked element before closing others
+                const clickedElementRect = this.getBoundingClientRect();
+                const clickedElementTop = clickedElementRect.top;
+                const scrollBefore = window.pageYOffset || document.documentElement.scrollTop;
+                
                 // Find siblings to close
                 let siblings;
                 if (parentSelector) {
@@ -366,6 +421,31 @@ function initAccordionLevel(itemSelector, parentSelector) {
                 siblings.forEach(sibling => {
                     if (sibling !== this && sibling.open) {
                         sibling.open = false;
+                    }
+                });
+                
+                // Allow the DOM to update, then adjust scroll position
+                requestAnimationFrame(() => {
+                    const clickedElementRectAfter = this.getBoundingClientRect();
+                    const clickedElementTopAfter = clickedElementRectAfter.top;
+                    
+                    // If element top is at or above the safe zone (below header), scroll it down
+                    if (clickedElementTopAfter <= offset) {
+                        // Scroll to position element below the header with padding
+                        const elementAbsoluteTop = this.offsetTop;
+                        window.scrollTo({
+                            top: elementAbsoluteTop - offset,
+                            behavior: 'smooth'
+                        });
+                    } else if (clickedElementTopAfter !== clickedElementTop) {
+                        // Element moved but is visible - keep it in place
+                        const scrollAfter = window.pageYOffset || document.documentElement.scrollTop;
+                        const shift = clickedElementTopAfter - clickedElementTop;
+                        
+                        window.scrollTo({
+                            top: scrollAfter - shift,
+                            behavior: 'instant'
+                        });
                     }
                 });
             }
@@ -385,17 +465,7 @@ function renderLessonPlanChapter(chapter, baseUrl) {
 
 function renderLessonPlanSection(section, baseUrl) {
     const subsections = Array.isArray(section.subsections) ? section.subsections : [];
-    const learningObjectives = Array.isArray(section.learningObjectives) ? section.learningObjectives : [];
     const course = section.course || {};
-    
-    const objectivesMarkup = learningObjectives.length > 0
-        ? `<div class="lesson-plan-learning-objectives">
-                <h4>Learning Objectives:</h4>
-                <ul>
-                    ${learningObjectives.map(obj => `<li>${obj}</li>`).join('')}
-                </ul>
-           </div>`
-        : '';
     
     const courseMarkup = course.url && course.url !== '#'
         ? `<div class="lesson-plan-course">
@@ -410,7 +480,6 @@ function renderLessonPlanSection(section, baseUrl) {
                 <h3>${section.title || '[Section]'}</h3>
                 ${courseMarkup}
             </summary>
-            ${objectivesMarkup}
             <div class="lesson-plan-subsections">
                 ${subsections.map(subsection => renderLessonPlanSubsection(subsection, section, baseUrl)).join('')}
             </div>
