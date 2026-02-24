@@ -139,7 +139,14 @@ section.hero ul {
 }
 
 .key-contacts-row + .key-contacts-row {
-    margin-top: 6px;
+    margin-top: 16px;
+}
+
+.contact-title {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 4px;
+    font-weight: 400;
 }
 
 .key-contacts a {
@@ -223,6 +230,11 @@ section.hero ul {
 .about-preview h2,
 .about-preview h3 {
     color: var(--primary-color);
+}
+
+.about-preview p {
+    font-size: 0.95em;
+    margin-bottom: 0.5rem;
 }
 
 /* ===========================
