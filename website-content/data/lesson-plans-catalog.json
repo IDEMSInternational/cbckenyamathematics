@@ -534,11 +534,11 @@
       ]
     },
     {
-      "id": "numbers-and-algebra",
+      "id": "measurements-and-geometry",
       "title": "Measurements and Geometry",
       "sections": [
         {
-          "id": "quadratic-expressions-and-equations",
+          "id": "similarity-and-enlargement",
           "title": "Similarity and Enlargement",
           "learningObjectives": [
             "Construct the image of an object under an enlargement given the centre and the linear scale factor",
@@ -551,7 +551,7 @@
           ],
           "subsections": [
             {
-              "id": "quadratic-equations",
+              "id": "introduction-to-similarity",
               "title": "Introduction to Similarity",
               "hasSubtopics": false,
               "learningObjectiveRefs": [
@@ -560,11 +560,11 @@
                 2
               ],
               "lessonPlan": {
-                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/quadratic-equations-in-real-life.pdf",
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/introduction-to-similarity.pdf",
                 "exists": true
               },
               "guide": {
-                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/numbers-and-algebra/quadratic-expressions-and-equations/step-by-step-guide_quadratic-equations-in-real-life.pdf",
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/similarity-and-enlargement/step-by-step-guide_introduction-to-similarity.pdf",
                 "exists": true
               }
             },
