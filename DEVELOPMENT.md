@@ -6,7 +6,7 @@ This guide explains the technical details of the CBC Kenya Mathematics website, 
 
 ### Overview
 
-The lesson plans catalog on the website is automatically generated from CSV files exported from Google Sheets. This ensures the website stays in sync with the curriculum planning documents.
+The lesson plans catalog on the website is automatically generated from a CSV file exported from Google Sheets. This ensures the website stays in sync with the curriculum planning documents.
 
 **Data Flow:**
 ```
@@ -15,16 +15,14 @@ Google Sheets → CSV Export → Conversion Script → JSON Catalog → Website 
 
 ### The Data Files
 
-**Input Files (in `website-content/data/`):**
-- **book-structure.csv** — Lesson plan metadata including:
+**Input File (in `website-content/data/`):**
+- **Website.csv** — Complete lesson plan data including:
   - Chapter, section, subsection, and topic hierarchy
-  - Lesson names and learning objectives
-  - Status flags (textbook ready, lesson plan status, guide status)
-  
-- **file-matching.csv** — File information including:
-  - URL-safe IDs for each hierarchy level
+  - URL-safe IDs for each hierarchy level (Chapter Filecase, Section Filecase, etc.)
   - File paths for lesson plans and step-by-step guides
   - Existence flags (whether PDFs are available)
+  - Learning objectives (LO 1, LO 2, LO 3, LO 4)
+  - Course URLs for certification courses
 
 **Output File:**
 - **lesson-plans-catalog.json** — Structured catalog that the website uses to display all lesson plans in a hierarchical, navigable format
@@ -45,9 +43,8 @@ If you don't see a version number, [download and install Node.js](https://nodejs
 
 1. Open the "Book and Lesson Plan Structure" Google Sheet
 2. Go to **File → Download → Comma Separated Values (.csv)**
-3. Export the **"New Book Structure"** tab and save it as `book-structure.csv`
-4. Export the **"File Matching"** tab and save it as `file-matching.csv`
-5. Place both files in the `website-content/data/` folder (replacing the old ones)
+3. Export the **"Website"** tab and save it as `Website.csv`
+4. Place the file in the `website-content/data/` folder (replacing the old one)
 
 #### Step 2: Run the Conversion Script
 
@@ -67,10 +64,9 @@ node .\scripts\csv-to-lesson-plans-json.js
 
 You should see output like:
 ```
-📖 Reading CSV files...
+📖 Reading CSV file...
 📊 Parsing CSV data...
-   Book structure: 130 rows
-   File matching: 130 rows
+   Website data: 130 rows
 
 🔍 Validating data...
    ✓ All validation checks passed
@@ -156,9 +152,8 @@ The generated catalog follows this hierarchical structure:
 The conversion script includes comprehensive validation:
 
 - **Required columns check** - Ensures all necessary CSV columns are present
-- **Learning objectives consistency** - Compares LOs between book-structure.csv and file-matching.csv
-- **Typo detection** - Checks for common spelling errors
-- **Data completeness** - Validates that key fields have values
+- **Typo detection** - Checks for common spelling errors in subsection and topic names
+- **Data completeness** - Validates that key fields like learning objectives have values
 
 All issues are logged with line numbers for easy fixing in the source spreadsheet.
 
@@ -168,8 +163,8 @@ All issues are logged with line numbers for easy fixing in the source spreadshee
 - Make sure you're running the command from the project root folder (where `scripts/` is visible)
 
 **"No such file or directory" error:**
-- Check that both CSV files exist in `website-content/data/`
-- Check that the filenames are exactly `book-structure.csv` and `file-matching.csv`
+- Check that the CSV file exists in `website-content/data/`
+- Check that the filename is exactly `Website.csv` (with capital W)
 
 **Validation errors:**
 - Review the console output for specific issues and line numbers

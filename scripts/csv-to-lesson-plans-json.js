@@ -1,7 +1,7 @@
 /**
  * CSV to Lesson Plans JSON Converter
  * 
- * Converts book-structure.csv and file-matching.csv to lesson-plans-catalog.json
+ * Converts Website.csv to lesson-plans-catalog.json
  * 
  * Usage: node scripts/csv-to-lesson-plans-json.js
  */
@@ -10,8 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 const BASE_URL = 'https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/';
-const BOOK_STRUCTURE_CSV = path.join(__dirname, '../website-content/data/book-structure.csv');
-const FILE_MATCHING_CSV = path.join(__dirname, '../website-content/data/file-matching.csv');
+const WEBSITE_CSV = path.join(__dirname, '../website-content/data/Website.csv');
 const OUTPUT_JSON = path.join(__dirname, '../website-content/data/lesson-plans-catalog.json');
 
 /**
@@ -82,77 +81,56 @@ function generateId(text) {
 /**
  * Validate the parsed data
  */
-function validateData(bookStructure, fileMatching) {
+function validateData(websiteData) {
     const errors = [];
     const warnings = [];
 
     console.log('\n🔍 Validating data...');
 
-    // Check for required columns in book structure
-    const requiredBookColumns = ['Chapter', 'Section', 'Subsection', 'Lesson Name', 'LO 1'];
-    if (bookStructure.length > 0) {
-        const bookColumns = Object.keys(bookStructure[0]);
-        requiredBookColumns.forEach(col => {
-            if (!bookColumns.includes(col)) {
-                errors.push(`Missing required column in book-structure.csv: ${col}`);
+    // Check for required columns
+    const requiredColumns = [
+        'Chapter', 'Section', 'Subsection',
+        'Chapter Filecase', 'Section Filecase', 'Subsection Filecase',
+        'Lesson Plan Path', 'Lesson Plan Exists',
+        'LO 1'
+    ];
+    
+    if (websiteData.length > 0) {
+        const columns = Object.keys(websiteData[0]);
+        requiredColumns.forEach(col => {
+            if (!columns.includes(col)) {
+                errors.push(`Missing required column in Website.csv: ${col}`);
             }
         });
+    } else {
+        errors.push('Website.csv appears to be empty');
     }
 
-    // Check for required columns in file matching
-    const requiredFileColumns = ['Chapter', 'Section', 'Subsection', 'Lesson Plan Path', 'Lesson Plan Exists'];
-    if (fileMatching.length > 0) {
-        const fileColumns = Object.keys(fileMatching[0]);
-        requiredFileColumns.forEach(col => {
-            if (!fileColumns.includes(col)) {
-                errors.push(`Missing required column in file-matching.csv: ${col}`);
-            }
-        });
-    }
-
-    // Check for LO consistency between files
-    const bookLOs = new Map();
-    bookStructure.forEach((row, idx) => {
-        const key = `${row.Chapter}|${row.Section}|${row.Subsection}|${row.Subsubsection}`.toLowerCase();
-        const los = [row['LO 1'], row['LO 2'], row['LO 3'], row['LO 4']].filter(lo => lo && lo.trim());
-        if (los.length > 0) {
-            bookLOs.set(key, { los, row: idx + 2, lessonName: row['Lesson Name'] });
-        }
-    });
-
-    fileMatching.forEach((row, idx) => {
-        const key = `${row.Chapter}|${row.Section}|${row.Subsection}|${row.Subsubsection}`.toLowerCase();
-        const fileLOs = [row['LO 1'], row['LO 2'], row['LO 3'], row['LO 4']].filter(lo => lo && lo.trim());
-        
-        if (bookLOs.has(key)) {
-            const bookData = bookLOs.get(key);
-            const bookLOsStr = bookData.los.join('|');
-            const fileLOsStr = fileLOs.join('|');
-            
-            if (bookLOsStr !== fileLOsStr) {
-                warnings.push(
-                    `LO mismatch for "${bookData.lessonName}" (book row ${bookData.row}, file row ${idx + 2}):\n` +
-                    `  Book: ${bookLOsStr.substring(0, 80)}${bookLOsStr.length > 80 ? '...' : ''}\n` +
-                    `  File: ${fileLOsStr.substring(0, 80)}${fileLOsStr.length > 80 ? '...' : ''}`
-                );
-            }
-        }
-    });
-
-    // Check for common typos
+    // Check for common typos in subsection/subsubsection names
     const typoPatterns = [
         { pattern: /accel[ae]ration/i, correct: 'acceleration' },
         { pattern: /occurance/i, correct: 'occurrence' },
         { pattern: /seperate/i, correct: 'separate' }
     ];
 
-    bookStructure.forEach((row, idx) => {
-        const lessonName = row['Lesson Name'] || '';
+    websiteData.forEach((row, idx) => {
+        const subsectionName = row['Subsection'] || '';
+        const subsubsectionName = row['Subsubsection'] || '';
+        
         typoPatterns.forEach(({ pattern, correct }) => {
-            if (pattern.test(lessonName) && !lessonName.match(new RegExp(correct, 'i'))) {
-                warnings.push(`Possible typo in "${lessonName}" (row ${idx + 2}), did you mean "${correct}"?`);
+            if (pattern.test(subsectionName) && !subsectionName.match(new RegExp(correct, 'i'))) {
+                warnings.push(`Possible typo in "${subsectionName}" (row ${idx + 2}), did you mean "${correct}"?`);
+            }
+            if (pattern.test(subsubsectionName) && !subsubsectionName.match(new RegExp(correct, 'i'))) {
+                warnings.push(`Possible typo in "${subsubsectionName}" (row ${idx + 2}), did you mean "${correct}"?`);
             }
         });
+
+        // Warn if learning objectives are missing
+        const hasLO = row['LO 1'] && row['LO 1'].trim();
+        if (!hasLO) {
+            warnings.push(`No learning objectives found for row ${idx + 2}`);
+        }
     });
 
     // Report results
@@ -176,23 +154,16 @@ function validateData(bookStructure, fileMatching) {
 /**
  * Build the lesson plans catalog structure
  */
-function buildCatalog(bookStructure, fileMatching) {
+function buildCatalog(websiteData) {
     const catalog = {
         baseUrl: BASE_URL,
         chapters: []
     };
 
-    // Create a map for quick lookup of file data
-    const fileMap = new Map();
-    fileMatching.forEach(row => {
-        const key = `${row.Chapter}|${row.Section}|${row.Subsection}|${row.Subsubsection}`.toLowerCase();
-        fileMap.set(key, row);
-    });
-
     // Build hierarchy
     const chapterMap = new Map();
 
-    bookStructure.forEach(row => {
+    websiteData.forEach(row => {
         const chapterName = row.Chapter;
         const sectionName = row.Section;
         const subsectionName = row.Subsection;
@@ -200,14 +171,10 @@ function buildCatalog(bookStructure, fileMatching) {
 
         if (!chapterName || !sectionName) return;
 
-        // Get file matching data
-        const fileKey = `${chapterName}|${sectionName}|${subsectionName}|${subsubsectionName}`.toLowerCase();
-        const fileData = fileMap.get(fileKey);
-
         // Get or create chapter
         if (!chapterMap.has(chapterName)) {
             chapterMap.set(chapterName, {
-                id: fileData ? fileData['Chapter Filecase'] : generateId(chapterName),
+                id: row['Chapter Filecase'] || generateId(chapterName),
                 title: chapterName,
                 sections: new Map()
             });
@@ -217,14 +184,20 @@ function buildCatalog(bookStructure, fileMatching) {
         // Get or create section
         if (!chapter.sections.has(sectionName)) {
             chapter.sections.set(sectionName, {
-                id: fileData ? fileData['Section Filecase'] : generateId(sectionName),
+                id: row['Section Filecase'] || generateId(sectionName),
                 title: sectionName,
+                courseUrl: row['Course URL'] || null,
                 learningObjectives: [],
                 learningObjectivesMap: new Map(),
                 subsections: new Map()
             });
         }
         const section = chapter.sections.get(sectionName);
+
+        // Update course URL if we find one (in case it's on later rows)
+        if (row['Course URL'] && row['Course URL'].trim() && !section.courseUrl) {
+            section.courseUrl = row['Course URL'].trim();
+        }
 
         // Collect learning objectives at section level
         const los = [row['LO 1'], row['LO 2'], row['LO 3'], row['LO 4']]
@@ -248,17 +221,17 @@ function buildCatalog(bookStructure, fileMatching) {
             // Direct topic (no subsubsection)
             if (!section.subsections.has(subsectionName)) {
                 section.subsections.set(subsectionName, {
-                    id: fileData ? fileData['Subsection Filecase'] : generateId(subsectionName),
+                    id: row['Subsection Filecase'] || generateId(subsectionName),
                     title: subsectionName,
                     hasSubtopics: false,
                     learningObjectiveRefs: loRefs,
                     lessonPlan: {
-                        url: fileData ? BASE_URL + fileData['Lesson Plan Path'] : '',
-                        exists: fileData ? (fileData['Lesson Plan Exists'] === 'YES') : false
+                        url: row['Lesson Plan Path'] ? BASE_URL + row['Lesson Plan Path'] : '',
+                        exists: row['Lesson Plan Exists'] === 'YES'
                     },
                     guide: {
-                        url: fileData ? BASE_URL + fileData['Step By Step Guide Path'] : '',
-                        exists: fileData ? (fileData['Step By Step Guide Exists'] === 'YES') : false
+                        url: row['Step By Step Guide Path'] ? BASE_URL + row['Step By Step Guide Path'] : '',
+                        exists: row['Step By Step Guide Exists'] === 'YES'
                     }
                 });
             }
@@ -266,7 +239,7 @@ function buildCatalog(bookStructure, fileMatching) {
             // Has subsubsections - create/update subsection with topics
             if (!section.subsections.has(subsectionName)) {
                 section.subsections.set(subsectionName, {
-                    id: fileData ? fileData['Subsection Filecase'] : generateId(subsectionName),
+                    id: row['Subsection Filecase'] || generateId(subsectionName),
                     title: subsectionName,
                     hasSubtopics: true,
                     topics: []
@@ -283,16 +256,16 @@ function buildCatalog(bookStructure, fileMatching) {
 
             // Add topic (subsubsection)
             subsection.topics.push({
-                id: fileData ? fileData['Subsubsection Filecase'] : generateId(subsubsectionName),
+                id: row['Subsubsection Filecase'] || generateId(subsubsectionName),
                 title: subsubsectionName,
                 learningObjectiveRefs: loRefs,
                 lessonPlan: {
-                    url: fileData ? BASE_URL + fileData['Lesson Plan Path'] : '',
-                    exists: fileData ? (fileData['Lesson Plan Exists'] === 'YES') : false
+                    url: row['Lesson Plan Path'] ? BASE_URL + row['Lesson Plan Path'] : '',
+                    exists: row['Lesson Plan Exists'] === 'YES'
                 },
                 guide: {
-                    url: fileData ? BASE_URL + fileData['Step By Step Guide Path'] : '',
-                    exists: fileData ? (fileData['Step By Step Guide Exists'] === 'YES') : false
+                    url: row['Step By Step Guide Path'] ? BASE_URL + row['Step By Step Guide Path'] : '',
+                    exists: row['Step By Step Guide Exists'] === 'YES'
                 }
             });
         }
@@ -324,12 +297,22 @@ function buildCatalog(bookStructure, fileMatching) {
                 subsectionsArray.push(cleanSubsection);
             });
 
-            sectionsArray.push({
+            const sectionObj = {
                 id: section.id,
                 title: section.title,
                 learningObjectives: section.learningObjectives,
                 subsections: subsectionsArray
-            });
+            };
+
+            // Add course object if URL exists
+            if (section.courseUrl) {
+                sectionObj.course = {
+                    title: section.title,
+                    url: section.courseUrl
+                };
+            }
+
+            sectionsArray.push(sectionObj);
         });
 
         catalog.chapters.push({
@@ -347,29 +330,23 @@ function buildCatalog(bookStructure, fileMatching) {
  */
 function main() {
     try {
-        console.log('📖 Reading CSV files...');
+        console.log('📖 Reading CSV file...');
         
-        // Check files exist
-        if (!fs.existsSync(BOOK_STRUCTURE_CSV)) {
-            throw new Error(`Book structure CSV not found: ${BOOK_STRUCTURE_CSV}`);
-        }
-        if (!fs.existsSync(FILE_MATCHING_CSV)) {
-            throw new Error(`File matching CSV not found: ${FILE_MATCHING_CSV}`);
+        // Check file exists
+        if (!fs.existsSync(WEBSITE_CSV)) {
+            throw new Error(`Website CSV not found: ${WEBSITE_CSV}`);
         }
 
-        // Read and parse CSVs
-        const bookStructureContent = fs.readFileSync(BOOK_STRUCTURE_CSV, 'utf-8');
-        const fileMatchingContent = fs.readFileSync(FILE_MATCHING_CSV, 'utf-8');
+        // Read and parse CSV
+        const websiteContent = fs.readFileSync(WEBSITE_CSV, 'utf-8');
         
         console.log('📊 Parsing CSV data...');
-        const bookStructure = parseCSV(bookStructureContent);
-        const fileMatching = parseCSV(fileMatchingContent);
+        const websiteData = parseCSV(websiteContent);
         
-        console.log(`   Book structure: ${bookStructure.length} rows`);
-        console.log(`   File matching: ${fileMatching.length} rows`);
+        console.log(`   Website data: ${websiteData.length} rows`);
 
         // Validate data
-        const validation = validateData(bookStructure, fileMatching);
+        const validation = validateData(websiteData);
         if (validation.errors.length > 0) {
             console.error('\n❌ Validation failed. Please fix errors before continuing.');
             process.exit(1);
@@ -377,7 +354,7 @@ function main() {
 
         // Build catalog
         console.log('🔨 Building lesson plans catalog...');
-        const catalog = buildCatalog(bookStructure, fileMatching);
+        const catalog = buildCatalog(websiteData);
         
         console.log(`   Generated ${catalog.chapters.length} chapters`);
         catalog.chapters.forEach(chapter => {
