@@ -270,3 +270,264 @@ nav ul ul li.has-submenu > a::after {
         height: 40px;
     }
 }
+
+/* ===========================
+   Chapter Navigation Bar
+   =========================== */
+.chapter-nav {
+    position: sticky;
+    top: 70px; /* Below main header */
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem clamp(0.75rem, 3vw, 3rem);
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    z-index: 900;
+    max-width: 100%;
+    overflow: visible;
+}
+
+.chapter-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--primary-color, #67A3B3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.chapter-nav-btn:hover:not(:disabled) {
+    background: var(--primary-dark, #558899);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.chapter-nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.chapter-nav-btn .nav-arrow {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Dropdown */
+.chapter-nav-dropdown {
+    position: relative;
+    flex: 1;
+    max-width: 500px;
+    overflow: visible;
+}
+
+.chapter-nav-current {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    background: var(--light-bg, #f7fbfc);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color, #2c3e50);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 0.75rem;
+}
+
+.chapter-nav-current:hover {
+    background: var(--white, #ffffff);
+    border-color: var(--primary-dark, #558899);
+}
+
+.chapter-nav-current[aria-expanded="true"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent;
+}
+
+.dropdown-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.dropdown-label {
+    flex: 1;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropdown-arrow {
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+}
+
+.chapter-nav-current[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.chapter-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white, #ffffff);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+.chapter-nav-menu.active {
+    display: block;
+}
+
+.chapter-nav-menu li {
+    margin: 0;
+}
+
+.chapter-nav-menu button {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    text-align: left;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color, #d9e7ec);
+    font-size: 1rem;
+    color: var(--text-color, #2c3e50);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.chapter-nav-menu li:last-child button {
+    border-bottom: none;
+    border-radius: 0 0 6px 6px;
+}
+
+.chapter-nav-menu button:hover {
+    background: var(--light-bg, #f7fbfc);
+}
+
+.chapter-nav-menu button.current {
+    background: var(--primary-color, #67A3B3);
+    color: white;
+    font-weight: 600;
+}
+
+.chapter-nav-menu button.current::before {
+    content: '✓ ';
+    margin-right: 0.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .chapter-nav {
+        top: 60px; /* Adjust for smaller header */
+        padding: 1rem 0.75rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        gap: 0.5rem;
+        align-items: stretch;
+        min-height: fit-content;
+    }
+    
+    .chapter-nav-btn {
+        padding: 0.875rem 0.75rem;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        align-self: center;
+    }
+    
+    .chapter-nav-btn .nav-label {
+        display: none; /* Hide "Prev" and "Next" text on mobile */
+    }
+    
+    .chapter-nav-btn .nav-arrow {
+        font-size: 1.5rem;
+    }
+    
+    .chapter-nav-dropdown {
+        min-width: 0;
+        flex-shrink: 1;
+        flex-grow: 1;
+        display: flex;
+        align-items: stretch;
+    }
+    
+    .chapter-nav-current {
+        padding: 0.875rem 0.75rem;
+        font-size: 0.875rem;
+        align-items: center;
+        min-width: 0;
+        width: 100%;
+        min-height: fit-content;
+    }
+    
+    .dropdown-icon {
+        font-size: 1rem;
+        flex-shrink: 0;
+        align-self: flex-start;
+        margin-top: 0.1rem;
+    }
+    
+    .dropdown-label {
+        font-size: 0.875rem;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        line-height: 1.3;
+        min-width: 0;
+        flex: 1;
+    }
+    
+    .dropdown-arrow {
+        flex-shrink: 0;
+        align-self: flex-start;
+        margin-top: 0.1rem;
+    }
+    
+    .chapter-nav-menu button {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .chapter-nav {
+        gap: 0.375rem;
+    }
+    
+    .chapter-nav-btn {
+        padding: 0.5rem 0.625rem;
+    }
+    
+    .dropdown-icon {
+        display: none; /* Hide icon on very small screens */
+    }
+}
