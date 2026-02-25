@@ -3,7 +3,10 @@
  * Handles mobile menu toggle and active page highlighting
  */
 
+console.log('✅ navigation.js loaded');
+
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOMContentLoaded fired');
     initMobileMenu();
     highlightActivePage();
     loadPageContent();
@@ -12,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadLessonPlanChapterButtons();
     initDropdownPositioning();
     initMenuToggles();
+    // Note: initChapterNavigation() is called after page content loads in loadPageContent()
 });
 
 /**
@@ -148,7 +152,9 @@ function loadPageContent() {
 
     const pagePath = `website-content/pages/${page}.html`;
 
-    fetch(pagePath)
+    fetch(pagePath, {
+        cache: 'no-cache' // Use conditional requests to get fresh content when available
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load ${pagePath}`);
@@ -161,6 +167,7 @@ function loadPageContent() {
             loadResources();
             loadLessonPlanCatalog();
             loadLessonPlanChapterButtons();
+            initChapterNavigation(); // Initialize chapter nav after content is loaded
         })
         .catch((error) => {
             console.error('Error loading page content:', error);
@@ -655,4 +662,191 @@ function initMenuToggles() {
             }
         });
     });
+}
+
+/**
+ * Initialize Chapter Navigation
+ */
+function initChapterNavigation() {
+    console.log('🔍 Initializing chapter navigation...');
+    
+    const chapterNav = document.getElementById('chapterNav');
+    console.log('Chapter nav element:', chapterNav);
+    
+    if (!chapterNav) {
+        console.log('❌ No chapter nav element found - not on lesson plans page');
+        return; // Not on lesson plans page
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const currentChapterId = params.get('chapter');
+    console.log('Current chapter ID from URL:', currentChapterId);
+
+    if (!currentChapterId) {
+        console.log('❌ No chapter ID in URL');
+        return; // No chapter selected
+    }
+
+    console.log('📚 Fetching lesson plans data...');
+    
+    // Load chapters and set up navigation
+    fetch(getLessonPlansDataPath())
+        .then(response => {
+            console.log('Fetch response:', response);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Lesson plans data:', data);
+            const chapters = data.chapters || [];
+            console.log('Chapters:', chapters);
+            setupChapterNavigation(chapters, currentChapterId);
+        })
+        .catch(error => {
+            console.error('❌ Error loading chapters for navigation:', error);
+        });
+}
+
+function setupChapterNavigation(chapters, currentChapterId) {
+    console.log('⚙️ Setting up chapter navigation...');
+    console.log('Chapters array:', chapters);
+    console.log('Current chapter ID:', currentChapterId);
+    
+    const currentIndex = chapters.findIndex(ch => ch.id === currentChapterId);
+    console.log('Current chapter index:', currentIndex);
+    
+    if (currentIndex === -1) {
+        console.log('❌ Chapter not found in chapters array');
+        return; // Chapter not found
+    }
+
+    const prevBtn = document.getElementById('prevChapter');
+    const nextBtn = document.getElementById('nextChapter');
+    const dropdownBtn = document.getElementById('chapterDropdownBtn');
+    const menu = document.getElementById('chapterMenu');
+    const currentLabel = document.querySelector('[data-current-chapter-name]');
+
+    console.log('UI Elements:', { prevBtn, nextBtn, dropdownBtn, menu, currentLabel });
+
+    // Update current chapter label
+    if (currentLabel) {
+        currentLabel.textContent = chapters[currentIndex].title;
+        console.log('✅ Updated current chapter label:', chapters[currentIndex].title);
+    }
+
+    // Populate dropdown menu
+    menu.innerHTML = chapters.map(chapter => {
+        const isCurrent = chapter.id === currentChapterId;
+        return `
+            <li>
+                <button 
+                    class="${isCurrent ? 'current' : ''}" 
+                    data-chapter-id="${chapter.id}"
+                    role="menuitem">
+                    ${chapter.title}
+                </button>
+            </li>
+        `;
+    }).join('');
+    
+    console.log('✅ Populated dropdown menu with', chapters.length, 'chapters');
+
+    // Set up prev/next buttons
+    if (currentIndex === 0) {
+        prevBtn.disabled = true;
+        console.log('⬅️ Prev button disabled (first chapter)');
+    } else {
+        prevBtn.disabled = false;
+        prevBtn.onclick = () => {
+            console.log('⬅️ Prev button clicked - navigating to:', chapters[currentIndex - 1].id);
+            navigateToChapter(chapters[currentIndex - 1].id);
+        };
+        console.log('⬅️ Prev button enabled');
+    }
+
+    if (currentIndex === chapters.length - 1) {
+        nextBtn.disabled = true;
+        console.log('➡️ Next button disabled (last chapter)');
+    } else {
+        nextBtn.disabled = false;
+        nextBtn.onclick = () => {
+            console.log('➡️ Next button clicked - navigating to:', chapters[currentIndex + 1].id);
+            navigateToChapter(chapters[currentIndex + 1].id);
+        };
+        console.log('➡️ Next button enabled');
+    }
+
+    // Set up dropdown
+    dropdownBtn.onclick = (e) => {
+        console.log('🖱️ Dropdown button clicked');
+        e.stopPropagation();
+        const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+        console.log('Is expanded?', isExpanded, '→ toggling to', !isExpanded);
+        toggleDropdown(!isExpanded);
+    };
+
+    console.log('✅ Dropdown button handler attached');
+
+    // Set up menu item clicks
+    menu.querySelectorAll('button').forEach(btn => {
+        btn.onclick = () => {
+            console.log('🖱️ Menu item clicked');
+            const chapterId = btn.getAttribute('data-chapter-id');
+            if (chapterId && chapterId !== currentChapterId) {
+                navigateToChapter(chapterId);
+            } else {
+                toggleDropdown(false);
+            }
+        };
+    });
+
+    console.log('✅ Menu item handlers attached');
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!dropdownBtn.contains(e.target) && !menu.contains(e.target)) {
+            toggleDropdown(false);
+        }
+    });
+
+    // Close dropdown on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            toggleDropdown(false);
+        }
+    });
+}
+
+function toggleDropdown(show) {
+    console.log('🔄 toggleDropdown called with show =', show);
+    
+    const dropdownBtn = document.getElementById('chapterDropdownBtn');
+    const menu = document.getElementById('chapterMenu');
+    
+    console.log('Dropdown elements:', { dropdownBtn, menu });
+    
+    if (!dropdownBtn || !menu) {
+        console.log('❌ Missing dropdown elements');
+        return;
+    }
+    
+    if (show) {
+        console.log('✅ Opening dropdown');
+        dropdownBtn.setAttribute('aria-expanded', 'true');
+        menu.classList.add('active');
+    } else {
+        console.log('✅ Closing dropdown');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('active');
+    }
+    
+    console.log('Dropdown state:', {
+        expanded: dropdownBtn.getAttribute('aria-expanded'),
+        menuClasses: menu.className
+    });
+}
+
+function navigateToChapter(chapterId) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('chapter', chapterId);
+    window.location.href = url.toString();
 }

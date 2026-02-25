@@ -3,6 +3,30 @@
     <p>Explore chapter-specific lesson plans, step-by-step guides, and supporting courses.</p>
 </section>
 
+<!-- Chapter Navigation Bar -->
+<nav class="chapter-nav" id="chapterNav" aria-label="Chapter navigation">
+    <button class="chapter-nav-btn chapter-nav-prev" id="prevChapter" title="Previous chapter">
+        <span class="nav-arrow">←</span>
+        <span class="nav-label">Prev</span>
+    </button>
+    
+    <div class="chapter-nav-dropdown">
+        <button class="chapter-nav-current" id="chapterDropdownBtn" aria-haspopup="true" aria-expanded="false">
+            <span class="dropdown-icon">📚</span>
+            <span class="dropdown-label" data-current-chapter-name>Chapters</span>
+            <span class="dropdown-arrow">▾</span>
+        </button>
+        <ul class="chapter-nav-menu" id="chapterMenu" role="menu">
+            <!-- Populated by JavaScript -->
+        </ul>
+    </div>
+    
+    <button class="chapter-nav-btn chapter-nav-next" id="nextChapter" title="Next chapter">
+        <span class="nav-label">Next</span>
+        <span class="nav-arrow">→</span>
+    </button>
+</nav>
+
 <section>
     <h2 data-chapter-name>Loading...</h2>
     <div class="lesson-plan-catalog" data-lesson-plan-chapter=""></div>
