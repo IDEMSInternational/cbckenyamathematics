@@ -1,7 +1,7 @@
 /**
  * CSV to Lesson Plans JSON Converter
  * 
- * Converts Website.csv to lesson-plans-catalog.json
+ * Converts Automatic-Links.csv to lesson-plans-catalog.json
  * 
  * Usage: node scripts/csv-to-lesson-plans-json.js
  */
@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 const BASE_URL = 'https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/';
-const WEBSITE_CSV = path.join(__dirname, '../website-content/data/Website.csv');
+const AUTOMATIC_LINKS_CSV = path.join(__dirname, '../website-content/data/Automatic-Links.csv');
 const OUTPUT_JSON = path.join(__dirname, '../website-content/data/lesson-plans-catalog.json');
 
 /**
@@ -99,11 +99,11 @@ function validateData(websiteData) {
         const columns = Object.keys(websiteData[0]);
         requiredColumns.forEach(col => {
             if (!columns.includes(col)) {
-                errors.push(`Missing required column in Website.csv: ${col}`);
+                errors.push(`Missing required column in Automatic-Links.csv: ${col}`);
             }
         });
     } else {
-        errors.push('Website.csv appears to be empty');
+        errors.push('Automatic-Links.csv appears to be empty');
     }
 
     // Check for common typos in subsection/subsubsection names
@@ -333,12 +333,12 @@ function main() {
         console.log('📖 Reading CSV file...');
         
         // Check file exists
-        if (!fs.existsSync(WEBSITE_CSV)) {
-            throw new Error(`Website CSV not found: ${WEBSITE_CSV}`);
+        if (!fs.existsSync(AUTOMATIC_LINKS_CSV)) {
+            throw new Error(`Automatic-Links CSV not found: ${AUTOMATIC_LINKS_CSV}`);
         }
 
         // Read and parse CSV
-        const websiteContent = fs.readFileSync(WEBSITE_CSV, 'utf-8');
+        const websiteContent = fs.readFileSync(AUTOMATIC_LINKS_CSV, 'utf-8');
         
         console.log('📊 Parsing CSV data...');
         const websiteData = parseCSV(websiteContent);
