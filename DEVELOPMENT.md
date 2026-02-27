@@ -26,6 +26,8 @@ You never need to manually export anything from Google Sheets — the scripts ha
 
 Follow these steps **once** when setting up the project on a new computer. After that, day-to-day use is just one command.
 
+> **Prerequisites:** You need a Google account that has been given access to the "Automatic Links" spreadsheet. You also need the `credentials.json` file from the project maintainer (see Step 4 below). You do **not** need access to Google Cloud Console.
+
 ### Step 1 — Install Node.js
 
 Node.js is the software that runs the scripts. Check if you already have it:
@@ -57,43 +59,12 @@ npm install
 
 You should see output ending in `added X packages`. This creates a `node_modules/` folder — you never need to look inside it.
 
-### Step 4 — Set Up Google OAuth Credentials
+### Step 4 — Get credentials.json from the Maintainer
 
-The sync script reads a private Google Sheet on your behalf. To do this, it needs a "credentials" file that identifies it to Google.
+The sync script needs a file called `credentials.json` to identify itself to Google. This file is **not** stored in the repository for security reasons — ask the project maintainer to send it to you (by email, Slack, or a shared drive).
 
-This is a one-time setup involving Google Cloud Console. It sounds technical but each step is straightforward.
-
-#### 4a — Go to Google Cloud Console
-
-Open [console.cloud.google.com](https://console.cloud.google.com/) and make sure you are in the correct project (the project name is shown in the top-left dropdown).
-
-#### 4b — Check the APIs are enabled
-
-1. In the left menu go to **APIs & Services → Enabled APIs and services**
-2. Make sure both **Google Sheets API** and **Google Drive API** are listed as enabled
-3. If either is missing, click **+ Enable APIs and Services**, search for it, and enable it
-
-#### 4c — Create OAuth credentials
-
-1. In the left menu go to **APIs & Services → Credentials**
-2. Click **+ Create Credentials** at the top
-3. Choose **OAuth 2.0 Client ID**
-4. If it asks you to configure a consent screen first:
-   - Choose **External** as the user type
-   - Fill in only the required fields (App name and your email address)
-   - Skip all the optional sections and click **Save and Continue** through each step
-   - Come back to **Credentials** afterwards and repeat from step 2
-5. For **Application type** choose **Desktop app**
-6. Give it any name (e.g. `sheets-to-csv sync`)
-7. Click **Create**
-8. On the confirmation popup, click **Download JSON**
-9. A file with a long name like `client_secret_....json` will download
-
-#### 4d — Place the credentials file
-
-1. Rename the downloaded file to exactly **`credentials.json`**
-   > **Windows tip:** Make sure file extensions are visible (View → Show → File name extensions). The file should end in `.json` not `.json.json`.
-2. Move it into the root of the project folder (same level as `index.html`):
+Once you have it:
+1. Place it in the root of the project folder (same level as `index.html`):
    ```
    cbckenyamathematics/
    ├── credentials.json   ← place it here
@@ -101,8 +72,8 @@ Open [console.cloud.google.com](https://console.cloud.google.com/) and make sure
    ├── scripts/
    └── ...
    ```
-
-`credentials.json` is listed in `.gitignore` — it will never be accidentally committed to GitHub.
+   > **Windows tip:** If the file saved as `credentials.json.json` (double extension), make sure file extensions are visible (**View → Show → File name extensions**) and rename it to remove the duplicate `.json`.
+2. Do not share this file or commit it to GitHub — it is listed in `.gitignore` to prevent accidental commits.
 
 ### Step 5 — First-Time Authorization (one-time browser step)
 
@@ -115,13 +86,13 @@ node scripts/website-build.js
 Because this is the first run, it will:
 1. Print a message saying **"First-time authorization required"**
 2. Automatically open your web browser
-3. Ask you to sign in with your Google account and grant read access to your spreadsheets
+3. Ask you to sign in with your Google account and grant read-only access to your spreadsheets
 4. After you click **Allow**, show a success page — you can close that browser tab
 5. Continue running and pulling data from the sheet
 
 This browser step only happens **once**. The script saves a `token.json` file in the project root. On every future run it will use that saved token silently, with no browser needed.
 
-> `token.json` is also in `.gitignore` and will never be committed.
+> `token.json` is personal to your account and is listed in `.gitignore` — it will never be accidentally committed to GitHub. Do not share it with anyone.
 
 ---
 
@@ -251,13 +222,13 @@ Chapters
 ## Troubleshooting
 
 ### "credentials.json not found"
-The file is missing from the project root folder. Go back to [Step 4](#step-4--set-up-google-oauth-credentials) above.
+The file is not in the project folder. Ask the project maintainer to send you the `credentials.json` file, then place it in the project root (see [Step 4](#step-4--get-credentialsjson-from-the-maintainer)).
 
 ### "credentials.json.json" — double extension
-Windows hid the original `.json` extension when you renamed the file. In File Explorer, enable **View → Show → File name extensions**, then rename it to remove the duplicate `.json`.
+Windows hid the original `.json` extension when you saved the file. In File Explorer, enable **View → Show → File name extensions**, then rename it to remove the duplicate `.json`.
 
 ### Browser opens but shows "Access blocked"
-Your OAuth consent screen may be in "Testing" mode and your Google account hasn't been added as a test user. In Cloud Console go to **APIs & Services → OAuth consent screen → Test users** and add your email address.
+The OAuth consent screen is in "Testing" mode and your Google account hasn't been added as a test user. Contact the project maintainer and ask them to add your email address under **Google Cloud Console → APIs & Services → OAuth consent screen → Test users**.
 
 ### "Token has been expired or revoked" error
 Delete `token.json` from the project root and run `node scripts/website-build.js` again. It will open the browser for a fresh authorization.
@@ -394,3 +365,27 @@ If you need to modify the CSV-to-JSON conversion logic:
 ## Questions?
 
 For technical questions about the data pipeline or website architecture, please open an issue on GitHub.
+
+---
+
+## Maintainer Notes — Google Cloud Console Setup
+
+> **This section is only relevant if you ever need to recreate the Google Cloud project from scratch.** Regular users and contributors do not need to read this.
+
+The `credentials.json` file committed to this repository was created once in Google Cloud Console. Here is how to recreate it if needed:
+
+1. Go to [console.cloud.google.com](https://console.cloud.google.com/) and create or select a project
+2. Go to **APIs & Services → Enabled APIs** and enable:
+   - **Google Sheets API**
+   - **Google Drive API**
+3. Go to **APIs & Services → OAuth consent screen**:
+   - User type: **External**
+   - Fill in App name and support email; all other fields are optional
+   - No scopes need to be pre-configured
+4. Go to **APIs & Services → Credentials → + Create Credentials → OAuth 2.0 Client ID**:
+   - Application type: **Desktop app**
+   - Any name (e.g. `sheets-to-csv sync`)
+5. Download the resulting JSON, rename it to `credentials.json`, and commit it to the repository root
+6. Update `.gitignore` to ensure `credentials.json` is **not** ignored (it is safe to commit for a read-only desktop app)
+
+The `credentials.json` identifies the app to Google but contains no user data. Each individual user who runs the script generates their own private `token.json` via the browser authorization step.
