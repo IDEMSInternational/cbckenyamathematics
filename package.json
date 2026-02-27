@@ -1,0 +1,27 @@
+{
+  "name": "cbckenyamathematics",
+  "version": "1.0.0",
+  "description": "A free, interactive textbook and resource hub for Grade 10 CBC Mathematics. This project provides interactive lessons, exercises, lesson plans, guides, and training courses supporting Kenya's Competency-Based Curriculum.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IDEMSInternational/cbckenyamathematics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/IDEMSInternational/cbckenyamathematics/issues"
+  },
+  "homepage": "https://github.com/IDEMSInternational/cbckenyamathematics#readme",
+  "dependencies": {
+    "googleapis": "^171.4.0"
+  }
+}
