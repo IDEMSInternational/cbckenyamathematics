@@ -1,0 +1,27 @@
+# Google API Credentials - NEVER COMMIT THESE!
+credentials.json
+token.json
+service-account-key.json
+
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp

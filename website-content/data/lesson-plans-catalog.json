@@ -1036,11 +1036,11 @@
                   ],
                   "lessonPlan": {
                     "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/angles-of-depression.pdf",
-                    "exists": false
+                    "exists": true
                   },
                   "guide": {
                     "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_angles-of-depression.pdf",
-                    "exists": false
+                    "exists": true
                   }
                 }
               ]
@@ -1456,11 +1456,11 @@
               ],
               "lessonPlan": {
                 "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/surface-area-of-prisms.pdf",
-                "exists": false
+                "exists": true
               },
               "guide": {
                 "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/surface-area/step-by-step-guide_surface-area-of-prisms.pdf",
-                "exists": false
+                "exists": true
               }
             },
             {
