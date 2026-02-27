@@ -11,17 +11,19 @@ Visit: [https://smbor.github.io/cbckenyamathematics/](https://smbor.github.io/cb
 ### Local Development
 
 1. Clone this repository
-2. Install a local web server:
-   ```bash
-   npm install -g http-server
+2. Install dependencies:
+   ```powershell
+   npm install
    ```
-3. Start the server:
-   ```bash
-   http-server -p 8000
+3. Start the local server:
+   ```powershell
+   node scripts/website-serve.js
    ```
-4. Open http://localhost:8000 in your browser
+4. The site opens automatically at http://localhost:8080
 
 **Note:** The site uses `fetch()` for dynamic content loading, so a web server is required (opening `index.html` directly won't work).
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) for full setup instructions including Google Sheets sync.
 
 ## 📚 Documentation
 
@@ -41,27 +43,32 @@ Visit: [https://smbor.github.io/cbckenyamathematics/](https://smbor.github.io/cb
 
 ```
 cbckenyamathematics/
-├── index.html                # Main entry point
+├── index.html                    # Main entry point
 ├── website-content/
-│   ├── pages/               # Page templates
-│   ├── css/                 # Stylesheets
-│   ├── js/                  # JavaScript (navigation, dynamic loading)
-│   ├── data/                # JSON/CSV catalogs
-│   └── images/              # Logos, icons, screenshots
-├── scripts/                 # Build scripts (CSV-to-JSON converter)
-├── docs/                    # Documentation
-├── CONTRIBUTING.md          # Contributor guide
-└── DEVELOPMENT.md           # Developer guide
+│   ├── pages/                   # Page templates
+│   ├── css/                     # Stylesheets
+│   ├── js/                      # JavaScript (navigation, dynamic loading)
+│   ├── data/                    # JSON/CSV catalogs
+│   └── images/                  # Logos, icons, screenshots
+├── scripts/
+│   ├── website-build.js         # Full pipeline: Sheets → CSV → JSON
+│   ├── website-serve.js         # Local preview server
+│   ├── sheets-to-csv.js         # Google Sheets → Automatic-Links.csv
+│   └── csv-to-lesson-plans-json.js  # CSV → lesson-plans-catalog.json
+├── docs/                        # Documentation
+├── CONTRIBUTING.md              # Contributor guide
+└── DEVELOPMENT.md               # Developer guide (setup & pipeline)
 ```
 
 ## 🔄 Updating Lesson Plans
 
-The lesson plans catalog is automatically generated from CSV files. See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed instructions.
+The lesson plans catalog is automatically synced from Google Sheets. See [DEVELOPMENT.md](DEVELOPMENT.md) for full setup instructions.
 
-**Quick version:**
-1. Export CSVs from Google Sheets
-2. Run: `node scripts/csv-to-lesson-plans-json.js`
-3. The script generates `website-content/data/lesson-plans-catalog.json`
+**Quick version (after first-time setup):**
+```powershell
+node scripts/website-build.js
+```
+This pulls the latest data from Google Sheets and regenerates the website catalog in one step.
 
 ## 📄 License
 
