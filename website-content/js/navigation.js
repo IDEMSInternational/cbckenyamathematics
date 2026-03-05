@@ -168,6 +168,7 @@ function loadPageContent() {
             loadLessonPlanCatalog();
             loadLessonPlanChapterButtons();
             initChapterNavigation(); // Initialize chapter nav after content is loaded
+            initAccordionLevel('.about-accordion-item', null);
         })
         .catch((error) => {
             console.error('Error loading page content:', error);
@@ -392,6 +393,9 @@ function initAccordions() {
     
     // Topic level accordions - only one topic open per subsection
     initAccordionLevel('.lesson-plan-topic', '.lesson-plan-subsection');
+
+    // About page accordion - only one item open at a time
+    initAccordionLevel('.about-accordion-item', null);
 }
 
 /**
