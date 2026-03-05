@@ -92,3 +92,8 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for gu
 
 For questions or support, please open an issue on GitHub or contact the project maintainers.
 
+## 📝 To Do
+
+- Complete the contributors list in the Project Overview page
+- Add other versions of the textbook to `website-content/data/resources-catalog.json`
+
