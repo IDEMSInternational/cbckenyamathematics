@@ -6,7 +6,7 @@ A free, interactive textbook and resource hub for Grade 10 CBC Mathematics. This
 
 ### View the Website
 
-Visit: [https://smbor.github.io/cbckenyamathematics/](https://smbor.github.io/cbckenyamathematics/) *(or your deployed URL)*
+Visit: [https://idemsinternational.github.io/cbckenyamathematics/](https://idemsinternational.github.io/cbckenyamathematics/)
 
 ### Local Development
 
