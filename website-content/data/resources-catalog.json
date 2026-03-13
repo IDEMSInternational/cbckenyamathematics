@@ -10,9 +10,9 @@
   },
   {
     "id": "resource-2",
-    "title": "Interactive electronic textbook, teacher version",
-    "shortDescription": "An online book for Grade 10 Mathematics CBC. The teacher version allows for seamless feedback to be given.",
-    "longDescription": "This is an interactive online textbook that spans the entire Grade 10 Mathematics Curriculum. It includes carefully designed questions that provide students with instantaneous feedback. The teacher version allows for seamless feedback to be given.",
+    "title": "second variant of textbook",
+    "shortDescription": "add details",
+    "longDescription": "Add details",
     "type": "Textbook",
     "icon": "📘",
     "link": "https://innodems.github.io/CBC-Grade-10-Maths/frontmatter.html"
