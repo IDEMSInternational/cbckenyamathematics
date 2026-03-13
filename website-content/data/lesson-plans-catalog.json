@@ -780,8 +780,8 @@
           "learningObjectives": [
             "Determine the properties of rotation in different situations",
             "Appreciate the application of rotation in real-life situations",
-            "Rotate an object given the centre and angle of rotation on a plane surface and the Cartesian plane",
             "Determine the centre and angle of rotation given an object and its image",
+            "Rotate an object given the centre and angle of rotation on a plane surface and the Cartesian plane",
             "Determine the order of rotational symmetry of plane figures",
             "Determine the axis and order of rotational symmetry in solids",
             "Deduce congruence from rotation"
@@ -805,12 +805,28 @@
               }
             },
             {
+              "id": "centre-and-angle-of-rotation",
+              "title": "Centre and Angle of Rotation",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                2
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/centre-and-angle-of-rotation.pdf",
+                "exists": false
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/step-by-step-guide_centre-and-angle-of-rotation.pdf",
+                "exists": false
+              }
+            },
+            {
               "id": "rotating-objects",
               "title": "Rotating Objects",
               "hasSubtopics": false,
               "learningObjectiveRefs": [
-                2,
-                3
+                3,
+                2
               ],
               "lessonPlan": {
                 "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/rotation/rotating-objects.pdf",
@@ -900,9 +916,9 @@
           "title": "Trigonometry 1",
           "learningObjectives": [
             "Relate the sine, cosine and tangent of acute angles",
-            "Relate sines and cosines of complementary angles",
             "Determine trigonometric ratios of special angles: 30, 45, 60, and 90 degrees using triangles",
             "Determine the trigonometric ratios of acute angles from mathematical tables and calculators",
+            "Relate sines and cosines of complementary angles",
             "Apply trigonometric ratios to angles of elevation and depression",
             "Reflect on the use of trigonometry in real-life situations"
           ],
@@ -940,22 +956,6 @@
               }
             },
             {
-              "id": "sines-and-cosines-of-complementary-angles",
-              "title": "Sines and Cosines of Complementary Angles",
-              "hasSubtopics": false,
-              "learningObjectiveRefs": [
-                1
-              ],
-              "lessonPlan": {
-                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/sines-and-cosines-of-complementary-angles.pdf",
-                "exists": true
-              },
-              "guide": {
-                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_sines-and-cosines-of-complementary-angles.pdf",
-                "exists": true
-              }
-            },
-            {
               "id": "trigonometric-ratios-of-special-angles",
               "title": "Trigonometric Ratios of Special Angles",
               "hasSubtopics": true,
@@ -964,7 +964,7 @@
                   "id": "special-angles-0-45-and-90-degrees",
                   "title": "Special Angles: 0, 45, and 90 Degrees",
                   "learningObjectiveRefs": [
-                    2
+                    1
                   ],
                   "lessonPlan": {
                     "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/special-angles-0-45-and-90-degrees.pdf",
@@ -979,7 +979,7 @@
                   "id": "special-angles-30-and-60-degrees",
                   "title": "Special Angles: 30 and 60 Degrees",
                   "learningObjectiveRefs": [
-                    2
+                    1
                   ],
                   "lessonPlan": {
                     "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/special-angles-30-and-60-degrees.pdf",
@@ -997,7 +997,7 @@
               "title": "Trigonometry Using Tables and Calculators",
               "hasSubtopics": false,
               "learningObjectiveRefs": [
-                3
+                2
               ],
               "lessonPlan": {
                 "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/trigonometry-using-tables-and-calculators.pdf",
@@ -1005,6 +1005,22 @@
               },
               "guide": {
                 "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_trigonometry-using-tables-and-calculators.pdf",
+                "exists": true
+              }
+            },
+            {
+              "id": "sines-and-cosines-of-complementary-angles",
+              "title": "Sines and Cosines of Complementary Angles",
+              "hasSubtopics": false,
+              "learningObjectiveRefs": [
+                3
+              ],
+              "lessonPlan": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/sines-and-cosines-of-complementary-angles.pdf",
+                "exists": true
+              },
+              "guide": {
+                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/measurements-and-geometry/trigonometry-1/step-by-step-guide_sines-and-cosines-of-complementary-angles.pdf",
                 "exists": true
               }
             },
@@ -2486,12 +2502,12 @@
                 2
               ],
               "lessonPlan": {
-                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/probability-in-real-life.pdf",
-                "exists": true
+                "url": "",
+                "exists": false
               },
               "guide": {
-                "url": "https://innodems.github.io/CBC-Grade-10-Maths/external/lesson_plans/statistics-and-probability/probability-1/step-by-step-guide_probability-in-real-life.pdf",
-                "exists": true
+                "url": "",
+                "exists": false
               }
             }
           ]
