@@ -8,15 +8,7 @@
     "icon": "📘",
     "link": "https://innodems.github.io/CBC-Grade-10-Maths/frontmatter.html"
   },
-  {
-    "id": "resource-2",
-    "title": "second variant of textbook",
-    "shortDescription": "add details",
-    "longDescription": "Add details",
-    "type": "Textbook",
-    "icon": "📘",
-    "link": "https://innodems.github.io/CBC-Grade-10-Maths/frontmatter.html"
-  },
+
   {
     "id": "resource-3",
     "title": "CBE Math Delivery I Course",
@@ -24,6 +16,7 @@
     "longDescription": "This course is designed for teachers and educators interested in learning more about competency based education and how to contribute to the co-development of open learning resources.",
     "type": "Training Course",
     "icon": "🎓",
-    "link": "https://ecampus.idems.international/course/view.php?id=564"
+    "link": "https://cbe.ke.idems.international/course/view.php?id=4"
   }
 ]
+

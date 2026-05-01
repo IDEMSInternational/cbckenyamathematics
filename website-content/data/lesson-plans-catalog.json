@@ -125,7 +125,7 @@
           ],
           "course": {
             "title": "Real Numbers",
-            "url": "https://ecampus.idems.international/course/view.php?id=571"
+            "url": "https://cbe.ke.idems.international/course/view.php?id=3"
           }
         },
         {
@@ -323,7 +323,7 @@
           ],
           "course": {
             "title": "Indices and Logarithms",
-            "url": "https://ecampus.idems.international/course/view.php?id=573"
+            "url": "https://cbe.ke.idems.international/course/view.php?id=5"
           }
         },
         {
@@ -537,7 +537,7 @@
           ],
           "course": {
             "title": "Quadratic Expressions and Equations",
-            "url": "https://ecampus.idems.international/course/view.php?id=574"
+            "url": "https://cbe.ke.idems.international/course/view.php?id=6"
           }
         }
       ]
@@ -677,7 +677,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Similarity and Enlargement",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=22"
+          }
         },
         {
           "id": "reflection-and-congruence",
@@ -772,7 +776,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Reflection and Congruence",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=29"
+          }
         },
         {
           "id": "rotation",
@@ -909,7 +917,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Rotation",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=21"
+          }
         },
         {
           "id": "trigonometry-1",
@@ -1077,7 +1089,11 @@
                 "exists": false
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Trigonometry 1",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=26"
+          }
         },
         {
           "id": "area-of-polygons",
@@ -1315,7 +1331,11 @@
                 "exists": false
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Area of Polygons",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=28"
+          }
         },
         {
           "id": "area-of-a-part-of-a-circle",
@@ -1437,7 +1457,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Area of a Part of a Circle",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=23"
+          }
         },
         {
           "id": "surface-area",
@@ -1597,7 +1621,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Surface Area",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=24"
+          }
         },
         {
           "id": "volume",
@@ -1754,7 +1782,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Volume",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=20"
+          }
         },
         {
           "id": "vectors-1",
@@ -1960,7 +1992,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Vectors 1",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=27"
+          }
         },
         {
           "id": "linear-motion",
@@ -2113,7 +2149,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Linear Motion",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=25"
+          }
         }
       ]
     },
@@ -2358,7 +2398,11 @@
                 "exists": true
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Statistics 1",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=19"
+          }
         },
         {
           "id": "probability-1",
@@ -2510,7 +2554,11 @@
                 "exists": false
               }
             }
-          ]
+          ],
+          "course": {
+            "title": "Probability 1",
+            "url": "https://cbe.ke.idems.international/course/view.php?id=18"
+          }
         }
       ]
     }
