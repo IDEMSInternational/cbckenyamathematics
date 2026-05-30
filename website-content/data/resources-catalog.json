@@ -1,22 +1,119 @@
 [
   {
-    "id": "resource-1",
-    "title": "Interactive electronic textbook, teacher version",
+    "id": "resource-tb-7",
+    "title": "Grade 7 Mathematics Textbook",
+    "shortDescription": "An interactive electronic textbook for Grade 7 Mathematics CBC.",
+    "longDescription": "This is an interactive online textbook spanning the Grade 7 Mathematics Curriculum, designed to provide students with responsive feedback.",
+    "type": "Textbook",
+    "icon": "📘",
+    "link": "https://innodems.github.io/CBC-Grade-7-Maths/frontmatter.html"
+  },
+  {
+    "id": "resource-tb-8",
+    "title": "Grade 8 Mathematics Textbook",
+    "shortDescription": "An interactive electronic textbook for Grade 8 Mathematics CBC.",
+    "longDescription": "This is an interactive online textbook spanning the Grade 8 Mathematics Curriculum, designed to provide students with responsive feedback.",
+    "type": "Textbook",
+    "icon": "📘",
+    "link": "https://innodems.github.io/CBC-Grade-8-Maths/frontmatter.html"
+  },
+  {
+    "id": "resource-tb-9",
+    "title": "Grade 9 Mathematics Textbook",
+    "shortDescription": "An interactive electronic textbook for Grade 9 Mathematics CBC.",
+    "longDescription": "This is an interactive online textbook spanning the Grade 9 Mathematics Curriculum, designed to provide students with responsive feedback.",
+    "type": "Textbook",
+    "icon": "📘",
+    "link": "https://innodems.github.io/CBC-Grade-9-Maths/frontmatter.html"
+  },
+  {
+    "id": "resource-tb-10",
+    "title": "Grade 10 Mathematics Textbook",
     "shortDescription": "An online book for Grade 10 Mathematics CBC. The teacher version allows for seamless feedback to be given.",
     "longDescription": "This is an interactive online textbook that spans the entire Grade 10 Mathematics Curriculum. It includes carefully designed questions that provide students with instantaneous feedback. The teacher version allows for seamless feedback to be given.",
     "type": "Textbook",
     "icon": "📘",
     "link": "https://innodems.github.io/CBC-Grade-10-Maths/frontmatter.html"
   },
-
+  {
+    "id": "resource-tb-11",
+    "title": "Grade 11 Mathematics Textbook",
+    "shortDescription": "An interactive electronic textbook for Grade 11 Mathematics CBC (Coming Soon).",
+    "longDescription": "This interactive online textbook for Grade 11 Mathematics is currently in development.",
+    "type": "Textbook",
+    "icon": "📘",
+    "link": "#"
+  },
+  {
+    "id": "resource-tb-12",
+    "title": "Grade 12 Mathematics Textbook",
+    "shortDescription": "An interactive electronic textbook for Grade 12 Mathematics CBC (Coming Soon).",
+    "longDescription": "This interactive online textbook for Grade 12 Mathematics is currently in development.",
+    "type": "Textbook",
+    "icon": "📘",
+    "link": "#"
+  },
+  {
+    "id": "resource-lp-7",
+    "title": "Grade 7 Lesson Plans (Coming Soon)",
+    "shortDescription": "Lesson plans and step-by-step guides for Grade 7 Mathematics.",
+    "longDescription": "Full lesson plans and step-by-step guides for each topic in the Grade 7 mathematics curriculum, aligned to the learning objectives.",
+    "type": "Lesson Plan",
+    "icon": "📚",
+    "link": "#"
+  },
+  {
+    "id": "resource-lp-8",
+    "title": "Grade 8 Lesson Plans (Coming Soon)",
+    "shortDescription": "Lesson plans and step-by-step guides for Grade 8 Mathematics.",
+    "longDescription": "Full lesson plans and step-by-step guides for each topic in the Grade 8 mathematics curriculum, aligned to the learning objectives.",
+    "type": "Lesson Plan",
+    "icon": "📚",
+    "link": "#"
+  },
+  {
+    "id": "resource-lp-9",
+    "title": "Grade 9 Lesson Plans (Coming Soon)",
+    "shortDescription": "Lesson plans and step-by-step guides for Grade 9 Mathematics.",
+    "longDescription": "Full lesson plans and step-by-step guides for each topic in the Grade 9 mathematics curriculum, aligned to the learning objectives.",
+    "type": "Lesson Plan",
+    "icon": "📚",
+    "link": "#"
+  },
+  {
+    "id": "resource-lp-10",
+    "title": "Grade 10 Lesson Plans",
+    "shortDescription": "Lesson plans and step-by-step guides for Grade 10 Mathematics.",
+    "longDescription": "Full lesson plans and step-by-step guides for each topic in the Grade 10 mathematics curriculum, aligned to the learning objectives.",
+    "type": "Lesson Plan",
+    "icon": "📚",
+    "link": "index.html?page=resources-lesson-plans&chapter=numbers-and-algebra"
+  },
+  {
+    "id": "resource-lp-11",
+    "title": "Grade 11 Lesson Plans (Coming Soon)",
+    "shortDescription": "Lesson plans and step-by-step guides for Grade 11 Mathematics.",
+    "longDescription": "Full lesson plans and step-by-step guides for each topic in the Grade 11 mathematics curriculum, aligned to the learning objectives.",
+    "type": "Lesson Plan",
+    "icon": "📚",
+    "link": "#"
+  },
+  {
+    "id": "resource-lp-12",
+    "title": "Grade 12 Lesson Plans (Coming Soon)",
+    "shortDescription": "Lesson plans and step-by-step guides for Grade 12 Mathematics.",
+    "longDescription": "Full lesson plans and step-by-step guides for each topic in the Grade 12 mathematics curriculum, aligned to the learning objectives.",
+    "type": "Lesson Plan",
+    "icon": "📚",
+    "link": "#"
+  },
   {
     "id": "resource-3",
     "title": "CBE Math Delivery I Course",
-    "shortDescription": "A course on how to contribute to improvements in the Grade 10 Textboo.",
+    "shortDescription": "A course on how to contribute to improvements in the Mathematics Textbooks.",
     "longDescription": "This course is designed for teachers and educators interested in learning more about competency based education and how to contribute to the co-development of open learning resources.",
     "type": "Training Course",
     "icon": "🎓",
     "link": "https://cbe.ke.idems.international/course/view.php?id=4"
   }
 ]
-
